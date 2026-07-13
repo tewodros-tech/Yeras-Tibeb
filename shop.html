@@ -29,7 +29,6 @@
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
-    /* HEADER (same as index) */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -187,7 +186,6 @@
     }
     .add-button:hover { gap: 0.6rem; color: var(--coral); }
 
-    /* CART DRAWER */
     .drawer-backdrop { position: fixed; inset: 0; z-index: 40; visibility: hidden; background: rgba(20,12,14,0.55); opacity: 0; transition: opacity 280ms ease, visibility 280ms ease; }
     .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
     .cart-drawer { position: fixed; z-index: 50; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); flex-direction: column; background: var(--linen); transform: translateX(100%); transition: transform 380ms cubic-bezier(.22,.8,.2,1); }
@@ -281,7 +279,7 @@
   </header>
 
   <main>
-    <section class="section" id="shop">
+    <section class="section" id="shop" style="padding-top: 8rem;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <div class="section-heading">
@@ -381,7 +379,6 @@
     </div>
   </footer>
 
-  <!-- CART DRAWER -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
     <div class="drawer-header"><h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2><button class="close-button" id="closeCart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
@@ -396,7 +393,6 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // CART STATE (shared across pages via localStorage)
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const toast = document.getElementById('toast');
     let toastTimer;
@@ -434,7 +430,6 @@
 
     function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); updateCartUI(); }
 
-    // Add to cart
     document.querySelectorAll('.add-button').forEach(btn => {
       btn.addEventListener('click', () => {
         const id = btn.dataset.id;
@@ -446,7 +441,6 @@
       });
     });
 
-    // Cart drawer events
     document.getElementById('cartButton').addEventListener('click', () => {
       document.getElementById('cartDrawer').classList.add('is-open');
       document.getElementById('drawerBackdrop').classList.add('is-open');
@@ -485,7 +479,6 @@
       else showToast('Checkout is ready for your order');
     });
 
-    // Filter
     document.querySelectorAll('.filter-button').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('is-active'));
@@ -497,7 +490,6 @@
       });
     });
 
-    // Wishlist likes
     document.querySelectorAll('.product-like').forEach(btn => {
       btn.addEventListener('click', () => {
         const liked = btn.classList.toggle('is-liked');
@@ -505,7 +497,6 @@
       });
     });
 
-    // Mobile menu
     document.getElementById('menuButton').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('is-open');
     });
@@ -513,12 +504,10 @@
       document.getElementById('mobileMenu').classList.remove('is-open');
     }));
 
-    // Header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Newsletter
     document.getElementById('newsletterForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
