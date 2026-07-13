@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YERAS TIBEB · Contact</title>
-  <meta name="description" content="Get in touch with YERAS TIBEB." />
+  <title>YERAS TIBEB · Home</title>
+  <meta name="description" content="YERAS TIBEB · modern Ethiopian clothing, handwoven stories." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,19 +16,24 @@
       --wine: #6c2732;
       --wine-deep: #35191f;
       --coral: #d35343;
+      --clay: #b86d4e;
       --sand: #f1ebdd;
       --linen: #f8f5ed;
       --line: rgba(30, 24, 24, 0.18);
+      --gold: #c9a84c;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       background: var(--sand);
       color: var(--ink);
       font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
     }
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
+    /* HEADER */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -38,18 +43,18 @@
       color: var(--linen);
       background: rgba(20, 12, 14, 0.3);
       backdrop-filter: blur(4px);
-      transition: background 0.2s;
+      transition: background 0.3s ease;
     }
-    .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
+    .site-header.scrolled { background: rgba(20, 12, 14, 0.92); backdrop-filter: blur(12px); }
     .announcement {
-      border-bottom: 1px solid rgba(248, 245, 237, 0.15);
-      background: rgba(20, 12, 14, 0.3);
+      border-bottom: 1px solid rgba(248, 245, 237, 0.12);
+      background: rgba(20, 12, 14, 0.4);
       min-height: 32px;
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
-    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.15); }
+    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.12); }
     .nav-link {
       position: relative;
       opacity: 0.8;
@@ -66,21 +71,16 @@
       left: 0;
       right: 100%;
       bottom: -0.55rem;
-      height: 1px;
-      background: var(--linen);
+      height: 2px;
+      background: var(--gold);
       transition: right 220ms ease;
     }
     .nav-link:hover::after { right: 0; }
-    .logo-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(248, 245, 237, 0.7);
-      border-radius: 50%;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.82rem;
-      letter-spacing: -0.08em;
+    .logo-img {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
     }
     .icon-button {
       position: relative;
@@ -90,7 +90,7 @@
       height: 36px;
       transition: color 180ms ease, transform 180ms ease;
     }
-    .icon-button:hover { color: #f3b292; transform: translateY(-1px); }
+    .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
     .cart-count {
       position: absolute;
       top: -2px;
@@ -106,136 +106,361 @@
       font-size: 0.58rem;
       font-weight: 800;
     }
+
     .button-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.7rem;
-      min-height: 48px;
-      padding: 0.78rem 1.15rem;
-      border: 1px solid transparent;
+      min-height: 50px;
+      padding: 0.85rem 1.5rem;
+      border: none;
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background 220ms ease, transform 220ms ease;
+      transition: all 250ms ease;
       background: var(--coral);
       color: white;
+      border-radius: 4px;
+      cursor: pointer;
     }
-    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
-    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
-    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
-    .section-rule { border-top: 1px solid var(--line); }
-
-    .contact-card {
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .contact-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-    }
-    .contact-card .icon {
-      color: var(--coral);
-      font-size: 1.5rem;
-      width: 2.5rem;
-      text-align: center;
-    }
-
-    .social-icon {
+    .button-primary:hover { background: #e06654; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(211,83,67,0.35); }
+    .button-secondary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 52px;
-      height: 52px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      transition: all 0.3s ease;
-      text-decoration: none;
-      color: white;
+      gap: 0.7rem;
+      min-height: 50px;
+      padding: 0.85rem 1.5rem;
+      border: 1px solid rgba(248, 245, 237, 0.5);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: all 250ms ease;
+      color: var(--linen);
+      border-radius: 4px;
+      background: transparent;
+      cursor: pointer;
     }
-    .social-icon:hover {
-      transform: translateY(-4px) scale(1.05);
-    }
-    .social-icon.facebook { background: #1877f2; }
-    .social-icon.telegram { background: #0088cc; }
-    .social-icon.pinterest { background: #e60023; }
-    .social-icon.instagram { background: #e4405f; }
+    .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    .map-container {
-      border-radius: 12px;
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
       overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-      height: 300px;
+      color: var(--linen);
+      background: #352127;
     }
-    .map-container iframe {
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('54.jpg');
+      background-size: cover;
+      background-position: center 28%;
+      transform: scale(1.02);
+      animation: heroBreath 14s ease-out both;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(26,14,17,0.85) 0%, rgba(26,14,17,0.55) 40%, rgba(26,14,17,0.15) 80%),
+                  linear-gradient(0deg, rgba(24,12,15,0.8) 0%, rgba(24,12,15,0.05) 55%);
+    }
+    .hero-content { position: relative; z-index: 1; width: 100%; padding-bottom: clamp(4.5rem, 12vh, 8rem); }
+    .hero-kicker { color: var(--gold); animation: riseIn 800ms 80ms both; }
+    .hero-brand {
+      margin: 1.1rem 0 1rem;
+      font-size: clamp(4rem, 12vw, 10rem);
+      line-height: 0.82;
+      letter-spacing: -0.075em;
+      font-weight: 500;
+      max-width: 900px;
+      animation: riseIn 900ms 160ms both;
+    }
+    .hero-brand em { font-weight: 400; color: var(--gold); }
+    .hero-copy { max-width: 440px; color: rgba(248,245,237,0.85); line-height: 1.7; font-size: 1.05rem; animation: riseIn 800ms 290ms both; }
+    .hero-actions { animation: riseIn 800ms 390ms both; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Image Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+    }
+    .gallery-grid .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      aspect-ratio: 1;
+      cursor: pointer;
+    }
+    .gallery-grid .gallery-item img {
       width: 100%;
       height: 100%;
-      border: 0;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
+    }
+    .gallery-grid .gallery-item:hover img {
+      transform: scale(1.06);
+    }
+    .gallery-grid .gallery-item .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.3) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      display: flex;
+      align-items: flex-end;
+      padding: 1rem;
+    }
+    .gallery-grid .gallery-item:hover .overlay {
+      opacity: 1;
+    }
+    .gallery-grid .gallery-item .overlay span {
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-grid .gallery-item:nth-child(4) { grid-column: span 1; }
+    .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
+
+    /* Feature Cards */
+    .feature-card {
+      background: white;
+      padding: 2.2rem 1.8rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--coral), var(--gold));
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+    .feature-card:hover::before { transform: scaleX(1); }
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+    }
+    .feature-card .icon {
+      font-size: 2.8rem;
+      color: var(--coral);
+      margin-bottom: 1rem;
+      display: block;
     }
 
+    /* Collection Preview */
+    .collection-preview {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    }
+    .collection-preview:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    }
+    .collection-preview img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .collection-preview:hover img { transform: scale(1.04); }
+
+    /* Stats */
+    .stat-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 600;
+      color: var(--coral);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: rgba(30,24,24,0.5);
+      margin-top: 0.3rem;
+    }
+
+    /* Testimonials */
+    .testimonial-card {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .testimonial-card .quote-icon {
+      color: var(--coral);
+      font-size: 2rem;
+      opacity: 0.3;
+      margin-bottom: 0.5rem;
+    }
+    .testimonial-card .quote-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.7;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--wine-deep) 0%, var(--wine) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(211,83,67,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* Instagram Feed */
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 4px;
+    }
+    .instagram-grid img {
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .instagram-grid img:hover { transform: scale(1.03); }
+
+    /* Footer */
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
     .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
     .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
-    .footer-heading { color: #f2b596; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
     .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
     .footer-links a:hover { color: white; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.16); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.12); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
-    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35,18,22,0.97); border-bottom: 1px solid rgba(248,245,237,0.18); }
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.5rem; background: rgba(35,18,22,0.98); border-bottom: 1px solid rgba(248,245,237,0.1); backdrop-filter: blur(8px); }
     .mobile-menu.is-open { display: grid; gap: 1rem; }
-    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--gold); }
 
-    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
+    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; border-radius: 8px; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
-    /* Telegram contact badge */
-    .telegram-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: #0088cc;
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.3s ease;
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.2,.8,.2,1), transform 0.7s cubic-bezier(.2,.8,.2,1);
     }
-    .telegram-badge:hover {
-      background: #0077b3;
-      transform: scale(1.02);
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
+
+    /* Full-width banner image */
+    .banner-image {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    @keyframes heroBreath { from { transform: scale(1.08); } to { transform: scale(1.02); } }
+    @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
+      .instagram-grid { grid-template-columns: repeat(3, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+      .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
     }
     @media (max-width: 640px) {
-      .announcement { font-size: 0.55rem; }
+      .announcement { font-size: 0.5rem; letter-spacing: 0.06em; }
+      .hero { min-height: 760px; }
+      .hero::before { background-position: 57% center; }
+      .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.8), rgba(26,14,17,0.3)), linear-gradient(0deg, rgba(24,12,15,0.85), rgba(24,12,15,0.06) 65%); }
+      .hero-content { padding-bottom: 4.2rem; }
+      .hero-brand { font-size: clamp(3.5rem, 18vw, 6rem); }
+      .hero-actions { display: grid; gap: 0.7rem; }
+      .hero-actions a { width: fit-content; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
-      .contact-card .icon { font-size: 1.2rem; width: 2rem; }
-      .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+      .stat-number { font-size: 2.5rem; }
+      .feature-card { padding: 1.5rem; }
+      .instagram-grid { grid-template-columns: repeat(2, 1fr); }
+      .logo-img { height: 34px; }
+      .banner-image { height: 250px; }
+      .gallery-grid { gap: 4px; }
     }
   </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">
+      <i class="fas fa-truck mr-2"></i> Complimentary delivery on orders over $180 · Addis Ababa + worldwide
+      <span class="hidden sm:inline mx-3">|</span>
+      <span class="hidden sm:inline"><i class="fas fa-undo mr-1"></i> 30-day returns</span>
+    </div>
     <div class="nav-shell">
-      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 lg:px-10">
         <a class="flex items-center gap-3" href="index.html">
-          <span class="logo-mark">YT</span>
-          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
+          <img src="50.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block" style="display:none;">YERAS TIBEB</span>
         </a>
-        <nav class="desktop-nav flex items-center gap-8">
+        <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="shop.html">Shop</a>
           <a class="nav-link" href="about.html">About</a>
@@ -251,156 +476,366 @@
           </button>
         </div>
       </div>
-      <nav class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="index.html"><i class="fas fa-home mr-3"></i>Home</a>
+        <a href="shop.html"><i class="fas fa-shopping-bag mr-3"></i>Shop</a>
+        <a href="about.html"><i class="fas fa-info-circle mr-3"></i>About</a>
+        <a href="contact.html"><i class="fas fa-envelope mr-3"></i>Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section" style="padding-top: 8rem;" id="contact">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
-          <div class="section-heading">
-            <p class="eyebrow text-[var(--coral)]">Connect / 03</p>
-            <h2 class="font-display">We'd love<br><em>to hear.</em></h2>
-            <p class="max-w-[410px] mt-4 text-black/60">Reach out for custom orders, collaborations, or simply to say hello.</p>
+    <!-- HERO SECTION -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+          <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
+            <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
+            <span>Ethiopian heritage · handwoven with love</span>
+          </div>
+          <p class="hero-kicker eyebrow">
+            <i class="fas fa-asterisk mr-1" style="font-size:0.4rem;"></i> A new language for heritage
+          </p>
+          <h1 class="hero-brand" id="hero-title">YERAS<br><em>TIBEB</em></h1>
+          <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
+          <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
+            <a class="button-primary" href="shop.html">
+              <i class="fas fa-shopping-bag"></i> Explore the collection
+              <span aria-hidden="true">&#8594;</span>
+            </a>
+            <a class="button-secondary" href="about.html">
+              <i class="fas fa-users"></i> Meet the makers
+            </a>
+          </div>
+          <div class="mt-8 flex flex-wrap items-center gap-5 text-xs text-white/50">
+            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Ethically made</span>
+            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Handwoven</span>
+            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Slow fashion</span>
+            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Fair trade</span>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="mt-8 grid gap-10 lg:grid-cols-2">
-          <!-- LEFT COLUMN: Contact Info + Maps -->
-          <div class="space-y-6">
-            <!-- Contact Cards -->
-            <div class="contact-card flex items-start gap-4">
-              <span class="icon">📍</span>
-              <div>
-                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Visit us</p>
-                <p class="text-lg font-medium">Bole Atlas Grace Plaza, Addis Ababa</p>
-                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
-                  <i class="fas fa-map-pin"></i> Open in Google Maps
-                </a>
+    <!-- STATS SECTION -->
+    <section class="section bg-white">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="stat-card reveal">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Happy Customers</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">12</div>
+            <div class="stat-label">Master Weavers</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Handcrafted</div>
+          </div>
+          <div class="stat-card reveal">
+            <div class="stat-number">4.9★</div>
+            <div class="stat-label">Customer Rating</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY SECTION - Amazing Image Showcase -->
+    <section class="section" style="background: var(--sand);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-12 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-images mr-1"></i> Our World</p>
+          <h2 class="font-display text-4xl md:text-5xl mt-2">A visual <em style="color:var(--coral);">journey</em></h2>
+          <p class="mt-3 text-black/60 max-w-lg mx-auto">From the loom to you — every step tells a story.</p>
+        </div>
+        <div class="gallery-grid">
+          <div class="gallery-item reveal">
+            <img src="54.jpg" alt="Ethiopian weaving" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-heart mr-1"></i> Heritage</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="51.jpg" alt="Traditional textile" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-hands mr-1"></i> Craft</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="52.jpg" alt="Handwoven fabric" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-palette mr-1"></i> Art</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="53.jpg" alt="Ethiopian culture" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-flag mr-1"></i> Culture</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="55.jpg" alt="Weaving process" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-spinner mr-1"></i> Process</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="56.jpg" alt="Textile detail" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-magnifying-glass mr-1"></i> Detail</span></div>
+          </div>
+          <div class="gallery-item reveal">
+            <img src="57.jpg" alt="Ethiopian fashion" loading="lazy" />
+            <div class="overlay"><span><i class="fas fa-tshirt mr-1"></i> Fashion</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="section bg-white">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-12 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-heart mr-1"></i> Why Yeras Tibeb</p>
+          <h2 class="font-display text-4xl md:text-5xl mt-2">Made with <em style="color:var(--coral);">intention.</em></h2>
+          <p class="mt-3 text-black/60 max-w-lg mx-auto">Every piece is a collaboration between tradition and modernity.</p>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          <div class="feature-card reveal">
+            <span class="icon"><i class="fas fa-hands"></i></span>
+            <h3 class="font-display text-xl mb-2">Handwoven with Care</h3>
+            <p class="text-sm text-black/60 leading-relaxed">Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="icon"><i class="fas fa-leaf"></i></span>
+            <h3 class="font-display text-xl mb-2">Sustainable Materials</h3>
+            <p class="text-sm text-black/60 leading-relaxed">We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p>
+          </div>
+          <div class="feature-card reveal">
+            <span class="icon"><i class="fas fa-heart"></i></span>
+            <h3 class="font-display text-xl mb-2">Ethical Fashion</h3>
+            <p class="text-sm text-black/60 leading-relaxed">Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL WIDTH BANNER -->
+    <section class="section" style="background: var(--sand); padding: 0;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="reveal">
+          <img src="58.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION PREVIEW -->
+    <section class="section bg-white">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-12 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-tshirt mr-1"></i> The Collection</p>
+          <h2 class="font-display text-4xl md:text-5xl mt-2">Bestselling <em style="color:var(--coral);">pieces</em></h2>
+          <p class="mt-3 text-black/60 max-w-lg mx-auto">Each garment carries the stories of the hands that made it.</p>
+        </div>
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+          <div class="collection-preview reveal">
+            <img src="59.jpg" alt="The Segen Dress" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Segen Dress</h4>
+              <p class="text-sm text-black/50">Handloom cotton · coral</p>
+              <div class="flex items-center justify-between mt-2">
+                <span class="font-bold text-[var(--wine)]">$248</span>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
               </div>
             </div>
-
-            <div class="contact-card flex items-start gap-4">
-              <span class="icon">📲</span>
-              <div>
-                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Call</p>
-                <p class="text-lg font-medium">+251 91 010 3956</p>
-                <a href="tel:+251910103956" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
-                  <i class="fas fa-phone"></i> Call now
-                </a>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="60.jpg" alt="The Addis Wrap" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Addis Wrap</h4>
+              <p class="text-sm text-black/50">Hand-spun cotton · indigo</p>
+              <div class="flex items-center justify-between mt-2">
+                <span class="font-bold text-[var(--wine)]">$165</span>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
               </div>
             </div>
-
-            <div class="contact-card flex items-start gap-4">
-              <span class="icon">📧</span>
-              <div>
-                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Email</p>
-                <p class="text-lg font-medium">kidistdemessew@gmail.com</p>
-                <a href="mailto:kidistdemessew@gmail.com" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
-                  <i class="fas fa-envelope"></i> Send email
-                </a>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="61.jpg" alt="The Simien Dress" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Simien Dress</h4>
+              <p class="text-sm text-black/50">Organic cotton · ivory</p>
+              <div class="flex items-center justify-between mt-2">
+                <span class="font-bold text-[var(--wine)]">$220</span>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
               </div>
             </div>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="62.jpg" alt="The Wollo Shawl" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Wollo Shawl</h4>
+              <p class="text-sm text-black/50">Handwoven wool · earth</p>
+              <div class="flex items-center justify-between mt-2">
+                <span class="font-bold text-[var(--wine)]">$190</span>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10 reveal">
+          <a href="shop.html" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all">
+            View all pieces <span aria-hidden="true">&#8594;</span>
+          </a>
+        </div>
+      </div>
+    </section>
 
-            <!-- Telegram Direct Contact -->
-            <div class="contact-card">
-              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
-                <i class="fab fa-telegram-plane text-[var(--coral)] mr-2"></i>Chat with us on Telegram
-              </p>
-              <a href="https://t.me/+251910103956" target="_blank" class="telegram-badge">
-                <i class="fab fa-telegram-plane"></i> @+251 91 010 3956
+    <!-- STORY SECTION -->
+    <section class="section" style="background: var(--wine-deep); color: var(--linen);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="grid gap-12 lg:grid-cols-2 items-center">
+          <div class="reveal">
+            <p class="eyebrow text-[var(--gold)]">
+              <i class="fas fa-feather-alt mr-1"></i> Our story
+            </p>
+            <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.05]">
+              The cloth<br><em style="font-weight:400; color:var(--gold);">remembers.</em>
+            </h2>
+            <p class="mt-4 text-white/70 max-w-lg leading-relaxed">
+              Yeras Tibeb means "the beauty of heritage." We work with weavers and makers in Ethiopia to keep the language of handwoven cloth alive, then give it room to move through the world.
+            </p>
+            <p class="mt-3 text-white/50 max-w-lg leading-relaxed">
+              From the highlands of Wollo to the streets of Addis, our pieces are a bridge between past and future — honoring tradition while embracing modern silhouettes.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-4">
+              <a href="about.html" class="inline-flex items-center gap-2 text-[var(--gold)] font-bold text-sm uppercase tracking-[0.1em] hover:text-white transition-all hover:gap-3">
+                Learn more <span aria-hidden="true">&#8594;</span>
               </a>
-              <p class="text-xs text-black/40 mt-2">Click to start a conversation on Telegram</p>
-            </div>
-
-            <!-- Social Media -->
-            <div class="contact-card">
-              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Follow us</p>
-              <div class="flex flex-wrap gap-3">
-                <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="social-icon facebook" aria-label="Facebook">
-                  <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="https://t.me/+251910103956" target="_blank" class="social-icon telegram" aria-label="Telegram">
-                  <i class="fab fa-telegram-plane"></i>
-                </a>
-                <a href="https://pin.it/4uNPbwy" target="_blank" class="social-icon pinterest" aria-label="Pinterest">
-                  <i class="fab fa-pinterest-p"></i>
-                </a>
-                <a href="https://instagram.com/yerastibeb" target="_blank" class="social-icon instagram" aria-label="Instagram">
-                  <i class="fab fa-instagram"></i>
-                </a>
-              </div>
-            </div>
-
-            <!-- Google Earth Embed -->
-            <div class="contact-card">
-              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
-                <i class="fas fa-globe-africa text-[var(--coral)] mr-2"></i>Explore in Google Earth
-              </p>
-              <div class="map-container" style="height: 200px;">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m7!1sCAoSLEFGMVFpcE5mY1hzdHhKbXJhTlJ3N1JkR1R0U3pLWkJJR2lTcGx6M3VhUQ!2m2!1d9.024!2d38.746!3f330!4f0!5f0.7820865974627469" 
-                  allowfullscreen="" 
-                  loading="lazy">
-                </iframe>
-              </div>
-              <p class="text-xs text-black/40 mt-2">📍 Bole Atlas Grace Plaza, Addis Ababa</p>
             </div>
           </div>
-
-          <!-- RIGHT COLUMN: Google Map + Form -->
-          <div class="space-y-6">
-            <!-- Google Map -->
-            <div class="contact-card">
-              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
-                <i class="fas fa-map-marked-alt text-[var(--coral)] mr-2"></i>Find us on Google Maps
-              </p>
-              <div class="map-container" style="height: 280px;">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789012!2d38.746!3d9.024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f9a8b8b8b8b%3A0x1234567890abcdef!2sBole%20Atlas%20Grace%20Plaza!5e0!3m2!1sen!2set!4v1700000000000" 
-                  allowfullscreen="" 
-                  loading="lazy">
-                </iframe>
-              </div>
-              <div class="flex gap-3 mt-3">
-                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
-                  <i class="fas fa-external-link-alt"></i> Open in Maps
-                </a>
-                <a href="https://earth.google.com/web/search/Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
-                  <i class="fas fa-globe"></i> Open in Earth
-                </a>
-              </div>
+          <div class="relative reveal">
+            <div class="aspect-[4/3] overflow-hidden rounded-lg">
+              <img 
+                src="64.jpg" 
+                alt="Ethiopian weaving tradition" 
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
-
-            <!-- Contact Form -->
-            <div class="contact-card">
-              <h3 class="font-display text-2xl mb-4">Send a message</h3>
-              <form id="contactForm" class="flex flex-col gap-4">
-                <div>
-                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactName">Name</label>
-                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactName" type="text" placeholder="Your name" required>
-                </div>
-                <div>
-                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactEmail">Email</label>
-                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactEmail" type="email" placeholder="hello@domain.com" required>
-                </div>
-                <div>
-                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactMessage">Message</label>
-                  <textarea class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactMessage" rows="4" placeholder="Tell us what's on your mind..."></textarea>
-                </div>
-                <button class="button-primary w-full md:w-fit" type="submit">
-                  Send message <span aria-hidden="true">&#8594;</span>
-                </button>
-                <p class="text-[#6c2732] text-sm mt-2" id="contactMessageStatus"></p>
-              </form>
+            <div class="absolute -bottom-4 -right-4 bg-[var(--gold)] text-[var(--ink)] text-sm font-bold px-5 py-3 rounded-lg shadow-xl">
+              <i class="fas fa-star mr-1"></i> Since 2024
+            </div>
+            <div class="absolute -top-4 -left-4 bg-[var(--coral)] text-white text-xs font-bold px-4 py-2 rounded-lg shadow-lg">
+              <i class="fas fa-hands mr-1"></i> Handwoven
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADDITIONAL GALLERY ROW -->
+    <section class="section" style="background: var(--sand);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
+          <div class="reveal overflow-hidden rounded-lg">
+            <img src="65.jpg" alt="Ethiopian textile" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="reveal overflow-hidden rounded-lg">
+            <img src="66.jpg" alt="Traditional weaving" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="reveal overflow-hidden rounded-lg">
+            <img src="67.jpg" alt="Handwoven fabric" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+          <div class="reveal overflow-hidden rounded-lg">
+            <img src="68.jpg" alt="Ethiopian culture" class="w-full h-64 object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="section bg-white">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-12 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-quote-left mr-1"></i> Testimonials</p>
+          <h2 class="font-display text-4xl md:text-5xl mt-2">What our <em style="color:var(--coral);">community</em> says</h2>
+        </div>
+        <div class="grid gap-6 md:grid-cols-3">
+          <div class="testimonial-card reveal">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <div class="flex text-[var(--gold)] text-sm mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="quote-text">"The Segen Dress is absolutely stunning. The fabric feels like it has a soul — you can tell it was made with intention."</p>
+            <p class="mt-3 text-sm font-bold text-black/60">— Sara M., Addis Ababa</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <div class="flex text-[var(--gold)] text-sm mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="quote-text">"I love that I'm wearing a piece of Ethiopian heritage. The quality is incredible and the design is timeless."</p>
+            <p class="mt-3 text-sm font-bold text-black/60">— David K., London</p>
+          </div>
+          <div class="testimonial-card reveal">
+            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+            <div class="flex text-[var(--gold)] text-sm mb-3">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+            <p class="quote-text">"Every piece tells a story. Yeras Tibeb is more than clothing — it's a movement to preserve our culture."</p>
+            <p class="mt-3 text-sm font-bold text-black/60">— Tigist W., Washington D.C.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTAGRAM FEED -->
+    <section class="section" style="background: var(--sand);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-10 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fab fa-instagram mr-1"></i> Follow us</p>
+          <h2 class="font-display text-3xl md:text-4xl mt-2">@yerastibeb</h2>
+          <p class="mt-2 text-black/60">Join our community and see the stories behind the stitches.</p>
+        </div>
+        <div class="instagram-grid">
+          <img src="69.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="70.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="71.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="72.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="73.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="74.jpg" alt="Instagram feed" loading="lazy" />
+        </div>
+        <div class="text-center mt-6 reveal">
+          <a href="#" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all text-sm uppercase tracking-[0.1em]">
+            <i class="fab fa-instagram"></i> Follow @yerastibeb
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA BANNER -->
+    <section class="cta-section section">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10 text-center relative z-10">
+        <div class="reveal">
+          <p class="eyebrow text-[var(--gold)]"><i class="fas fa-gem mr-1"></i> Discover the collection</p>
+          <h2 class="font-display text-4xl md:text-5xl text-white mt-2 leading-[1.1]">
+            Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em>
+          </h2>
+          <p class="text-white/70 max-w-md mx-auto mt-3 text-lg">
+            Each garment carries the stories of the hands that made it.
+          </p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="shop.html" class="button-primary" style="background: var(--gold); color: var(--ink);">
+              <i class="fas fa-shopping-bag"></i> Shop now
+              <span aria-hidden="true">&#8594;</span>
+            </a>
+            <a href="about.html" class="button-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">
+              <i class="fas fa-info-circle"></i> Our story
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL GALLERY BANNER -->
+    <section class="section" style="background: var(--sand); padding: 0;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="grid gap-4 grid-cols-2 md:grid-cols-3 reveal">
+          <img src="78.jpg" alt="Ethiopian fashion" class="w-full h-72 object-cover rounded-lg hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
+          <img src="80.jpg" alt="Traditional textile" class="w-full h-72 object-cover rounded-lg hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
+          <img src="52.jpg" alt="Handwoven fabric" class="w-full h-72 object-cover rounded-lg hover:scale-[1.02] transition-transform duration-500 hidden md:block" loading="lazy" />
         </div>
       </div>
     </section>
@@ -410,9 +845,16 @@
     <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <p class="eyebrow text-[#f2b596]">Yeras Tibeb</p>
+          <img src="50.jpg" alt="YERAS TIBEB" class="h-12 w-auto object-contain mb-3" onerror="this.style.display='none';" />
+          <p class="eyebrow text-[var(--gold)]">Yeras Tibeb</p>
           <h2>Wear the story.</h2>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
+          <div class="flex gap-3 mt-4">
+            <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+251910103956" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://pin.it/4uNPbwy" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
         <div>
           <p class="footer-heading">Explore</p>
@@ -426,20 +868,24 @@
         <div>
           <p class="footer-heading">Stay close</p>
           <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
-          <form class="newsletter-form flex border-b border-white/45 mt-3" id="newsletterForm">
+          <form class="newsletter-form flex border-b border-white/30 mt-3" id="newsletterForm">
             <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
-            <button class="text-[#f2b596] text-xs font-bold uppercase tracking-[0.1em]" type="submit">Join</button>
+            <button class="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.1em] hover:text-white transition" type="submit">Join</button>
           </form>
-          <p class="newsletter-message text-[#f2b596] text-xs mt-2" id="newsletterMessage"></p>
+          <p class="newsletter-message text-[var(--gold)] text-xs mt-2" id="newsletterMessage"></p>
         </div>
       </div>
-      <div class="footer-bottom"><span>Yeras Tibeb · Addis Ababa</span><span>Crafted with care · 2024</span></div>
+      <div class="footer-bottom">
+        <span><i class="far fa-copyright mr-1"></i> Yeras Tibeb · Addis Ababa</span>
+        <span>Crafted with care <i class="fas fa-heart text-[var(--coral)] mx-1"></i> 2024</span>
+      </div>
     </div>
   </footer>
 
   <div class="toast" id="toast"></div>
 
   <script>
+    // Cart state
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     function updateCartCount() {
       const count = cart.reduce((s, i) => s + i.qty, 0);
@@ -449,6 +895,7 @@
 
     document.getElementById('cartButton').addEventListener('click', () => { window.location.href = 'shop.html'; });
 
+    // Mobile menu
     document.getElementById('menuButton').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('is-open');
     });
@@ -456,20 +903,15 @@
       document.getElementById('mobileMenu').classList.remove('is-open');
     }));
 
+    // Header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
     });
 
+    // Newsletter
     document.getElementById('newsletterForm').addEventListener('submit', e => {
       e.preventDefault();
-      document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
-      e.target.reset();
-    });
-
-    document.getElementById('contactForm').addEventListener('submit', e => {
-      e.preventDefault();
-      document.getElementById('contactMessageStatus').textContent = '✓ Your message has been sent. We\'ll reply within 2 days.';
-      document.getElementById('contactMessageStatus').style.color = '#6c2732';
+      document.getElementById('newsletterMessage').textContent = '✓ You are on the list. Welcome in.';
       e.target.reset();
     });
 
@@ -482,6 +924,20 @@
       clearTimeout(toastTimer);
       toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
     }
+
+    // Reveal animations
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 60, 400)}ms`;
+      revealObserver.observe(el);
+    });
   </script>
 </body>
 </html>
