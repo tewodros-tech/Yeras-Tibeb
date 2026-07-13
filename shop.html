@@ -4,20 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YERAS TIBEB · Shop</title>
-  <meta name="description" content="Shop modern Ethiopian clothing at YERAS TIBEB." />
+  <meta name="description" content="Shop modern Ethiopian clothing at YERAS TIBEB — handwoven with love." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --ink: #1e1818;
       --wine: #6c2732;
       --wine-deep: #35191f;
       --coral: #d35343;
+      --clay: #b86d4e;
       --sand: #f1ebdd;
       --linen: #f8f5ed;
       --line: rgba(30, 24, 24, 0.18);
+      --gold: #c9a84c;
     }
     * { box-sizing: border-box; }
     body {
@@ -29,6 +32,7 @@
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
+    /* HEADER */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -38,18 +42,18 @@
       color: var(--linen);
       background: rgba(20, 12, 14, 0.3);
       backdrop-filter: blur(4px);
-      transition: background 0.2s;
+      transition: background 0.3s ease;
     }
-    .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
+    .site-header.scrolled { background: rgba(20, 12, 14, 0.92); backdrop-filter: blur(12px); }
     .announcement {
-      border-bottom: 1px solid rgba(248, 245, 237, 0.15);
-      background: rgba(20, 12, 14, 0.3);
+      border-bottom: 1px solid rgba(248, 245, 237, 0.12);
+      background: rgba(20, 12, 14, 0.4);
       min-height: 32px;
-      font-size: 0.62rem;
+      font-size: 0.6rem;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
-    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.15); }
+    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.12); }
     .nav-link {
       position: relative;
       opacity: 0.8;
@@ -66,22 +70,31 @@
       left: 0;
       right: 100%;
       bottom: -0.55rem;
-      height: 1px;
-      background: var(--linen);
+      height: 2px;
+      background: var(--gold);
       transition: right 220ms ease;
     }
     .nav-link:hover::after { right: 0; }
-    .logo-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(248, 245, 237, 0.7);
-      border-radius: 50%;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.82rem;
-      letter-spacing: -0.08em;
+    
+    .logo-img {
+      height: 60px;
+      width: auto;
+      max-width: 200px;
+      border-radius: 10px;
+      object-fit: contain;
+      filter: brightness(1.05) contrast(1.05);
+      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
+      border: 2px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.08);
+      padding: 4px;
     }
+    .logo-img:hover {
+      transform: scale(1.05);
+      border-color: var(--gold);
+      box-shadow: 0 4px 25px rgba(201,168,76,0.3);
+    }
+    
     .icon-button {
       position: relative;
       display: grid;
@@ -90,7 +103,7 @@
       height: 36px;
       transition: color 180ms ease, transform 180ms ease;
     }
-    .icon-button:hover { color: #f3b292; transform: translateY(-1px); }
+    .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
     .cart-count {
       position: absolute;
       top: -2px;
@@ -106,104 +119,199 @@
       font-size: 0.58rem;
       font-weight: 800;
     }
+
     .button-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.7rem;
-      min-height: 48px;
-      padding: 0.78rem 1.15rem;
-      border: 1px solid transparent;
+      min-height: 50px;
+      padding: 0.85rem 1.5rem;
+      border: none;
       font-size: 0.72rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: background 220ms ease, transform 220ms ease;
+      transition: all 250ms ease;
       background: var(--coral);
       color: white;
+      border-radius: 4px;
+      cursor: pointer;
     }
-    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
-    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
-    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
-    .section-rule { border-top: 1px solid var(--line); }
+    .button-primary:hover { background: #e06654; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(211,83,67,0.35); }
+    .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    .filter-button {
-      padding: 0.6rem 0;
-      color: rgba(30, 24, 24, 0.55);
-      border-bottom: 1px solid transparent;
-      font-size: 0.69rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 180ms ease, border 180ms ease;
-      background: none;
-      cursor: pointer;
-    }
-    .filter-button:hover, .filter-button.is-active { color: var(--wine); border-color: var(--wine); }
-    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2.4rem); }
-    .product-item.is-hidden { display: none; }
-    .product-image-wrap { position: relative; overflow: hidden; background: #dfd4c2; aspect-ratio: 0.78; }
-    .product-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
-    .product-item:hover .product-image-wrap img { transform: scale(1.055); }
-    .product-like {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
+    /* Product Grid */
+    .product-grid {
       display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(248, 245, 237, 0.9);
-      color: var(--ink);
-      transition: background 180ms ease, color 180ms ease;
-      border: none;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
       cursor: pointer;
     }
-    .product-like:hover, .product-like.is-liked { background: var(--wine); color: white; }
-    .product-meta { padding-top: 0.9rem; }
-    .product-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.22rem; }
-    .product-meta p { margin-top: 0.25rem; color: rgba(30, 24, 24, 0.58); font-size: 0.72rem; }
-    .product-price { color: var(--wine); font-size: 0.76rem; font-weight: 800; }
-    .add-button {
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+    }
+    .product-card .image-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: #dfd4c2;
+    }
+    .product-card .image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .product-card:hover .image-wrap img {
+      transform: scale(1.05);
+    }
+    .product-card .product-info {
+      padding: 1rem 1.2rem 1.2rem;
+    }
+    .product-card .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.1rem;
+      margin-bottom: 0.2rem;
+    }
+    .product-card .product-info .category {
+      font-size: 0.65rem;
+      color: rgba(30,24,24,0.4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .product-card .product-info .price {
+      font-weight: 800;
+      color: var(--wine);
+      font-size: 1rem;
+    }
+    .product-card .product-info .add-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-      border-bottom: 1px solid var(--wine);
-      padding-bottom: 0.2rem;
-      color: var(--wine);
-      font-size: 0.63rem;
+      gap: 0.4rem;
+      margin-top: 0.6rem;
+      color: var(--coral);
+      font-size: 0.65rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      padding: 0;
+    }
+    .product-card .product-info .add-btn:hover {
+      border-color: var(--coral);
+      gap: 0.7rem;
+    }
+    .product-card .wishlist-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      border: none;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+    }
+    .product-card .wishlist-btn:hover {
+      background: var(--wine);
+      color: white;
+      transform: scale(1.1);
+    }
+    .product-card .wishlist-btn.liked {
+      background: var(--wine);
+      color: white;
+    }
+
+    /* Filter Buttons */
+    .filter-btn {
+      padding: 0.6rem 0;
+      color: rgba(30,24,24,0.5);
+      border-bottom: 2px solid transparent;
+      font-size: 0.7rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: gap 180ms ease, color 180ms ease;
+      transition: all 0.3s ease;
       background: none;
       border-top: none;
       border-left: none;
       border-right: none;
       cursor: pointer;
     }
-    .add-button:hover { gap: 0.6rem; color: var(--coral); }
+    .filter-btn:hover { color: var(--wine); }
+    .filter-btn.active { color: var(--wine); border-color: var(--wine); }
 
+    .footer { background: var(--ink); color: var(--linen); }
+    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
+    .footer-brand { max-width: 260px; }
+    .footer-brand .footer-logo {
+      height: 65px;
+      width: auto;
+      max-width: 220px;
+      border-radius: 10px;
+      object-fit: contain;
+      border: 2px solid rgba(255,255,255,0.12);
+      padding: 4px;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 0.8rem;
+      transition: all 0.3s ease;
+    }
+    .footer-brand .footer-logo:hover {
+      border-color: var(--gold);
+      transform: scale(1.02);
+    }
+    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
+    .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.12); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.5rem; background: rgba(35,18,22,0.98); border-bottom: 1px solid rgba(248,245,237,0.1); backdrop-filter: blur(8px); }
+    .mobile-menu.is-open { display: grid; gap: 1rem; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    /* Drawer */
     .drawer-backdrop { position: fixed; inset: 0; z-index: 40; visibility: hidden; background: rgba(20,12,14,0.55); opacity: 0; transition: opacity 280ms ease, visibility 280ms ease; }
     .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
     .cart-drawer { position: fixed; z-index: 50; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); flex-direction: column; background: var(--linen); transform: translateX(100%); transition: transform 380ms cubic-bezier(.22,.8,.2,1); }
     .cart-drawer.is-open { transform: translateX(0); }
     .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid var(--line); }
     .drawer-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; }
-    .close-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); background: none; cursor: pointer; }
+    .close-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); background: none; cursor: pointer; border-radius: 50%; }
     .close-button:hover { border-color: var(--wine); color: var(--wine); }
     .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
     .empty-cart { display: grid; place-items: center; min-height: 50%; text-align: center; color: rgba(30,24,24,0.55); }
     .empty-cart strong { display: block; color: var(--ink); font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 500; }
     .cart-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 0.8rem; align-items: start; padding-bottom: 1.2rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
-    .cart-item img { width: 72px; height: 88px; object-fit: cover; }
+    .cart-item img { width: 72px; height: 88px; object-fit: cover; border-radius: 6px; }
     .cart-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; }
     .cart-item p { margin-top: 0.2rem; color: rgba(30,24,24,0.55); font-size: 0.68rem; }
     .cart-item-price { color: var(--wine); font-size: 0.72rem; font-weight: 800; }
     .qty-control { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.7rem; font-size: 0.72rem; }
-    .qty-control button { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid var(--line); background: none; cursor: pointer; }
+    .qty-control button { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--line); background: none; border-radius: 4px; cursor: pointer; }
     .qty-control button:hover { border-color: var(--wine); color: var(--wine); }
     .remove-item { margin-top: 0.65rem; color: rgba(30,24,24,0.45); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none; cursor: pointer; }
     .remove-item:hover { color: var(--coral); }
@@ -213,47 +321,55 @@
     .checkout-button { width: 100%; margin-top: 1.1rem; }
     .drawer-note { margin-top: 0.8rem; color: rgba(30,24,24,0.5); text-align: center; font-size: 0.63rem; }
 
-    .footer { background: var(--ink); color: var(--linen); }
-    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
-    .footer-brand { max-width: 260px; }
-    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
-    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
-    .footer-heading { color: #f2b596; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
-    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
-    .footer-links a:hover { color: white; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.16); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
-
-    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35,18,22,0.97); border-bottom: 1px solid rgba(248,245,237,0.18); }
-    .mobile-menu.is-open { display: grid; gap: 1rem; }
-    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
-
-    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
+    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; border-radius: 8px; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s cubic-bezier(.2,.8,.2,1), transform 0.7s cubic-bezier(.2,.8,.2,1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); }
+    }
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
+      .logo-img { height: 48px; max-width: 160px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
     }
     @media (max-width: 640px) {
-      .announcement { font-size: 0.55rem; }
-      .product-grid { gap: 2.1rem 0.85rem; }
-      .product-meta h3 { font-size: 1.04rem; }
+      .announcement { font-size: 0.5rem; letter-spacing: 0.06em; }
+      .logo-img { height: 40px; max-width: 130px; padding: 3px; }
+      .footer-brand .footer-logo { height: 42px; max-width: 150px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+      .product-card .product-info { padding: 0.7rem 0.8rem 1rem; }
+      .product-card .product-info h3 { font-size: 0.95rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
+      .filter-btn { font-size: 0.6rem; padding: 0.4rem 0; }
     }
   </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">
+      <i class="fas fa-truck mr-2"></i> Complimentary delivery on orders over $180 · Addis Ababa + worldwide
+      <span class="hidden sm:inline mx-3">|</span>
+      <span class="hidden sm:inline"><i class="fas fa-undo mr-1"></i> 30-day returns</span>
+    </div>
     <div class="nav-shell">
-      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 lg:px-10">
         <a class="flex items-center gap-3" href="index.html">
-          <span class="logo-mark">YT</span>
-          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block" style="display:none;">YERAS TIBEB</span>
         </a>
-        <nav class="desktop-nav flex items-center gap-8">
+        <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="shop.html">Shop</a>
           <a class="nav-link" href="about.html">About</a>
@@ -269,81 +385,51 @@
           </button>
         </div>
       </div>
-      <nav class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
+      <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
+        <a href="index.html"><i class="fas fa-home mr-3"></i>Home</a>
+        <a href="shop.html"><i class="fas fa-shopping-bag mr-3"></i>Shop</a>
+        <a href="about.html"><i class="fas fa-info-circle mr-3"></i>About</a>
+        <a href="contact.html"><i class="fas fa-envelope mr-3"></i>Contact</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="section" id="shop" style="padding-top: 8rem;">
+    <!-- SHOP HEADER -->
+    <section class="section" style="padding-top: 10rem; background: var(--sand);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
-          <div class="section-heading">
-            <p class="eyebrow text-[var(--coral)]">The collection / 01</p>
-            <h2 class="font-display">Made to be<br><em>remembered.</em></h2>
-            <p class="max-w-[410px] mt-4 text-black/60">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
-          </div>
-          <div class="flex gap-5 border-b border-black/15 md:border-0" role="group">
-            <button class="filter-button is-active" data-filter="all">All pieces</button>
-            <button class="filter-button" data-filter="dresses">Dresses</button>
-            <button class="filter-button" data-filter="layers">Layers</button>
-          </div>
+        <div class="text-center reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-tshirt mr-1"></i> The Collection</p>
+          <h1 class="font-display text-5xl md:text-6xl mt-3">Made to be <em style="color:var(--coral);">remembered.</em></h1>
+          <p class="mt-4 text-black/60 max-w-2xl mx-auto text-lg">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
         </div>
+      </div>
+    </section>
 
-        <div class="product-grid mt-10 md:mt-14" id="productGrid">
-          <article class="product-item" data-category="dresses">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Segen Dress" loading="lazy">
-              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Segen Dress</h3><p>Handloom cotton / coral</p></div>
-              <span class="product-price">$248</span>
-            </div>
-            <button class="add-button" data-id="segen" data-name="The Segen Dress" data-detail="Handloom cotton / coral" data-price="248" data-image="https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item" data-category="layers">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Addis Wrap" loading="lazy">
-              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Addis Wrap</h3><p>Hand-spun cotton / indigo</p></div>
-              <span class="product-price">$165</span>
-            </div>
-            <button class="add-button" data-id="addis" data-name="The Addis Wrap" data-detail="Hand-spun cotton / indigo" data-price="165" data-image="https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item" data-category="dresses">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Simien Dress" loading="lazy">
-              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Simien Dress</h3><p>Organic cotton / ivory</p></div>
-              <span class="product-price">$220</span>
-            </div>
-            <button class="add-button" data-id="simien" data-name="The Simien Dress" data-detail="Organic cotton / ivory" data-price="220" data-image="https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item" data-category="layers">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Wollo Shawl" loading="lazy">
-              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Wollo Shawl</h3><p>Handwoven wool / earth</p></div>
-              <span class="product-price">$190</span>
-            </div>
-            <button class="add-button" data-id="wollo" data-name="The Wollo Shawl" data-detail="Handwoven wool / earth" data-price="190" data-image="https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
+    <!-- FILTERS -->
+    <section style="background: white; padding: 1.5rem 0; border-bottom: 1px solid var(--line);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="flex flex-wrap items-center gap-4 md:gap-8">
+          <span class="text-xs font-bold uppercase tracking-[0.12em] text-black/40">Filter:</span>
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="dresses">Dresses</button>
+          <button class="filter-btn" data-filter="layers">Layers</button>
+          <button class="filter-btn" data-filter="accessories">Accessories</button>
+          <button class="filter-btn" data-filter="traditional">Traditional</button>
+          <span class="ml-auto text-xs text-black/30" id="productCount">48 products</span>
         </div>
-        <p class="mt-12 text-center text-[0.68rem] uppercase tracking-[0.14em] text-black/45">Small batch · slow made · no two exactly alike</p>
+      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="section" style="background: var(--sand); padding-top: 2.5rem;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="product-grid" id="productGrid">
+          <!-- Products will be generated by JavaScript -->
+        </div>
+        <div class="text-center mt-12 reveal">
+          <p class="text-sm text-black/40 uppercase tracking-[0.14em]">Small batch · slow made · no two exactly alike</p>
+        </div>
       </div>
     </section>
   </main>
@@ -352,9 +438,16 @@
     <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <p class="eyebrow text-[#f2b596]">Yeras Tibeb</p>
+          <img src="1.jpg" alt="YERAS TIBEB" class="footer-logo" onerror="this.style.display='none';" />
+          <p class="eyebrow text-[var(--gold)]">Yeras Tibeb</p>
           <h2>Wear the story.</h2>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
+          <div class="flex gap-3 mt-4">
+            <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+251910103956" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://pin.it/4uNPbwy" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-instagram"></i></a>
+          </div>
         </div>
         <div>
           <p class="footer-heading">Explore</p>
@@ -368,20 +461,27 @@
         <div>
           <p class="footer-heading">Stay close</p>
           <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
-          <form class="newsletter-form flex border-b border-white/45 mt-3" id="newsletterForm">
+          <form class="newsletter-form flex border-b border-white/30 mt-3" id="newsletterForm">
             <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
-            <button class="text-[#f2b596] text-xs font-bold uppercase tracking-[0.1em]" type="submit">Join</button>
+            <button class="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.1em] hover:text-white transition" type="submit">Join</button>
           </form>
-          <p class="newsletter-message text-[#f2b596] text-xs mt-2" id="newsletterMessage"></p>
+          <p class="newsletter-message text-[var(--gold)] text-xs mt-2" id="newsletterMessage"></p>
         </div>
       </div>
-      <div class="footer-bottom"><span>Yeras Tibeb · Addis Ababa</span><span>Crafted with care · 2024</span></div>
+      <div class="footer-bottom">
+        <span><i class="far fa-copyright mr-1"></i> Yeras Tibeb · Addis Ababa</span>
+        <span>Crafted with care <i class="fas fa-heart text-[var(--coral)] mx-1"></i> 2024</span>
+      </div>
     </div>
   </footer>
 
+  <!-- CART DRAWER -->
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
-    <div class="drawer-header"><h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2><button class="close-button" id="closeCart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="drawer-header">
+      <h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2>
+      <button class="close-button" id="closeCart"><i class="fas fa-times"></i></button>
+    </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="drawer-footer">
       <div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
@@ -393,29 +493,171 @@
   <div class="toast" id="toast"></div>
 
   <script>
+    // PRODUCT DATA with all your images
+    const products = [
+      { id: 1, name: 'The Segen Dress', category: 'dresses', price: 248, image: '2.jpg' },
+      { id: 2, name: 'The Addis Wrap', category: 'layers', price: 165, image: '3.jpg' },
+      { id: 3, name: 'The Simien Dress', category: 'dresses', price: 220, image: '4.jpg' },
+      { id: 4, name: 'The Wollo Shawl', category: 'layers', price: 190, image: '5.jpg' },
+      { id: 5, name: 'The Lalibela Scarf', category: 'accessories', price: 85, image: '6.jpg' },
+      { id: 6, name: 'The Axum Tunic', category: 'traditional', price: 275, image: '7.jpg' },
+      { id: 7, name: 'The Gondar Cape', category: 'layers', price: 210, image: '8.jpg' },
+      { id: 8, name: 'The Harar Dress', category: 'dresses', price: 235, image: '9.jpg' },
+      { id: 9, name: 'The Tigray Wrap', category: 'layers', price: 155, image: '10.jpg' },
+      { id: 10, name: 'The Bale Belt', category: 'accessories', price: 65, image: '11.jpg' },
+      { id: 11, name: 'The Shewa Tunic', category: 'traditional', price: 195, image: '12.jpg' },
+      { id: 12, name: 'The Omo Scarf', category: 'accessories', price: 75, image: '13.jpg' },
+      { id: 13, name: 'The Danakil Dress', category: 'dresses', price: 258, image: '14.jpg' },
+      { id: 14, name: 'The Simien Shawl', category: 'layers', price: 180, image: '15.jpg' },
+      { id: 15, name: 'The Arba Minch Cape', category: 'layers', price: 225, image: '16.jpg' },
+      { id: 16, name: 'The Rift Valley Dress', category: 'dresses', price: 245, image: '17.jpg' },
+      { id: 17, name: 'The Gheralta Wrap', category: 'layers', price: 170, image: '18.jpg' },
+      { id: 18, name: 'The Bahir Dar Scarf', category: 'accessories', price: 90, image: '19.jpg' },
+      { id: 19, name: 'The Jinka Tunic', category: 'traditional', price: 205, image: '20.jpg' },
+      { id: 20, name: 'The Adama Dress', category: 'dresses', price: 230, image: '22.jpg' },
+      { id: 21, name: 'The Debre Zeit Wrap', category: 'layers', price: 160, image: '23.jpg' },
+      { id: 22, name: 'The Jimma Scarf', category: 'accessories', price: 80, image: '24.jpg' },
+      { id: 23, name: 'The Gondar Tunic', category: 'traditional', price: 215, image: '25.jpg' },
+      { id: 24, name: 'The Axum Shawl', category: 'layers', price: 195, image: '27.jpg' },
+      { id: 25, name: 'The Lalibela Dress', category: 'dresses', price: 265, image: '28.jpg' },
+      { id: 26, name: 'The Tigray Cape', category: 'layers', price: 240, image: '29.jpg' },
+      { id: 27, name: 'The Harar Wrap', category: 'layers', price: 175, image: '51.jpg' },
+      { id: 28, name: 'The Shewa Dress', category: 'dresses', price: 250, image: 'A.jpg' },
+      { id: 29, name: 'The Omo Tunic', category: 'traditional', price: 185, image: 'B.jpg' },
+      { id: 30, name: 'The Danakil Scarf', category: 'accessories', price: 70, image: 'C.jpg' },
+      { id: 31, name: 'The Rift Valley Shawl', category: 'layers', price: 200, image: 'D.jpg' },
+      { id: 32, name: 'The Gheralta Dress', category: 'dresses', price: 238, image: 'E.jpg' },
+      { id: 33, name: 'The Bahir Dar Cape', category: 'layers', price: 218, image: 'F.jpg' },
+      { id: 34, name: 'The Jinka Scarf', category: 'accessories', price: 78, image: 'G.jpg' },
+      { id: 35, name: 'The Adama Tunic', category: 'traditional', price: 188, image: 'H.jpg' },
+      { id: 36, name: 'The Debre Zeit Dress', category: 'dresses', price: 228, image: 'I.jpg' },
+      { id: 37, name: 'The Jimma Wrap', category: 'layers', price: 168, image: 'J.jpg' },
+      { id: 38, name: 'The Gondar Scarf', category: 'accessories', price: 72, image: 'K.jpg' },
+      { id: 39, name: 'The Axum Tunic', category: 'traditional', price: 198, image: 'L.jpg' },
+      { id: 40, name: 'The Lalibela Shawl', category: 'layers', price: 185, image: 'M.jpg' },
+      { id: 41, name: 'The Tigray Dress', category: 'dresses', price: 242, image: 'N.jpg' },
+      { id: 42, name: 'The Harar Cape', category: 'layers', price: 208, image: 'O.jpg' },
+      { id: 43, name: 'The Shewa Scarf', category: 'accessories', price: 68, image: 'P.jpg' },
+      { id: 44, name: 'The Omo Dress', category: 'dresses', price: 232, image: 'Q.jpg' },
+      { id: 45, name: 'The Danakil Cape', category: 'layers', price: 215, image: 'R.jpg' },
+      { id: 46, name: 'The Rift Valley Scarf', category: 'accessories', price: 82, image: 'S.jpg' },
+      { id: 47, name: 'The Gheralta Tunic', category: 'traditional', price: 192, image: 'T.jpg' },
+      { id: 48, name: 'The Bahir Dar Dress', category: 'dresses', price: 255, image: 'U.jpg' },
+    ];
+
+    // CART STATE
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    let currentFilter = 'all';
+
+    // DOM Elements
+    const grid = document.getElementById('productGrid');
+    const cartDrawer = document.getElementById('cartDrawer');
+    const cartItems = document.getElementById('cartItems');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
     const toast = document.getElementById('toast');
+    const productCount = document.getElementById('productCount');
     let toastTimer;
 
-    function showToast(msg) { toast.textContent = msg; toast.classList.add('is-visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400); }
+    // RENDER PRODUCTS
+    function renderProducts(filter = 'all') {
+      const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+      productCount.textContent = `${filtered.length} products`;
+      
+      grid.innerHTML = filtered.map(product => `
+        <div class="product-card reveal" data-category="${product.category}">
+          <div class="image-wrap">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500/e8e0d2/6c2732?text=YERAS+TIBEB';">
+            <button class="wishlist-btn" data-id="${product.id}" aria-label="Save to wishlist">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <span class="category">${product.category}</span>
+            <div class="flex items-center justify-between mt-1">
+              <span class="price">$${product.price}</span>
+              <button class="add-btn" data-id="${product.id}">
+                <i class="fas fa-plus-circle"></i> Add
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      // Re-attach event listeners
+      document.querySelectorAll('.add-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = parseInt(btn.dataset.id);
+          const product = products.find(p => p.id === id);
+          addToCart(product);
+        });
+      });
+
+      document.querySelectorAll('.wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          btn.classList.toggle('liked');
+          const icon = btn.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          showToast(btn.classList.contains('liked') ? 'Added to wishlist ❤️' : 'Removed from wishlist');
+        });
+      });
+
+      // Trigger reveal animations
+      setTimeout(() => {
+        document.querySelectorAll('.product-card.reveal').forEach((el, i) => {
+          el.style.transitionDelay = `${Math.min(i * 40, 400)}ms`;
+          el.classList.add('is-visible');
+        });
+      }, 100);
+    }
+
+    // ADD TO CART
+    function addToCart(product) {
+      const existing = cart.find(item => item.id === product.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        cart.push({ ...product, qty: 1 });
+      }
+      saveCart();
+      showToast(`${product.name} added to your bag 🛍️`);
+    }
+
+    // CART FUNCTIONS
+    function saveCart() {
+      localStorage.setItem('cart', JSON.stringify(cart));
+      updateCartUI();
+    }
 
     function updateCartUI() {
       const count = cart.reduce((s, i) => s + i.qty, 0);
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       document.getElementById('cartCount').textContent = count;
       document.getElementById('drawerCount').textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
-      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       document.getElementById('cartSubtotal').textContent = `$${subtotal}`;
-      const container = document.getElementById('cartItems');
+
       if (!cart.length) {
-        container.innerHTML = '<div class="empty-cart"><div><strong>Your bag is quiet.</strong><p class="mt-2 text-[0.72rem]">Add a piece with a story to begin.</p></div></div>';
+        cartItems.innerHTML = `
+          <div class="empty-cart">
+            <div>
+              <i class="fas fa-shopping-bag text-4xl text-black/10 mb-3"></i>
+              <strong>Your bag is quiet.</strong>
+              <p class="mt-2 text-[0.72rem]">Add a piece with a story to begin.</p>
+            </div>
+          </div>
+        `;
         return;
       }
-      container.innerHTML = cart.map(item => `
+
+      cartItems.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/72x88/e8e0d2/6c2732?text=YT';">
           <div>
             <h3>${item.name}</h3>
-            <p>${item.detail}</p>
+            <p>${item.category}</p>
             <div class="qty-control">
               <button data-id="${item.id}" data-change="-1">-</button>
               <span>${item.qty}</span>
@@ -428,75 +670,67 @@
       `).join('');
     }
 
-    function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); updateCartUI(); }
-
-    document.querySelectorAll('.add-button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const id = btn.dataset.id;
-        const existing = cart.find(i => i.id === id);
-        if (existing) existing.qty += 1;
-        else cart.push({ id, name: btn.dataset.name, detail: btn.dataset.detail, price: Number(btn.dataset.price), image: btn.dataset.image, qty: 1 });
-        saveCart();
-        showToast(`${btn.dataset.name} added to your bag`);
-      });
-    });
-
-    document.getElementById('cartButton').addEventListener('click', () => {
-      document.getElementById('cartDrawer').classList.add('is-open');
-      document.getElementById('drawerBackdrop').classList.add('is-open');
+    function openCart() {
+      cartDrawer.classList.add('is-open');
+      drawerBackdrop.classList.add('is-open');
       document.body.style.overflow = 'hidden';
-    });
-    document.getElementById('closeCart').addEventListener('click', () => {
-      document.getElementById('cartDrawer').classList.remove('is-open');
-      document.getElementById('drawerBackdrop').classList.remove('is-open');
+    }
+
+    function closeCart() {
+      cartDrawer.classList.remove('is-open');
+      drawerBackdrop.classList.remove('is-open');
       document.body.style.overflow = '';
-    });
-    document.getElementById('drawerBackdrop').addEventListener('click', () => {
-      document.getElementById('cartDrawer').classList.remove('is-open');
-      document.getElementById('drawerBackdrop').classList.remove('is-open');
-      document.body.style.overflow = '';
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2500);
+    }
+
+    // EVENT LISTENERS
+    document.getElementById('cartButton').addEventListener('click', openCart);
+    document.getElementById('closeCart').addEventListener('click', closeCart);
+    drawerBackdrop.addEventListener('click', closeCart);
+
+    document.getElementById('checkoutButton').addEventListener('click', () => {
+      if (!cart.length) showToast('Your bag is empty');
+      else showToast('Checkout is ready for your order!');
     });
 
-    document.getElementById('cartItems').addEventListener('click', e => {
+    // Cart item controls
+    cartItems.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-id]');
       if (!btn) return;
-      const id = btn.dataset.id;
+      const id = parseInt(btn.dataset.id);
       const item = cart.find(i => i.id === id);
+      
       if (btn.classList.contains('remove-item')) {
         cart = cart.filter(i => i.id !== id);
         saveCart();
         return;
       }
+      
       if (btn.dataset.change) {
-        item.qty += Number(btn.dataset.change);
+        const change = parseInt(btn.dataset.change);
+        item.qty += change;
         if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
         saveCart();
       }
     });
 
-    document.getElementById('checkoutButton').addEventListener('click', () => {
-      if (!cart.length) showToast('Your bag is empty');
-      else showToast('Checkout is ready for your order');
-    });
-
-    document.querySelectorAll('.filter-button').forEach(btn => {
+    // Filters
+    document.querySelectorAll('.filter-btn').forEach(btn => {
       btn.addEventListener('click', () => {
-        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('is-active'));
-        btn.classList.add('is-active');
-        const filter = btn.dataset.filter;
-        document.querySelectorAll('.product-item').forEach(item => {
-          item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.category !== filter);
-        });
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter;
+        renderProducts(currentFilter);
       });
     });
 
-    document.querySelectorAll('.product-like').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const liked = btn.classList.toggle('is-liked');
-        showToast(liked ? 'Saved to wishlist' : 'Removed from wishlist');
-      });
-    });
-
+    // Mobile menu
     document.getElementById('menuButton').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('is-open');
     });
@@ -504,16 +738,34 @@
       document.getElementById('mobileMenu').classList.remove('is-open');
     }));
 
+    // Header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
     });
 
+    // Newsletter
     document.getElementById('newsletterForm').addEventListener('submit', e => {
       e.preventDefault();
-      document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
+      document.getElementById('newsletterMessage').textContent = '✓ You are on the list. Welcome in.';
       e.target.reset();
     });
 
+    // Keyboard shortcuts
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCart();
+    });
+
+    // Reveal observer for product cards
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    // Initial render
+    renderProducts('all');
     updateCartUI();
   </script>
 </body>
