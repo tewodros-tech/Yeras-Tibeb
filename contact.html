@@ -196,7 +196,7 @@
         <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <div class="section-heading">
             <p class="eyebrow text-[var(--coral)]">Connect / 03</p>
-            <h2 class="font-display">We’d love<br><em>to hear.</em></h2>
+            <h2 class="font-display">We'd love<br><em>to hear.</em></h2>
             <p class="max-w-[410px] mt-4 text-black/60">Reach out for custom orders, collaborations, or simply to say hello.</p>
           </div>
         </div>
@@ -285,7 +285,6 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // Cart count
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     function updateCartCount() {
       const count = cart.reduce((s, i) => s + i.qty, 0);
