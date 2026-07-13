@@ -77,10 +77,21 @@
     }
     .nav-link:hover::after { right: 0; }
     .logo-img {
-      height: 42px;
+      height: 48px;
       width: auto;
-      border-radius: 6px;
+      border-radius: 8px;
       object-fit: contain;
+      filter: brightness(1.05) contrast(1.05);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+      border: 2px solid rgba(255,255,255,0.15);
+      transition: all 0.3s ease;
+      background: rgba(255,255,255,0.05);
+      padding: 2px;
+    }
+    .logo-img:hover {
+      transform: scale(1.03);
+      border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201,168,76,0.25);
     }
     .icon-button {
       position: relative;
@@ -383,6 +394,16 @@
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
+    .footer-brand .footer-logo {
+      height: 52px;
+      width: auto;
+      border-radius: 8px;
+      object-fit: contain;
+      border: 2px solid rgba(255,255,255,0.1);
+      padding: 2px;
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 0.8rem;
+    }
     .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
     .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
     .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
@@ -426,6 +447,8 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
+      .logo-img { height: 40px; }
+      .footer-brand .footer-logo { height: 44px; }
     }
     @media (max-width: 640px) {
       .announcement { font-size: 0.5rem; letter-spacing: 0.06em; }
@@ -444,6 +467,7 @@
       .logo-img { height: 34px; }
       .banner-image { height: 250px; }
       .gallery-grid { gap: 4px; }
+      .footer-brand .footer-logo { height: 38px; }
     }
   </style>
 </head>
@@ -457,7 +481,7 @@
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 lg:px-10">
         <a class="flex items-center gap-3" href="index.html">
-          <img src="50.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
           <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block" style="display:none;">YERAS TIBEB</span>
         </a>
         <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
@@ -845,7 +869,7 @@
     <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="50.jpg" alt="YERAS TIBEB" class="h-12 w-auto object-contain mb-3" onerror="this.style.display='none';" />
+          <img src="1.jpg" alt="YERAS TIBEB" class="footer-logo" onerror="this.style.display='none';" />
           <p class="eyebrow text-[var(--gold)]">Yeras Tibeb</p>
           <h2>Wear the story.</h2>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
