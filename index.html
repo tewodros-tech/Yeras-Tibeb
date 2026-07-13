@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="YERAS TIBEB makes modern Ethiopian clothing from handwoven stories, one piece at a time.">
-  <title>YERAS TIBEB | Wear the story</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YERAS TIBEB · Home</title>
+  <meta name="description" content="YERAS TIBEB · modern Ethiopian clothing, handwoven stories." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
   <style>
     :root {
       --ink: #1e1818;
@@ -20,7 +20,6 @@
       --linen: #f8f5ed;
       --line: rgba(30, 24, 24, 0.18);
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
@@ -29,30 +28,40 @@
       font-family: 'Manrope', sans-serif;
       overflow-x: hidden;
     }
-    button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
     .font-display { font-family: 'Playfair Display', serif; }
-    .font-mono { font-family: 'DM Mono', monospace; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
+    /* HEADER */
     .site-header {
-      position: absolute;
-      z-index: 10;
+      position: fixed;
+      z-index: 40;
       top: 0;
       left: 0;
       right: 0;
       color: var(--linen);
+      background: rgba(20, 12, 14, 0.3);
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
     }
+    .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
     .announcement {
-      border-bottom: 1px solid rgba(248, 245, 237, 0.18);
-      background: rgba(20, 12, 14, 0.2);
+      border-bottom: 1px solid rgba(248, 245, 237, 0.15);
+      background: rgba(20, 12, 14, 0.3);
       min-height: 32px;
       font-size: 0.62rem;
       letter-spacing: 0.13em;
       text-transform: uppercase;
     }
-    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.18); }
-    .nav-link { position: relative; opacity: 0.8; transition: opacity 180ms ease; }
+    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.15); }
+    .nav-link {
+      position: relative;
+      opacity: 0.8;
+      transition: opacity 180ms ease;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
     .nav-link:hover { opacity: 1; }
     .nav-link::after {
       content: '';
@@ -100,7 +109,42 @@
       font-size: 0.58rem;
       font-weight: 800;
     }
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 48px;
+      padding: 0.78rem 1.15rem;
+      border: 1px solid transparent;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 220ms ease, transform 220ms ease;
+      background: var(--coral);
+      color: white;
+    }
+    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
+    .button-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 48px;
+      padding: 0.78rem 1.15rem;
+      border: 1px solid rgba(248, 245, 237, 0.55);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 220ms ease, transform 220ms ease;
+      color: var(--linen);
+    }
+    .button-secondary:hover { border-color: white; background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
+    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
 
+    /* HERO */
     .hero {
       position: relative;
       min-height: min(840px, 100vh);
@@ -124,9 +168,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background:
-        linear-gradient(90deg, rgba(26, 14, 17, 0.82) 0%, rgba(26, 14, 17, 0.55) 38%, rgba(26, 14, 17, 0.12) 75%),
-        linear-gradient(0deg, rgba(24, 12, 15, 0.72) 0%, rgba(24, 12, 15, 0.03) 52%);
+      background: linear-gradient(90deg, rgba(26,14,17,0.82) 0%, rgba(26,14,17,0.55) 38%, rgba(26,14,17,0.12) 75%),
+                  linear-gradient(0deg, rgba(24,12,15,0.72) 0%, rgba(24,12,15,0.03) 52%);
     }
     .hero-content { position: relative; z-index: 1; width: 100%; padding-bottom: clamp(4.5rem, 12vh, 8rem); }
     .hero-kicker { color: #f2b596; animation: riseIn 800ms 80ms both; }
@@ -140,244 +183,85 @@
       animation: riseIn 900ms 160ms both;
     }
     .hero-brand em { font-weight: 400; }
-    .hero-copy { max-width: 390px; color: rgba(248, 245, 237, 0.82); line-height: 1.65; animation: riseIn 800ms 290ms both; }
+    .hero-copy { max-width: 390px; color: rgba(248,245,237,0.82); line-height: 1.65; animation: riseIn 800ms 290ms both; }
     .hero-actions { animation: riseIn 800ms 390ms both; }
-    .button-primary, .button-secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-      min-height: 48px;
-      padding: 0.78rem 1.15rem;
-      border: 1px solid transparent;
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: background 220ms ease, color 220ms ease, border 220ms ease, transform 220ms ease;
-    }
-    .button-primary { background: var(--coral); color: white; }
-    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
-    .button-secondary { border-color: rgba(248, 245, 237, 0.55); color: var(--linen); }
-    .button-secondary:hover { border-color: white; background: rgba(255, 255, 255, 0.1); transform: translateY(-2px); }
-    .scroll-note {
-      position: absolute;
-      right: 2rem;
-      bottom: 5rem;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-      color: rgba(248, 245, 237, 0.7);
-      font-size: 0.61rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      writing-mode: vertical-rl;
-      animation: fadeIn 1s 1s both;
-    }
-    .scroll-note span { display: block; width: 1px; height: 50px; background: rgba(248, 245, 237, 0.55); }
-
-    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
-    .section-heading { max-width: 600px; }
-    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
-    .section-heading p { max-width: 410px; margin-top: 1.25rem; color: rgba(30, 24, 24, 0.66); line-height: 1.7; }
-    .section-rule { border-top: 1px solid var(--line); }
-
-    .filter-button {
-      padding: 0.6rem 0;
-      color: rgba(30, 24, 24, 0.55);
-      border-bottom: 1px solid transparent;
-      font-size: 0.69rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: color 180ms ease, border 180ms ease;
-    }
-    .filter-button:hover, .filter-button.is-active { color: var(--wine); border-color: var(--wine); }
-    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2.4rem); }
-    .product-item { transition: opacity 280ms ease, transform 280ms ease; }
-    .product-item.is-hidden { display: none; }
-    .product-image-wrap { position: relative; overflow: hidden; background: #dfd4c2; aspect-ratio: 0.78; }
-    .product-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
-    .product-item:hover .product-image-wrap img { transform: scale(1.055); }
-    .product-like {
-      position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
-      display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border-radius: 50%;
-      background: rgba(248, 245, 237, 0.9);
-      color: var(--ink);
-      transition: background 180ms ease, color 180ms ease;
-    }
-    .product-like:hover, .product-like.is-liked { background: var(--wine); color: white; }
-    .product-meta { padding-top: 0.9rem; }
-    .product-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.22rem; }
-    .product-meta p { margin-top: 0.25rem; color: rgba(30, 24, 24, 0.58); font-size: 0.72rem; }
-    .product-price { color: var(--wine); font-size: 0.76rem; font-weight: 800; }
-    .add-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.75rem;
-      border-bottom: 1px solid var(--wine);
-      padding-bottom: 0.2rem;
-      color: var(--wine);
-      font-size: 0.63rem;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      transition: gap 180ms ease, color 180ms ease;
-    }
-    .add-button:hover { gap: 0.6rem; color: var(--coral); }
-
-    .craft-section { background: var(--wine-deep); color: var(--linen); }
-    .craft-section .section-heading p { color: rgba(248, 245, 237, 0.68); }
-    .craft-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); align-items: center; gap: clamp(2.5rem, 8vw, 8rem); }
-    .craft-photo { position: relative; aspect-ratio: 0.9; overflow: hidden; }
-    .craft-photo::before { content: ''; position: absolute; z-index: 1; inset: 1.3rem -1.3rem -1.3rem 1.3rem; border: 1px solid rgba(242, 181, 150, 0.55); pointer-events: none; }
-    .craft-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
-    .craft-copy h2 { margin-top: 0.8rem; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: 0.96; letter-spacing: -0.065em; }
-    .craft-copy p { max-width: 460px; margin-top: 1.5rem; color: rgba(248, 245, 237, 0.7); line-height: 1.75; }
-    .craft-link { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2.2rem; color: #f2b596; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-    .craft-link:hover { color: white; }
-
-    .quote-section { background: #e5dccb; }
-    .quote-wrap { max-width: 870px; margin: 0 auto; text-align: center; }
-    .quote-mark { color: var(--coral); font-family: 'Playfair Display', serif; font-size: 5rem; line-height: 0.5; }
-    .quote-wrap blockquote { margin-top: 1rem; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 4.6rem); line-height: 1.07; letter-spacing: -0.05em; }
-    .quote-byline { margin-top: 1.6rem; color: rgba(30, 24, 24, 0.55); font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
 
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
     .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
-    .footer-brand p { margin-top: 0.8rem; color: rgba(248, 245, 237, 0.58); font-size: 0.78rem; line-height: 1.65; }
+    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
     .footer-heading { color: #f2b596; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
-    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248, 245, 237, 0.7); font-size: 0.78rem; }
+    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
     .footer-links a:hover { color: white; }
-    .newsletter-form { display: flex; border-bottom: 1px solid rgba(248, 245, 237, 0.45); margin-top: 1rem; }
-    .newsletter-form input { min-width: 0; flex: 1; padding: 0.7rem 0; outline: none; background: transparent; color: var(--linen); font-size: 0.78rem; }
-    .newsletter-form input::placeholder { color: rgba(248, 245, 237, 0.42); }
-    .newsletter-form button { color: #f2b596; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-    .newsletter-message { min-height: 1.3rem; margin-top: 0.65rem; color: #f2b596; font-size: 0.7rem; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248, 245, 237, 0.16); color: rgba(248, 245, 237, 0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.16); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
-    .drawer-backdrop { position: fixed; inset: 0; z-index: 40; visibility: hidden; background: rgba(20, 12, 14, 0.55); opacity: 0; transition: opacity 280ms ease, visibility 280ms ease; }
-    .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
-    .cart-drawer { position: fixed; z-index: 50; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); flex-direction: column; background: var(--linen); transform: translateX(100%); transition: transform 380ms cubic-bezier(.22,.8,.2,1); }
-    .cart-drawer.is-open { transform: translateX(0); }
-    .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid var(--line); }
-    .drawer-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; }
-    .close-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); }
-    .close-button:hover { border-color: var(--wine); color: var(--wine); }
-    .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
-    .empty-cart { display: grid; place-items: center; min-height: 50%; text-align: center; color: rgba(30, 24, 24, 0.55); }
-    .empty-cart strong { display: block; color: var(--ink); font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 500; }
-    .cart-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 0.8rem; align-items: start; padding-bottom: 1.2rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
-    .cart-item img { width: 72px; height: 88px; object-fit: cover; }
-    .cart-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; }
-    .cart-item p { margin-top: 0.2rem; color: rgba(30, 24, 24, 0.55); font-size: 0.68rem; }
-    .cart-item-price { color: var(--wine); font-size: 0.72rem; font-weight: 800; }
-    .qty-control { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.7rem; font-size: 0.72rem; }
-    .qty-control button { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid var(--line); }
-    .qty-control button:hover { border-color: var(--wine); color: var(--wine); }
-    .remove-item { margin-top: 0.65rem; color: rgba(30, 24, 24, 0.45); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .remove-item:hover { color: var(--coral); }
-    .drawer-footer { padding: 1.5rem; border-top: 1px solid var(--line); }
-    .subtotal { display: flex; justify-content: space-between; font-size: 0.78rem; }
-    .subtotal strong { color: var(--wine); font-size: 1rem; }
-    .checkout-button { width: 100%; margin-top: 1.1rem; }
-    .drawer-note { margin-top: 0.8rem; color: rgba(30, 24, 24, 0.5); text-align: center; font-size: 0.63rem; }
-
-    .search-panel { position: fixed; z-index: 35; top: 0; left: 0; right: 0; padding: 6.5rem 1.5rem 2rem; background: var(--linen); transform: translateY(-100%); transition: transform 350ms cubic-bezier(.22,.8,.2,1); }
-    .search-panel.is-open { transform: translateY(0); }
-    .search-inner { max-width: 1200px; margin: 0 auto; }
-    .search-label { color: var(--wine); font-size: 0.67rem; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; }
-    .search-close { color: rgba(30, 24, 24, 0.55); font-size: 0.65rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-    .search-close:hover { color: var(--wine); }
-    .search-form { display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--ink); }
-    .search-form input { flex: 1; padding: 0.8rem 0; outline: none; background: transparent; font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 4vw, 3rem); }
-    .search-form button { color: var(--wine); font-size: 0.67rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; }
-
-    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35, 18, 22, 0.97); border-bottom: 1px solid rgba(248, 245, 237, 0.18); }
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35,18,22,0.97); border-bottom: 1px solid rgba(248,245,237,0.18); }
     .mobile-menu.is-open { display: grid; gap: 1rem; }
-    .mobile-menu a { color: rgba(248, 245, 237, 0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
 
-    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30, 24, 24, 0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
+    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
-    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 700ms ease, transform 700ms ease; }
-    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
     @keyframes heroBreath { from { transform: scale(1.08); } to { transform: scale(1.02); } }
     @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
-      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
-      .craft-layout { gap: 3.5rem; }
-      .scroll-note { display: none; }
     }
     @media (max-width: 640px) {
       .announcement { font-size: 0.55rem; letter-spacing: 0.08em; }
       .hero { min-height: 760px; }
       .hero::before { background-position: 57% center; }
-      .hero::after { background: linear-gradient(90deg, rgba(26, 14, 17, 0.78), rgba(26, 14, 17, 0.3)), linear-gradient(0deg, rgba(24, 12, 15, 0.82), rgba(24, 12, 15, 0.06) 65%); }
+      .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.78), rgba(26,14,17,0.3)), linear-gradient(0deg, rgba(24,12,15,0.82), rgba(24,12,15,0.06) 65%); }
       .hero-content { padding-bottom: 4.2rem; }
       .hero-brand { font-size: clamp(3.5rem, 18vw, 6rem); }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
-      .product-grid { gap: 2.1rem 0.85rem; }
-      .product-meta h3 { font-size: 1.04rem; }
-      .craft-layout { grid-template-columns: 1fr; }
-      .craft-photo { width: calc(100% - 1rem); }
-      .craft-copy { order: -1; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
     }
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 / Addis Ababa + worldwide</div>
+  <header class="site-header" id="siteHeader">
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
-        <a class="flex items-center gap-3" href="#top" aria-label="Yeras Tibeb home">
+        <a class="flex items-center gap-3" href="index.html">
           <span class="logo-mark">YT</span>
           <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
         </a>
-        <nav class="desktop-nav flex items-center gap-8 text-[0.68rem] font-bold uppercase tracking-[0.12em]" aria-label="Main navigation">
-          <a class="nav-link" href="#shop">Shop</a>
-          <a class="nav-link" href="#story">Our story</a>
-          <a class="nav-link" href="#journal">Journal</a>
+        <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
         </nav>
         <div class="flex items-center gap-1">
-          <button class="icon-button" id="searchButton" aria-label="Open search" aria-expanded="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 5 5"></path></svg>
+          <button class="icon-button" id="searchButton" aria-label="Open search">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 5 5"/></svg>
           </button>
-          <button class="icon-button" id="cartButton" aria-label="Open shopping bag" aria-expanded="false">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5.5 8.5h13l1 12h-15l1-12Z"></path><path d="M9 9V6.5a3 3 0 0 1 6 0V9"></path></svg>
+          <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
-          <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu" aria-expanded="false">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+          <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
       <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile navigation">
-        <a href="#shop">Shop collection</a>
-        <a href="#story">Our story</a>
-        <a href="#journal">Journal</a>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
 
-  <main id="top">
+  <main>
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -385,112 +269,23 @@
           <h1 class="hero-brand" id="hero-title">YERAS<br><em>TIBEB</em></h1>
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
           <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
-            <a class="button-primary" href="#shop">Explore the collection <span aria-hidden="true">&#8594;</span></a>
-            <a class="button-secondary" href="#story">Meet the makers</a>
-          </div>
-        </div>
-      </div>
-      <div class="scroll-note"><span></span> Scroll to discover</div>
-    </section>
-
-    <section class="section" id="shop" aria-labelledby="collection-title">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
-          <div class="section-heading reveal">
-            <p class="eyebrow text-[var(--coral)]">The collection / 01</p>
-            <h2 id="collection-title" class="font-display">Made to be<br><em>remembered.</em></h2>
-            <p>Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
-          </div>
-          <div class="flex gap-5 border-b border-black/15 md:border-0" role="group" aria-label="Filter collection">
-            <button class="filter-button is-active" data-filter="all">All pieces</button>
-            <button class="filter-button" data-filter="dresses">Dresses</button>
-            <button class="filter-button" data-filter="layers">Layers</button>
-          </div>
-        </div>
-
-        <div class="product-grid mt-10 md:mt-14" id="productGrid">
-          <article class="product-item reveal" data-category="dresses">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="Woman wearing a vibrant traditional Ethiopian dress" loading="lazy">
-              <button class="product-like" aria-label="Save The Segen Dress" aria-pressed="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"></path></svg>
-              </button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Segen Dress</h3><p>Handloom cotton / coral</p></div>
-              <span class="product-price">$248</span>
-            </div>
-            <button class="add-button" data-add="segen">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item reveal" data-category="layers">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="Woman draped in an indigo blue textile" loading="lazy">
-              <button class="product-like" aria-label="Save The Addis Wrap" aria-pressed="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"></path></svg>
-              </button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Addis Wrap</h3><p>Hand-spun cotton / indigo</p></div>
-              <span class="product-price">$165</span>
-            </div>
-            <button class="add-button" data-add="addis">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item reveal" data-category="dresses">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="Woman in an airy white Ethiopian dress" loading="lazy">
-              <button class="product-like" aria-label="Save The Simien Dress" aria-pressed="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"></path></svg>
-              </button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Simien Dress</h3><p>Organic cotton / ivory</p></div>
-              <span class="product-price">$220</span>
-            </div>
-            <button class="add-button" data-add="simien">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-
-          <article class="product-item reveal" data-category="layers">
-            <div class="product-image-wrap">
-              <img src="https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="Elderly Ethiopian woman in a richly textured shawl" loading="lazy">
-              <button class="product-like" aria-label="Save The Wollo Shawl" aria-pressed="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"></path></svg>
-              </button>
-            </div>
-            <div class="product-meta flex items-start justify-between gap-3">
-              <div><h3>The Wollo Shawl</h3><p>Handwoven wool / earth</p></div>
-              <span class="product-price">$190</span>
-            </div>
-            <button class="add-button" data-add="wollo">Add to bag <span aria-hidden="true">&#8594;</span></button>
-          </article>
-        </div>
-        <p class="mt-12 text-center text-[0.68rem] uppercase tracking-[0.14em] text-black/45">Small batch / slow made / no two exactly alike</p>
-      </div>
-    </section>
-
-    <section class="craft-section section" id="story" aria-labelledby="story-title">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="craft-layout">
-          <div class="craft-photo reveal">
-            <img src="https://images.pexels.com/photos/33609157/pexels-photo-33609157.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=1400" alt="Portrait of a woman in traditional Ethiopian attire" loading="lazy">
-          </div>
-          <div class="craft-copy reveal">
-            <p class="eyebrow text-[#f2b596]">Our story / 02</p>
-            <h2 id="story-title" class="font-display">The cloth<br>remembers.</h2>
-            <p>Yeras Tibeb means the beauty of heritage. We work with weavers and makers in Ethiopia to keep the language of handwoven cloth alive, then give it room to move through the world.</p>
-            <a class="craft-link" href="#journal">Read our journal <span aria-hidden="true">&#8594;</span></a>
+            <a class="button-primary" href="shop.html">Explore the collection <span aria-hidden="true">&#8594;</span></a>
+            <a class="button-secondary" href="about.html">Meet the makers</a>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="quote-section section" id="journal" aria-labelledby="quote-title">
+    <section class="section bg-[#e5dccb]">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="quote-wrap reveal">
-          <div class="quote-mark" aria-hidden="true">“</div>
-          <blockquote id="quote-title">When you wear the weave, you carry a little bit of home with you.</blockquote>
-          <p class="quote-byline">Aster / master weaver, Addis Ababa</p>
+        <div class="max-w-3xl mx-auto text-center">
+          <p class="eyebrow text-[var(--coral)]">Handwoven · slow made</p>
+          <h2 class="font-display text-4xl md:text-6xl mt-3">Wear the story.</h2>
+          <p class="mt-4 text-black/60 max-w-xl mx-auto">Every thread carries a story — of family, of land, of quiet resilience. Yeras Tibeb is a bridge between past and future.</p>
+          <div class="mt-8 flex flex-wrap justify-center gap-4">
+            <a href="shop.html" class="button-primary">Shop now</a>
+            <a href="about.html" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.1em] text-[var(--wine)] hover:text-[var(--coral)]">Our story →</a>
+          </div>
         </div>
       </div>
     </section>
@@ -507,227 +302,59 @@
         <div>
           <p class="footer-heading">Explore</p>
           <div class="footer-links">
-            <a href="#shop">All pieces</a>
-            <a href="#story">Our makers</a>
-            <a href="#journal">The journal</a>
-            <a href="#top">Back to top</a>
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
           </div>
         </div>
         <div>
           <p class="footer-heading">Stay close</p>
           <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
-          <form class="newsletter-form" id="newsletterForm">
-            <label class="sr-only" for="email">Email address</label>
-            <input id="email" type="email" placeholder="Your email address" required>
-            <button type="submit">Join</button>
+          <form class="newsletter-form flex border-b border-white/45 mt-3" id="newsletterForm">
+            <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
+            <button class="text-[#f2b596] text-xs font-bold uppercase tracking-[0.1em]" type="submit">Join</button>
           </form>
-          <p class="newsletter-message" id="newsletterMessage" role="status"></p>
+          <p class="newsletter-message text-[#f2b596] text-xs mt-2" id="newsletterMessage"></p>
         </div>
       </div>
-      <div class="footer-bottom"><span>Yeras Tibeb / Addis Ababa</span><span>Crafted with care / 2024</span></div>
+      <div class="footer-bottom"><span>Yeras Tibeb · Addis Ababa</span><span>Crafted with care · 2024</span></div>
     </div>
   </footer>
 
-  <div class="search-panel" id="searchPanel" aria-hidden="true">
-    <div class="search-inner">
-      <div class="mb-3 flex items-center justify-between"><p class="search-label">Search the collection</p><button class="search-close" id="closeSearchButton" type="button">Close</button></div>
-      <form class="search-form" id="searchForm">
-        <label class="sr-only" for="searchInput">Search products</label>
-        <input id="searchInput" type="search" placeholder="Search the collection..." autocomplete="off">
-        <button type="submit">Search</button>
-      </form>
-      <p class="mt-3 text-[0.65rem] uppercase tracking-[0.12em] text-black/45">Try dress, shawl or wrap</p>
-    </div>
-  </div>
-
-  <div class="drawer-backdrop" id="drawerBackdrop"></div>
-  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag" aria-hidden="true">
-    <div class="drawer-header"><h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2><button class="close-button" id="closeCart" aria-label="Close shopping bag"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"></path></svg></button></div>
-    <div class="cart-items" id="cartItems"></div>
-    <div class="drawer-footer">
-      <div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
-      <button class="button-primary checkout-button" id="checkoutButton">Continue to checkout <span aria-hidden="true">&#8594;</span></button>
-      <p class="drawer-note">Shipping and taxes calculated at checkout.</p>
-    </div>
-  </aside>
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="toast" id="toast"></div>
 
   <script>
-    const products = {
-      segen: { name: 'The Segen Dress', detail: 'Handloom cotton / coral', price: 248, image: 'https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280' },
-      addis: { name: 'The Addis Wrap', detail: 'Hand-spun cotton / indigo', price: 165, image: 'https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280' },
-      simien: { name: 'The Simien Dress', detail: 'Organic cotton / ivory', price: 220, image: 'https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280' },
-      wollo: { name: 'The Wollo Shawl', detail: 'Handwoven wool / earth', price: 190, image: 'https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280' }
-    };
-    const cart = [];
-    const cartDrawer = document.getElementById('cartDrawer');
-    const cartItems = document.getElementById('cartItems');
-    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    // Toast & cart count (shared)
     const toast = document.getElementById('toast');
     let toastTimer;
+    function showToast(msg) { toast.textContent = msg; toast.classList.add('is-visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400); }
 
-    function showToast(message) {
-      toast.textContent = message;
-      toast.classList.add('is-visible');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cartCount').textContent = count;
     }
+    updateCartCount();
 
-    function updateCart() {
-      const itemCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
-      document.getElementById('cartCount').textContent = itemCount;
-      document.getElementById('drawerCount').textContent = `${itemCount} ${itemCount === 1 ? 'item' : 'items'}`;
-      document.getElementById('cartSubtotal').textContent = `$${subtotal}`;
-
-      if (!cart.length) {
-        cartItems.innerHTML = '<div class="empty-cart"><div><strong>Your bag is quiet.</strong><p class="mt-2 text-[0.72rem]">Add a piece with a story to begin.</p></div></div>';
-        return;
-      }
-
-      cartItems.innerHTML = cart.map(item => `
-        <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}">
-          <div>
-            <h3>${item.name}</h3>
-            <p>${item.detail}</p>
-            <div class="qty-control">
-              <button data-quantity="${item.id}" data-change="-1" aria-label="Decrease quantity">-</button>
-              <span>${item.quantity}</span>
-              <button data-quantity="${item.id}" data-change="1" aria-label="Increase quantity">+</button>
-            </div>
-            <button class="remove-item" data-remove="${item.id}">Remove</button>
-          </div>
-          <span class="cart-item-price">$${item.price * item.quantity}</span>
-        </div>
-      `).join('');
-    }
-
-    function openCart() {
-      closeSearch();
-      cartDrawer.classList.add('is-open');
-      drawerBackdrop.classList.add('is-open');
-      cartDrawer.setAttribute('aria-hidden', 'false');
-      document.getElementById('cartButton').setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeCart() {
-      cartDrawer.classList.remove('is-open');
-      drawerBackdrop.classList.remove('is-open');
-      cartDrawer.setAttribute('aria-hidden', 'true');
-      document.getElementById('cartButton').setAttribute('aria-expanded', 'false');
-      if (!document.getElementById('searchPanel').classList.contains('is-open')) document.body.style.overflow = '';
-    }
-
-    function closeSearch() {
-      const searchPanel = document.getElementById('searchPanel');
-      searchPanel.classList.remove('is-open');
-      searchPanel.setAttribute('aria-hidden', 'true');
-      document.getElementById('searchButton').setAttribute('aria-expanded', 'false');
-      if (!cartDrawer.classList.contains('is-open')) document.body.style.overflow = '';
-    }
-
-    document.querySelectorAll('[data-add]').forEach(button => {
-      button.addEventListener('click', () => {
-        const id = button.dataset.add;
-        const product = products[id];
-        const existing = cart.find(item => item.id === id);
-        if (existing) existing.quantity += 1;
-        else cart.push({ id, ...product, quantity: 1 });
-        updateCart();
-        showToast(`${product.name} added to your bag`);
-      });
-    });
-
-    cartItems.addEventListener('click', event => {
-      const quantityButton = event.target.closest('[data-quantity]');
-      const removeButton = event.target.closest('[data-remove]');
-      if (quantityButton) {
-        const item = cart.find(entry => entry.id === quantityButton.dataset.quantity);
-        item.quantity += Number(quantityButton.dataset.change);
-        if (item.quantity <= 0) cart.splice(cart.indexOf(item), 1);
-        updateCart();
-      }
-      if (removeButton) {
-        const item = cart.find(entry => entry.id === removeButton.dataset.remove);
-        cart.splice(cart.indexOf(item), 1);
-        updateCart();
-      }
-    });
-
-    document.getElementById('cartButton').addEventListener('click', openCart);
-    document.getElementById('closeCart').addEventListener('click', closeCart);
-    drawerBackdrop.addEventListener('click', closeCart);
-    document.getElementById('checkoutButton').addEventListener('click', () => {
-      if (!cart.length) showToast('Your bag is empty');
-      else showToast('Checkout is ready for your order');
-    });
-
-    document.getElementById('searchButton').addEventListener('click', () => {
-      const panel = document.getElementById('searchPanel');
-      const isOpen = panel.classList.toggle('is-open');
-      panel.setAttribute('aria-hidden', String(!isOpen));
-      document.getElementById('searchButton').setAttribute('aria-expanded', String(isOpen));
-      if (isOpen) { closeCart(); document.body.style.overflow = 'hidden'; setTimeout(() => document.getElementById('searchInput').focus(), 200); }
-      else document.body.style.overflow = '';
-    });
-    document.getElementById('searchForm').addEventListener('submit', event => {
-      event.preventDefault();
-      const query = document.getElementById('searchInput').value.trim();
-      if (query) showToast(`Searching the collection for "${query}"`);
-    });
-    document.getElementById('closeSearchButton').addEventListener('click', closeSearch);
+    document.getElementById('cartButton').addEventListener('click', () => { window.location.href = 'shop.html'; });
 
     document.getElementById('menuButton').addEventListener('click', () => {
-      const menu = document.getElementById('mobileMenu');
-      const isOpen = menu.classList.toggle('is-open');
-      document.getElementById('menuButton').setAttribute('aria-expanded', String(isOpen));
+      document.getElementById('mobileMenu').classList.toggle('is-open');
     });
-    document.querySelectorAll('#mobileMenu a').forEach(link => link.addEventListener('click', () => {
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.remove('is-open');
-      document.getElementById('menuButton').setAttribute('aria-expanded', 'false');
     }));
 
-    document.querySelectorAll('.product-like').forEach(button => {
-      button.addEventListener('click', () => {
-        const liked = button.classList.toggle('is-liked');
-        button.setAttribute('aria-pressed', String(liked));
-        showToast(liked ? 'Saved to your wishlist' : 'Removed from your wishlist');
-      });
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    document.querySelectorAll('[data-filter]').forEach(button => {
-      button.addEventListener('click', () => {
-        document.querySelectorAll('[data-filter]').forEach(filter => filter.classList.remove('is-active'));
-        button.classList.add('is-active');
-        const filter = button.dataset.filter;
-        document.querySelectorAll('.product-item').forEach(item => item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.category !== filter));
-      });
-    });
-
-    document.getElementById('newsletterForm').addEventListener('submit', event => {
-      event.preventDefault();
+    document.getElementById('newsletterForm').addEventListener('submit', e => {
+      e.preventDefault();
       document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
-      event.target.reset();
+      e.target.reset();
     });
-
-    document.addEventListener('keydown', event => {
-      if (event.key === 'Escape') { closeCart(); closeSearch(); }
-    });
-
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); revealObserver.unobserve(entry.target); }
-      });
-    }, { threshold: 0.14 });
-    document.querySelectorAll('.reveal').forEach((element, index) => {
-      element.style.transitionDelay = `${Math.min(index * 70, 280)}ms`;
-      revealObserver.observe(element);
-    });
-
-    updateCart();
   </script>
 </body>
 </html>
