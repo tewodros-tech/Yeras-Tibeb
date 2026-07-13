@@ -265,7 +265,6 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // Cart count (shared)
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     function updateCartCount() {
       const count = cart.reduce((s, i) => s + i.qty, 0);
