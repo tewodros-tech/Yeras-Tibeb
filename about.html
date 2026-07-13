@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>YERAS TIBEB · About</title>
-  <meta name="description" content="The story behind YERAS TIBEB — handwoven Ethiopian clothing." />
+  <title>YERAS TIBEB · Contact</title>
+  <meta name="description" content="Get in touch with YERAS TIBEB." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --ink: #1e1818;
@@ -24,7 +25,6 @@
       background: var(--sand);
       color: var(--ink);
       font-family: 'Manrope', sans-serif;
-      overflow-x: hidden;
     }
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
@@ -124,15 +124,58 @@
     }
     .button-primary:hover { background: #e06654; transform: translateY(-2px); }
     .section { padding: clamp(5rem, 10vw, 9rem) 0; }
+    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
+    .section-rule { border-top: 1px solid var(--line); }
 
-    .craft-layout { display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr); align-items: center; gap: clamp(2.5rem, 8vw, 8rem); }
-    .craft-photo { position: relative; aspect-ratio: 0.9; overflow: hidden; }
-    .craft-photo::before { content: ''; position: absolute; z-index: 1; inset: 1.3rem -1.3rem -1.3rem 1.3rem; border: 1px solid rgba(242, 181, 150, 0.55); pointer-events: none; }
-    .craft-photo img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.85); }
-    .craft-copy h2 { margin-top: 0.8rem; font-size: clamp(2.8rem, 5vw, 5.5rem); line-height: 0.96; letter-spacing: -0.065em; }
-    .craft-copy p { max-width: 460px; margin-top: 1.5rem; color: rgba(30, 24, 24, 0.7); line-height: 1.75; }
-    .craft-link { display: inline-flex; align-items: center; gap: 0.8rem; margin-top: 2.2rem; color: var(--wine); font-size: 0.68rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; }
-    .craft-link:hover { color: var(--coral); }
+    .contact-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .contact-card .icon {
+      color: var(--coral);
+      font-size: 1.5rem;
+      width: 2.5rem;
+      text-align: center;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+    .social-icon:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+    .social-icon.facebook { background: #1877f2; }
+    .social-icon.telegram { background: #0088cc; }
+    .social-icon.pinterest { background: #e60023; }
+    .social-icon.instagram { background: #e4405f; }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      height: 300px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
@@ -151,17 +194,35 @@
     .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
+    /* Telegram contact badge */
+    .telegram-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0088cc;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .telegram-badge:hover {
+      background: #0077b3;
+      transform: scale(1.02);
+    }
+
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
-      .craft-layout { grid-template-columns: 1fr; gap: 3.5rem; }
     }
     @media (max-width: 640px) {
       .announcement { font-size: 0.55rem; }
-      .craft-photo { width: calc(100% - 1rem); }
-      .craft-copy { order: -1; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
+      .contact-card .icon { font-size: 1.2rem; width: 2rem; }
+      .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -200,31 +261,145 @@
   </header>
 
   <main>
-    <section class="section" style="padding-top: 8rem;">
+    <section class="section" style="padding-top: 8rem;" id="contact">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="craft-layout">
-          <div class="craft-photo">
-            <img src="https://images.pexels.com/photos/33609157/pexels-photo-33609157.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1200&h=1400" alt="Portrait of a woman in traditional Ethiopian attire" loading="lazy">
-          </div>
-          <div class="craft-copy">
-            <p class="eyebrow text-[var(--coral)]">Our story / 02</p>
-            <h2 class="font-display">The cloth<br>remembers.</h2>
-            <p>Yeras Tibeb means the beauty of heritage. We work with weavers and makers in Ethiopia to keep the language of handwoven cloth alive, then give it room to move through the world.</p>
-            <p class="mt-4 text-black/60">Every thread carries a story — of family, of land, of quiet resilience. From the highlands of Wollo to the streets of Addis, our pieces are a bridge between past and future.</p>
-            <a class="craft-link" href="shop.html">Explore the collection <span aria-hidden="true">&#8594;</span></a>
+        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
+          <div class="section-heading">
+            <p class="eyebrow text-[var(--coral)]">Connect / 03</p>
+            <h2 class="font-display">We'd love<br><em>to hear.</em></h2>
+            <p class="max-w-[410px] mt-4 text-black/60">Reach out for custom orders, collaborations, or simply to say hello.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <section class="section bg-[#e5dccb]">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="max-w-3xl mx-auto text-center">
-          <p class="eyebrow text-[var(--coral)]">Handwoven · slow made</p>
-          <h2 class="font-display text-4xl md:text-6xl mt-3">Wear the story.</h2>
-          <p class="mt-4 text-black/60 max-w-xl mx-auto">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
-          <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <a href="shop.html" class="button-primary">Shop now</a>
+        <div class="mt-8 grid gap-10 lg:grid-cols-2">
+          <!-- LEFT COLUMN: Contact Info + Maps -->
+          <div class="space-y-6">
+            <!-- Contact Cards -->
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📍</span>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Visit us</p>
+                <p class="text-lg font-medium">Bole Atlas Grace Plaza, Addis Ababa</p>
+                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-map-pin"></i> Open in Google Maps
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📲</span>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Call</p>
+                <p class="text-lg font-medium">+251 91 010 3956</p>
+                <a href="tel:+251910103956" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-phone"></i> Call now
+                </a>
+              </div>
+            </div>
+
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📧</span>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Email</p>
+                <p class="text-lg font-medium">kidistdemessew@gmail.com</p>
+                <a href="mailto:kidistdemessew@gmail.com" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-envelope"></i> Send email
+                </a>
+              </div>
+            </div>
+
+            <!-- Telegram Direct Contact -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fab fa-telegram-plane text-[var(--coral)] mr-2"></i>Chat with us on Telegram
+              </p>
+              <a href="https://t.me/+251910103956" target="_blank" class="telegram-badge">
+                <i class="fab fa-telegram-plane"></i> @+251 91 010 3956
+              </a>
+              <p class="text-xs text-black/40 mt-2">Click to start a conversation on Telegram</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Follow us</p>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://t.me/+251910103956" target="_blank" class="social-icon telegram" aria-label="Telegram">
+                  <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://pin.it/4uNPbwy" target="_blank" class="social-icon pinterest" aria-label="Pinterest">
+                  <i class="fab fa-pinterest-p"></i>
+                </a>
+                <a href="https://instagram.com/yerastibeb" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Google Earth Embed -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fas fa-globe-africa text-[var(--coral)] mr-2"></i>Explore in Google Earth
+              </p>
+              <div class="map-container" style="height: 200px;">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m7!1sCAoSLEFGMVFpcE5mY1hzdHhKbXJhTlJ3N1JkR1R0U3pLWkJJR2lTcGx6M3VhUQ!2m2!1d9.024!2d38.746!3f330!4f0!5f0.7820865974627469" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+              </div>
+              <p class="text-xs text-black/40 mt-2">📍 Bole Atlas Grace Plaza, Addis Ababa</p>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Google Map + Form -->
+          <div class="space-y-6">
+            <!-- Google Map -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fas fa-map-marked-alt text-[var(--coral)] mr-2"></i>Find us on Google Maps
+              </p>
+              <div class="map-container" style="height: 280px;">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789012!2d38.746!3d9.024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f9a8b8b8b8b%3A0x1234567890abcdef!2sBole%20Atlas%20Grace%20Plaza!5e0!3m2!1sen!2set!4v1700000000000" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+              </div>
+              <div class="flex gap-3 mt-3">
+                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
+                  <i class="fas fa-external-link-alt"></i> Open in Maps
+                </a>
+                <a href="https://earth.google.com/web/search/Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
+                  <i class="fas fa-globe"></i> Open in Earth
+                </a>
+              </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-card">
+              <h3 class="font-display text-2xl mb-4">Send a message</h3>
+              <form id="contactForm" class="flex flex-col gap-4">
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactName">Name</label>
+                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactName" type="text" placeholder="Your name" required>
+                </div>
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactEmail">Email</label>
+                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactEmail" type="email" placeholder="hello@domain.com" required>
+                </div>
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactMessage">Message</label>
+                  <textarea class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactMessage" rows="4" placeholder="Tell us what's on your mind..."></textarea>
+                </div>
+                <button class="button-primary w-full md:w-fit" type="submit">
+                  Send message <span aria-hidden="true">&#8594;</span>
+                </button>
+                <p class="text-[#6c2732] text-sm mt-2" id="contactMessageStatus"></p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -290,6 +465,23 @@
       document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
       e.target.reset();
     });
+
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('contactMessageStatus').textContent = '✓ Your message has been sent. We\'ll reply within 2 days.';
+      document.getElementById('contactMessageStatus').style.color = '#6c2732';
+      e.target.reset();
+    });
+
+    // Toast
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
+    }
   </script>
 </body>
 </html>
