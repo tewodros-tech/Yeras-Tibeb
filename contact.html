@@ -194,6 +194,25 @@
     .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
+    /* Telegram contact badge */
+    .telegram-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #0088cc;
+      color: white;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .telegram-badge:hover {
+      background: #0077b3;
+      transform: scale(1.02);
+    }
+
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
@@ -289,14 +308,25 @@
               </div>
             </div>
 
+            <!-- Telegram Direct Contact -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fab fa-telegram-plane text-[var(--coral)] mr-2"></i>Chat with us on Telegram
+              </p>
+              <a href="https://t.me/+251910103956" target="_blank" class="telegram-badge">
+                <i class="fab fa-telegram-plane"></i> @+251 91 010 3956
+              </a>
+              <p class="text-xs text-black/40 mt-2">Click to start a conversation on Telegram</p>
+            </div>
+
             <!-- Social Media -->
             <div class="contact-card">
-              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Connect with us</p>
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Follow us</p>
               <div class="flex flex-wrap gap-3">
                 <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="social-icon facebook" aria-label="Facebook">
                   <i class="fab fa-facebook-f"></i>
                 </a>
-                <a href="https://t.me/yerastibeb" target="_blank" class="social-icon telegram" aria-label="Telegram">
+                <a href="https://t.me/+251910103956" target="_blank" class="social-icon telegram" aria-label="Telegram">
                   <i class="fab fa-telegram-plane"></i>
                 </a>
                 <a href="https://pin.it/4uNPbwy" target="_blank" class="social-icon pinterest" aria-label="Pinterest">
