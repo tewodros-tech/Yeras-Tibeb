@@ -9,10 +9,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     :root {
       --ink: #1e1818;
       --wine: #6c2732;
+      --wine-deep: #35191f;
       --coral: #d35343;
       --sand: #f1ebdd;
       --linen: #f8f5ed;
@@ -125,8 +127,55 @@
     .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
     .section-rule { border-top: 1px solid var(--line); }
 
-    .contact-card { background: white; padding: 1.5rem; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-    .contact-card .icon { color: var(--coral); font-size: 1.3rem; width: 2rem; text-align: center; }
+    .contact-card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .contact-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .contact-card .icon {
+      color: var(--coral);
+      font-size: 1.5rem;
+      width: 2.5rem;
+      text-align: center;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      color: white;
+    }
+    .social-icon:hover {
+      transform: translateY(-4px) scale(1.05);
+    }
+    .social-icon.facebook { background: #1877f2; }
+    .social-icon.telegram { background: #0088cc; }
+    .social-icon.pinterest { background: #e60023; }
+    .social-icon.instagram { background: #e4405f; }
+
+    .map-container {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      height: 300px;
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
 
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
@@ -153,6 +202,8 @@
       .announcement { font-size: 0.55rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
+      .contact-card .icon { font-size: 1.2rem; width: 2rem; }
+      .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
     }
   </style>
 </head>
@@ -201,50 +252,124 @@
           </div>
         </div>
 
-        <div class="mt-8 grid gap-10 md:grid-cols-2">
+        <div class="mt-8 grid gap-10 lg:grid-cols-2">
+          <!-- LEFT COLUMN: Contact Info + Maps -->
           <div class="space-y-6">
+            <!-- Contact Cards -->
             <div class="contact-card flex items-start gap-4">
               <span class="icon">📍</span>
-              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Visit us</p><p class="text-lg font-medium">Bole Atlas Grace Plaza, Addis Ababa</p></div>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Visit us</p>
+                <p class="text-lg font-medium">Bole Atlas Grace Plaza, Addis Ababa</p>
+                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-map-pin"></i> Open in Google Maps
+                </a>
+              </div>
             </div>
+
             <div class="contact-card flex items-start gap-4">
               <span class="icon">📲</span>
-              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Call</p><p class="text-lg font-medium">+251 91 010 3956</p></div>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Call</p>
+                <p class="text-lg font-medium">+251 91 010 3956</p>
+                <a href="tel:+251910103956" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-phone"></i> Call now
+                </a>
+              </div>
             </div>
+
             <div class="contact-card flex items-start gap-4">
               <span class="icon">📧</span>
-              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Email</p><p class="text-lg font-medium">kidistdemessew@gmail.com</p></div>
-            </div>
-            <div class="contact-card flex items-start gap-4">
-              <span class="icon">🔗</span>
               <div>
-                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Connect</p>
-                <div class="flex flex-wrap gap-4 text-sm font-medium">
-                  <a href="https://pin.it/4uNPbwy" target="_blank" class="text-[var(--wine)] hover:underline">Pinterest</a>
-                  <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="text-[var(--wine)] hover:underline">Facebook</a>
-                </div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Email</p>
+                <p class="text-lg font-medium">kidistdemessew@gmail.com</p>
+                <a href="mailto:kidistdemessew@gmail.com" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1 mt-1">
+                  <i class="fas fa-envelope"></i> Send email
+                </a>
               </div>
+            </div>
+
+            <!-- Social Media -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Connect with us</p>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="social-icon facebook" aria-label="Facebook">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://t.me/yerastibeb" target="_blank" class="social-icon telegram" aria-label="Telegram">
+                  <i class="fab fa-telegram-plane"></i>
+                </a>
+                <a href="https://pin.it/4uNPbwy" target="_blank" class="social-icon pinterest" aria-label="Pinterest">
+                  <i class="fab fa-pinterest-p"></i>
+                </a>
+                <a href="https://instagram.com/yerastibeb" target="_blank" class="social-icon instagram" aria-label="Instagram">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Google Earth Embed -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fas fa-globe-africa text-[var(--coral)] mr-2"></i>Explore in Google Earth
+              </p>
+              <div class="map-container" style="height: 200px;">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!4v1700000000000!6m8!1m7!1sCAoSLEFGMVFpcE5mY1hzdHhKbXJhTlJ3N1JkR1R0U3pLWkJJR2lTcGx6M3VhUQ!2m2!1d9.024!2d38.746!3f330!4f0!5f0.7820865974627469" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
+              </div>
+              <p class="text-xs text-black/40 mt-2">📍 Bole Atlas Grace Plaza, Addis Ababa</p>
             </div>
           </div>
 
-          <div>
-            <form id="contactForm" class="flex flex-col gap-5 bg-white p-6 shadow-sm">
-              <h3 class="font-display text-2xl">Send a message</h3>
-              <div>
-                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactName">Name</label>
-                <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactName" type="text" placeholder="Your name" required>
+          <!-- RIGHT COLUMN: Google Map + Form -->
+          <div class="space-y-6">
+            <!-- Google Map -->
+            <div class="contact-card">
+              <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
+                <i class="fas fa-map-marked-alt text-[var(--coral)] mr-2"></i>Find us on Google Maps
+              </p>
+              <div class="map-container" style="height: 280px;">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.123456789012!2d38.746!3d9.024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x164b8f9a8b8b8b8b%3A0x1234567890abcdef!2sBole%20Atlas%20Grace%20Plaza!5e0!3m2!1sen!2set!4v1700000000000" 
+                  allowfullscreen="" 
+                  loading="lazy">
+                </iframe>
               </div>
-              <div>
-                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactEmail">Email</label>
-                <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactEmail" type="email" placeholder="hello@domain.com" required>
+              <div class="flex gap-3 mt-3">
+                <a href="https://maps.google.com/maps?q=Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
+                  <i class="fas fa-external-link-alt"></i> Open in Maps
+                </a>
+                <a href="https://earth.google.com/web/search/Bole+Atlas+Grace+Plaza+Addis+Ababa" target="_blank" class="text-sm text-[var(--coral)] hover:underline inline-flex items-center gap-1">
+                  <i class="fas fa-globe"></i> Open in Earth
+                </a>
               </div>
-              <div>
-                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactMessage">Message</label>
-                <textarea class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactMessage" rows="4" placeholder="Tell us what's on your mind..."></textarea>
-              </div>
-              <button class="button-primary w-fit" type="submit">Send message <span aria-hidden="true">&#8594;</span></button>
-              <p class="text-[#6c2732] text-sm mt-2" id="contactMessageStatus"></p>
-            </form>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-card">
+              <h3 class="font-display text-2xl mb-4">Send a message</h3>
+              <form id="contactForm" class="flex flex-col gap-4">
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactName">Name</label>
+                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactName" type="text" placeholder="Your name" required>
+                </div>
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactEmail">Email</label>
+                  <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactEmail" type="email" placeholder="hello@domain.com" required>
+                </div>
+                <div>
+                  <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactMessage">Message</label>
+                  <textarea class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)] transition-colors" id="contactMessage" rows="4" placeholder="Tell us what's on your mind..."></textarea>
+                </div>
+                <button class="button-primary w-full md:w-fit" type="submit">
+                  Send message <span aria-hidden="true">&#8594;</span>
+                </button>
+                <p class="text-[#6c2732] text-sm mt-2" id="contactMessageStatus"></p>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -313,9 +438,20 @@
 
     document.getElementById('contactForm').addEventListener('submit', e => {
       e.preventDefault();
-      document.getElementById('contactMessageStatus').textContent = 'Your message has been sent. We\'ll reply within 2 days.';
+      document.getElementById('contactMessageStatus').textContent = '✓ Your message has been sent. We\'ll reply within 2 days.';
+      document.getElementById('contactMessageStatus').style.color = '#6c2732';
       e.target.reset();
     });
+
+    // Toast
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add('is-visible');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
+    }
   </script>
 </body>
 </html>
