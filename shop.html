@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YERAS TIBEB · Shop</title>
+  <meta name="description" content="Shop modern Ethiopian clothing at YERAS TIBEB." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1e1818;
+      --wine: #6c2732;
+      --wine-deep: #35191f;
+      --coral: #d35343;
+      --sand: #f1ebdd;
+      --linen: #f8f5ed;
+      --line: rgba(30, 24, 24, 0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--sand);
+      color: var(--ink);
+      font-family: 'Manrope', sans-serif;
+      overflow-x: hidden;
+    }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
+
+    /* HEADER (same as index) */
+    .site-header {
+      position: fixed;
+      z-index: 40;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: var(--linen);
+      background: rgba(20, 12, 14, 0.3);
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+    }
+    .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
+    .announcement {
+      border-bottom: 1px solid rgba(248, 245, 237, 0.15);
+      background: rgba(20, 12, 14, 0.3);
+      min-height: 32px;
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.15); }
+    .nav-link {
+      position: relative;
+      opacity: 0.8;
+      transition: opacity 180ms ease;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-link:hover { opacity: 1; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -0.55rem;
+      height: 1px;
+      background: var(--linen);
+      transition: right 220ms ease;
+    }
+    .nav-link:hover::after { right: 0; }
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(248, 245, 237, 0.7);
+      border-radius: 50%;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.82rem;
+      letter-spacing: -0.08em;
+    }
+    .icon-button {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+    .icon-button:hover { color: #f3b292; transform: translateY(-1px); }
+    .cart-count {
+      position: absolute;
+      top: -2px;
+      right: -4px;
+      display: grid;
+      place-items: center;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 3px;
+      border-radius: 999px;
+      background: var(--coral);
+      color: white;
+      font-size: 0.58rem;
+      font-weight: 800;
+    }
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 48px;
+      padding: 0.78rem 1.15rem;
+      border: 1px solid transparent;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 220ms ease, transform 220ms ease;
+      background: var(--coral);
+      color: white;
+    }
+    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
+    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
+    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
+    .section-rule { border-top: 1px solid var(--line); }
+
+    .filter-button {
+      padding: 0.6rem 0;
+      color: rgba(30, 24, 24, 0.55);
+      border-bottom: 1px solid transparent;
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: color 180ms ease, border 180ms ease;
+      background: none;
+      cursor: pointer;
+    }
+    .filter-button:hover, .filter-button.is-active { color: var(--wine); border-color: var(--wine); }
+    .product-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(1rem, 2.2vw, 2.4rem); }
+    .product-item.is-hidden { display: none; }
+    .product-image-wrap { position: relative; overflow: hidden; background: #dfd4c2; aspect-ratio: 0.78; }
+    .product-image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 700ms cubic-bezier(.2,.7,.2,1); }
+    .product-item:hover .product-image-wrap img { transform: scale(1.055); }
+    .product-like {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(248, 245, 237, 0.9);
+      color: var(--ink);
+      transition: background 180ms ease, color 180ms ease;
+      border: none;
+      cursor: pointer;
+    }
+    .product-like:hover, .product-like.is-liked { background: var(--wine); color: white; }
+    .product-meta { padding-top: 0.9rem; }
+    .product-meta h3 { font-family: 'Playfair Display', serif; font-size: 1.22rem; }
+    .product-meta p { margin-top: 0.25rem; color: rgba(30, 24, 24, 0.58); font-size: 0.72rem; }
+    .product-price { color: var(--wine); font-size: 0.76rem; font-weight: 800; }
+    .add-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.75rem;
+      border-bottom: 1px solid var(--wine);
+      padding-bottom: 0.2rem;
+      color: var(--wine);
+      font-size: 0.63rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: gap 180ms ease, color 180ms ease;
+      background: none;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      cursor: pointer;
+    }
+    .add-button:hover { gap: 0.6rem; color: var(--coral); }
+
+    /* CART DRAWER */
+    .drawer-backdrop { position: fixed; inset: 0; z-index: 40; visibility: hidden; background: rgba(20,12,14,0.55); opacity: 0; transition: opacity 280ms ease, visibility 280ms ease; }
+    .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
+    .cart-drawer { position: fixed; z-index: 50; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); flex-direction: column; background: var(--linen); transform: translateX(100%); transition: transform 380ms cubic-bezier(.22,.8,.2,1); }
+    .cart-drawer.is-open { transform: translateX(0); }
+    .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid var(--line); }
+    .drawer-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; }
+    .close-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); background: none; cursor: pointer; }
+    .close-button:hover { border-color: var(--wine); color: var(--wine); }
+    .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
+    .empty-cart { display: grid; place-items: center; min-height: 50%; text-align: center; color: rgba(30,24,24,0.55); }
+    .empty-cart strong { display: block; color: var(--ink); font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 500; }
+    .cart-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 0.8rem; align-items: start; padding-bottom: 1.2rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 72px; height: 88px; object-fit: cover; }
+    .cart-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; }
+    .cart-item p { margin-top: 0.2rem; color: rgba(30,24,24,0.55); font-size: 0.68rem; }
+    .cart-item-price { color: var(--wine); font-size: 0.72rem; font-weight: 800; }
+    .qty-control { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.7rem; font-size: 0.72rem; }
+    .qty-control button { display: grid; place-items: center; width: 20px; height: 20px; border: 1px solid var(--line); background: none; cursor: pointer; }
+    .qty-control button:hover { border-color: var(--wine); color: var(--wine); }
+    .remove-item { margin-top: 0.65rem; color: rgba(30,24,24,0.45); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none; cursor: pointer; }
+    .remove-item:hover { color: var(--coral); }
+    .drawer-footer { padding: 1.5rem; border-top: 1px solid var(--line); }
+    .subtotal { display: flex; justify-content: space-between; font-size: 0.78rem; }
+    .subtotal strong { color: var(--wine); font-size: 1rem; }
+    .checkout-button { width: 100%; margin-top: 1.1rem; }
+    .drawer-note { margin-top: 0.8rem; color: rgba(30,24,24,0.5); text-align: center; font-size: 0.63rem; }
+
+    .footer { background: var(--ink); color: var(--linen); }
+    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
+    .footer-brand { max-width: 260px; }
+    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
+    .footer-heading { color: #f2b596; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.16); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35,18,22,0.97); border-bottom: 1px solid rgba(248,245,237,0.18); }
+    .mobile-menu.is-open { display: grid; gap: 1rem; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+
+    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 900px) {
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: grid !important; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 3rem; }
+    }
+    @media (max-width: 640px) {
+      .announcement { font-size: 0.55rem; }
+      .product-grid { gap: 2.1rem 0.85rem; }
+      .product-meta h3 { font-size: 1.04rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
+    <div class="nav-shell">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
+        <a class="flex items-center gap-3" href="index.html">
+          <span class="logo-mark">YT</span>
+          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
+        </a>
+        <nav class="desktop-nav flex items-center gap-8">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-1">
+          <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="shop">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
+          <div class="section-heading">
+            <p class="eyebrow text-[var(--coral)]">The collection / 01</p>
+            <h2 class="font-display">Made to be<br><em>remembered.</em></h2>
+            <p class="max-w-[410px] mt-4 text-black/60">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
+          </div>
+          <div class="flex gap-5 border-b border-black/15 md:border-0" role="group">
+            <button class="filter-button is-active" data-filter="all">All pieces</button>
+            <button class="filter-button" data-filter="dresses">Dresses</button>
+            <button class="filter-button" data-filter="layers">Layers</button>
+          </div>
+        </div>
+
+        <div class="product-grid mt-10 md:mt-14" id="productGrid">
+          <article class="product-item" data-category="dresses">
+            <div class="product-image-wrap">
+              <img src="https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Segen Dress" loading="lazy">
+              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
+            </div>
+            <div class="product-meta flex items-start justify-between gap-3">
+              <div><h3>The Segen Dress</h3><p>Handloom cotton / coral</p></div>
+              <span class="product-price">$248</span>
+            </div>
+            <button class="add-button" data-id="segen" data-name="The Segen Dress" data-detail="Handloom cotton / coral" data-price="248" data-image="https://images.pexels.com/photos/38385070/pexels-photo-38385070.png?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
+          </article>
+
+          <article class="product-item" data-category="layers">
+            <div class="product-image-wrap">
+              <img src="https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Addis Wrap" loading="lazy">
+              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
+            </div>
+            <div class="product-meta flex items-start justify-between gap-3">
+              <div><h3>The Addis Wrap</h3><p>Hand-spun cotton / indigo</p></div>
+              <span class="product-price">$165</span>
+            </div>
+            <button class="add-button" data-id="addis" data-name="The Addis Wrap" data-detail="Hand-spun cotton / indigo" data-price="165" data-image="https://images.pexels.com/photos/9256825/pexels-photo-9256825.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
+          </article>
+
+          <article class="product-item" data-category="dresses">
+            <div class="product-image-wrap">
+              <img src="https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Simien Dress" loading="lazy">
+              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
+            </div>
+            <div class="product-meta flex items-start justify-between gap-3">
+              <div><h3>The Simien Dress</h3><p>Organic cotton / ivory</p></div>
+              <span class="product-price">$220</span>
+            </div>
+            <button class="add-button" data-id="simien" data-name="The Simien Dress" data-detail="Organic cotton / ivory" data-price="220" data-image="https://images.pexels.com/photos/19526152/pexels-photo-19526152.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
+          </article>
+
+          <article class="product-item" data-category="layers">
+            <div class="product-image-wrap">
+              <img src="https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280" alt="The Wollo Shawl" loading="lazy">
+              <button class="product-like" aria-label="Save"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 8.7c0 5.2-8.8 10-8.8 10s-8.8-4.8-8.8-10A4.7 4.7 0 0 1 12 6.3a4.7 4.7 0 0 1 8.8 2.4Z"/></svg></button>
+            </div>
+            <div class="product-meta flex items-start justify-between gap-3">
+              <div><h3>The Wollo Shawl</h3><p>Handwoven wool / earth</p></div>
+              <span class="product-price">$190</span>
+            </div>
+            <button class="add-button" data-id="wollo" data-name="The Wollo Shawl" data-detail="Handwoven wool / earth" data-price="190" data-image="https://images.pexels.com/photos/38372725/pexels-photo-38372725.jpeg?auto=compress&cs=tinysrgb&fit=crop&w=1000&h=1280">Add to bag <span aria-hidden="true">&#8594;</span></button>
+          </article>
+        </div>
+        <p class="mt-12 text-center text-[0.68rem] uppercase tracking-[0.14em] text-black/45">Small batch · slow made · no two exactly alike</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section pb-6">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="eyebrow text-[#f2b596]">Yeras Tibeb</p>
+          <h2>Wear the story.</h2>
+          <p>Thoughtful clothing for people who know that the best things take time.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Explore</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-heading">Stay close</p>
+          <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
+          <form class="newsletter-form flex border-b border-white/45 mt-3" id="newsletterForm">
+            <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
+            <button class="text-[#f2b596] text-xs font-bold uppercase tracking-[0.1em]" type="submit">Join</button>
+          </form>
+          <p class="newsletter-message text-[#f2b596] text-xs mt-2" id="newsletterMessage"></p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>Yeras Tibeb · Addis Ababa</span><span>Crafted with care · 2024</span></div>
+    </div>
+  </footer>
+
+  <!-- CART DRAWER -->
+  <div class="drawer-backdrop" id="drawerBackdrop"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
+    <div class="drawer-header"><h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2><button class="close-button" id="closeCart"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="drawer-footer">
+      <div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
+      <button class="button-primary checkout-button" id="checkoutButton">Continue to checkout <span aria-hidden="true">&#8594;</span></button>
+      <p class="drawer-note">Shipping and taxes calculated at checkout.</p>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // CART STATE (shared across pages via localStorage)
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const toast = document.getElementById('toast');
+    let toastTimer;
+
+    function showToast(msg) { toast.textContent = msg; toast.classList.add('is-visible'); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400); }
+
+    function updateCartUI() {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+      document.getElementById('drawerCount').textContent = `${count} ${count === 1 ? 'item' : 'items'}`;
+      const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      document.getElementById('cartSubtotal').textContent = `$${subtotal}`;
+      const container = document.getElementById('cartItems');
+      if (!cart.length) {
+        container.innerHTML = '<div class="empty-cart"><div><strong>Your bag is quiet.</strong><p class="mt-2 text-[0.72rem]">Add a piece with a story to begin.</p></div></div>';
+        return;
+      }
+      container.innerHTML = cart.map(item => `
+        <div class="cart-item">
+          <img src="${item.image}" alt="${item.name}">
+          <div>
+            <h3>${item.name}</h3>
+            <p>${item.detail}</p>
+            <div class="qty-control">
+              <button data-id="${item.id}" data-change="-1">-</button>
+              <span>${item.qty}</span>
+              <button data-id="${item.id}" data-change="1">+</button>
+            </div>
+            <button class="remove-item" data-id="${item.id}">Remove</button>
+          </div>
+          <span class="cart-item-price">$${item.price * item.qty}</span>
+        </div>
+      `).join('');
+    }
+
+    function saveCart() { localStorage.setItem('cart', JSON.stringify(cart)); updateCartUI(); }
+
+    // Add to cart
+    document.querySelectorAll('.add-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const id = btn.dataset.id;
+        const existing = cart.find(i => i.id === id);
+        if (existing) existing.qty += 1;
+        else cart.push({ id, name: btn.dataset.name, detail: btn.dataset.detail, price: Number(btn.dataset.price), image: btn.dataset.image, qty: 1 });
+        saveCart();
+        showToast(`${btn.dataset.name} added to your bag`);
+      });
+    });
+
+    // Cart drawer events
+    document.getElementById('cartButton').addEventListener('click', () => {
+      document.getElementById('cartDrawer').classList.add('is-open');
+      document.getElementById('drawerBackdrop').classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+    document.getElementById('closeCart').addEventListener('click', () => {
+      document.getElementById('cartDrawer').classList.remove('is-open');
+      document.getElementById('drawerBackdrop').classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+    document.getElementById('drawerBackdrop').addEventListener('click', () => {
+      document.getElementById('cartDrawer').classList.remove('is-open');
+      document.getElementById('drawerBackdrop').classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+
+    document.getElementById('cartItems').addEventListener('click', e => {
+      const btn = e.target.closest('[data-id]');
+      if (!btn) return;
+      const id = btn.dataset.id;
+      const item = cart.find(i => i.id === id);
+      if (btn.classList.contains('remove-item')) {
+        cart = cart.filter(i => i.id !== id);
+        saveCart();
+        return;
+      }
+      if (btn.dataset.change) {
+        item.qty += Number(btn.dataset.change);
+        if (item.qty <= 0) cart = cart.filter(i => i.id !== id);
+        saveCart();
+      }
+    });
+
+    document.getElementById('checkoutButton').addEventListener('click', () => {
+      if (!cart.length) showToast('Your bag is empty');
+      else showToast('Checkout is ready for your order');
+    });
+
+    // Filter
+    document.querySelectorAll('.filter-button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-button').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.product-item').forEach(item => {
+          item.classList.toggle('is-hidden', filter !== 'all' && item.dataset.category !== filter);
+        });
+      });
+    });
+
+    // Wishlist likes
+    document.querySelectorAll('.product-like').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const liked = btn.classList.toggle('is-liked');
+        showToast(liked ? 'Saved to wishlist' : 'Removed from wishlist');
+      });
+    });
+
+    // Mobile menu
+    document.getElementById('menuButton').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('is-open');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('is-open');
+    }));
+
+    // Header scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Newsletter
+    document.getElementById('newsletterForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
+      e.target.reset();
+    });
+
+    updateCartUI();
+  </script>
+</body>
+</html>
