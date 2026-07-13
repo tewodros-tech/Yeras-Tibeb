@@ -141,6 +141,100 @@
     .button-primary:hover { background: #e06654; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(211,83,67,0.35); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
+    /* SLIDESHOW */
+    .slideshow-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      background: var(--wine-deep);
+    }
+    .slideshow-container .slides {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+      height: 100%;
+    }
+    .slideshow-container .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .slideshow-container .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .slideshow-container .slide .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(26,14,17,0.6) 0%, transparent 60%);
+      display: flex;
+      align-items: center;
+      padding: 3rem;
+    }
+    .slideshow-container .slide .slide-overlay h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      color: white;
+      max-width: 500px;
+      line-height: 1.1;
+    }
+    .slideshow-container .slide .slide-overlay h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .slideshow-container .slide .slide-overlay p {
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+    .slideshow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+    }
+    .slideshow-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .slideshow-btn.prev { left: 20px; }
+    .slideshow-btn.next { right: 20px; }
+    .slideshow-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .slideshow-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .slideshow-dots .dot.active {
+      background: var(--gold);
+      width: 30px;
+      border-radius: 5px;
+    }
+
     /* Product Grid */
     .product-grid {
       display: grid;
@@ -262,6 +356,54 @@
     .filter-btn:hover { color: var(--wine); }
     .filter-btn.active { color: var(--wine); border-color: var(--wine); }
 
+    /* Category Showcase */
+    .category-showcase {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+    .category-card {
+      position: relative;
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/5;
+      cursor: pointer;
+      transition: all 0.4s ease;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+    }
+    .category-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .category-card:hover img {
+      transform: scale(1.05);
+    }
+    .category-card .cat-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%);
+      display: flex;
+      align-items: flex-end;
+      padding: 1.5rem;
+    }
+    .category-card .cat-overlay h3 {
+      font-family: 'Playfair Display', serif;
+      color: white;
+      font-size: 1.5rem;
+    }
+    .category-card .cat-overlay span {
+      display: block;
+      color: var(--gold);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
@@ -334,14 +476,26 @@
       transform: translateY(0);
     }
 
+    /* Full-width banner */
+    .full-banner {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+
     @media (max-width: 1024px) {
       .product-grid { grid-template-columns: repeat(3, 1fr); }
+      .category-showcase { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
       .logo-img { height: 48px; max-width: 160px; }
       .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+      .slideshow-container .slide .slide-overlay { padding: 1.5rem; }
+      .slideshow-container .slide .slide-overlay h2 { font-size: 1.5rem; }
+      .full-banner { height: 250px; }
     }
     @media (max-width: 640px) {
       .announcement { font-size: 0.5rem; letter-spacing: 0.06em; }
@@ -352,7 +506,14 @@
       .product-card .product-info h3 { font-size: 0.95rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
-      .filter-btn { font-size: 0.6rem; padding: 0.4rem 0; }
+      .filter-btn { font-size: 0.55rem; padding: 0.3rem 0; }
+      .category-showcase { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .category-card .cat-overlay h3 { font-size: 1rem; }
+      .slideshow-container .slide .slide-overlay h2 { font-size: 1.2rem; }
+      .slideshow-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+      .slideshow-btn.prev { left: 8px; }
+      .slideshow-btn.next { right: 8px; }
+      .full-banner { height: 180px; }
     }
   </style>
 </head>
@@ -406,6 +567,64 @@
       </div>
     </section>
 
+    <!-- SLIDESHOW -->
+    <section style="background: var(--sand); padding-bottom: 2rem;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="slideshow-container reveal" id="slideshow">
+          <div class="slides" id="slides">
+            <div class="slide">
+              <img src="2.jpg" alt="YERAS TIBEB Collection" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Handwoven <em>with love</em></h2>
+                  <p>Every piece tells a story of Ethiopian heritage</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="A.jpg" alt="Ethiopian Textiles" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Timeless <em>craftsmanship</em></h2>
+                  <p>Ancient techniques meet modern silhouettes</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="M.jpg" alt="YERAS TIBEB Fashion" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Wear the <em>story</em></h2>
+                  <p>Each thread carries a piece of Ethiopia</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="7.jpg" alt="Ethiopian Weaving" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Preserving <em>heritage</em></h2>
+                  <p>Supporting master weavers across Ethiopia</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="U.jpg" alt="YERAS TIBEB Collection" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Modern <em>Ethiopian</em></h2>
+                  <p>Contemporary fashion rooted in tradition</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="slideshow-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+          <button class="slideshow-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+          <div class="slideshow-dots" id="dots"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- FILTERS -->
     <section style="background: white; padding: 1.5rem 0; border-bottom: 1px solid var(--line);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -421,14 +640,109 @@
       </div>
     </section>
 
-    <!-- PRODUCT GRID -->
-    <section class="section" style="background: var(--sand); padding-top: 2.5rem;">
+    <!-- CATEGORY SHOWCASE -->
+    <section class="section" style="background: var(--sand); padding-bottom: 1rem;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-8 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-th-large mr-1"></i> Explore by Category</p>
+          <h2 class="font-display text-3xl md:text-4xl mt-2">Find your <em style="color:var(--coral);">style</em></h2>
+        </div>
+        <div class="category-showcase">
+          <div class="category-card reveal">
+            <img src="4.jpg" alt="Dresses" loading="lazy" />
+            <div class="cat-overlay">
+              <div>
+                <span>Shop</span>
+                <h3>Dresses</h3>
+              </div>
+            </div>
+          </div>
+          <div class="category-card reveal">
+            <img src="3.jpg" alt="Layers" loading="lazy" />
+            <div class="cat-overlay">
+              <div>
+                <span>Shop</span>
+                <h3>Layers</h3>
+              </div>
+            </div>
+          </div>
+          <div class="category-card reveal">
+            <img src="6.jpg" alt="Accessories" loading="lazy" />
+            <div class="cat-overlay">
+              <div>
+                <span>Shop</span>
+                <h3>Accessories</h3>
+              </div>
+            </div>
+          </div>
+          <div class="category-card reveal">
+            <img src="7.jpg" alt="Traditional" loading="lazy" />
+            <div class="cat-overlay">
+              <div>
+                <span>Shop</span>
+                <h3>Traditional</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULL WIDTH BANNER 1 -->
+    <section style="background: var(--sand); padding: 0 0 2rem 0;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="reveal">
+          <img src="F.jpg" alt="YERAS TIBEB Collection" class="full-banner" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT GRID -->
+    <section class="section" style="background: var(--sand); padding-top: 1rem;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="flex items-center justify-between mb-6 reveal">
+          <h2 class="font-display text-2xl md:text-3xl">All <em style="color:var(--coral);">Pieces</em></h2>
+          <span class="text-sm text-black/40">48 products</span>
+        </div>
         <div class="product-grid" id="productGrid">
           <!-- Products will be generated by JavaScript -->
         </div>
-        <div class="text-center mt-12 reveal">
-          <p class="text-sm text-black/40 uppercase tracking-[0.14em]">Small batch · slow made · no two exactly alike</p>
+      </div>
+    </section>
+
+    <!-- FULL WIDTH BANNER 2 -->
+    <section style="background: var(--sand); padding: 0 0 2rem 0;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="reveal">
+          <img src="R.jpg" alt="YERAS TIBEB Craftsmanship" class="full-banner" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURED PRODUCTS SECTION -->
+    <section class="section" style="background: white;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-10 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-star mr-1"></i> Featured</p>
+          <h2 class="font-display text-3xl md:text-4xl mt-2">Bestselling <em style="color:var(--coral);">pieces</em></h2>
+          <p class="mt-2 text-black/60">Our most loved designs, chosen by our community</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="featuredGrid">
+          <!-- Featured products will be generated -->
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="section" style="background: var(--wine-deep);">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10 text-center">
+        <div class="reveal">
+          <p class="eyebrow text-[var(--gold)]"><i class="fas fa-gem mr-1"></i> Join the movement</p>
+          <h2 class="font-display text-4xl md:text-5xl text-white mt-2">Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em></h2>
+          <p class="text-white/70 max-w-lg mx-auto mt-3">Every purchase supports our weavers and helps preserve Ethiopian heritage.</p>
+          <a href="#" class="inline-flex items-center gap-2 mt-6 bg-[var(--gold)] text-[var(--ink)] font-bold uppercase tracking-[0.1em] text-sm px-8 py-3 rounded-lg hover:bg-white transition shadow-lg">
+            <i class="fas fa-shopping-bag"></i> Explore the collection
+          </a>
         </div>
       </div>
     </section>
@@ -493,7 +807,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // PRODUCT DATA with all your images
+    // PRODUCT DATA
     const products = [
       { id: 1, name: 'The Segen Dress', category: 'dresses', price: 248, image: '2.jpg' },
       { id: 2, name: 'The Addis Wrap', category: 'layers', price: 165, image: '3.jpg' },
@@ -545,18 +859,70 @@
       { id: 48, name: 'The Bahir Dar Dress', category: 'dresses', price: 255, image: 'U.jpg' },
     ];
 
+    // Featured products (first 8)
+    const featuredProducts = products.slice(0, 8);
+
     // CART STATE
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     let currentFilter = 'all';
+    let slideIndex = 0;
+    let slideInterval;
 
     // DOM Elements
     const grid = document.getElementById('productGrid');
+    const featuredGrid = document.getElementById('featuredGrid');
     const cartDrawer = document.getElementById('cartDrawer');
     const cartItems = document.getElementById('cartItems');
     const drawerBackdrop = document.getElementById('drawerBackdrop');
     const toast = document.getElementById('toast');
     const productCount = document.getElementById('productCount');
+    const slides = document.getElementById('slides');
+    const dotsContainer = document.getElementById('dots');
     let toastTimer;
+
+    // SLIDESHOW
+    function initSlideshow() {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      
+      // Create dots
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      document.getElementById('prevSlide').addEventListener('click', prevSlide);
+      document.getElementById('nextSlide').addEventListener('click', nextSlide);
+      
+      startAutoSlide();
+      
+      // Pause on hover
+      const container = document.getElementById('slideshow');
+      container.addEventListener('mouseenter', stopAutoSlide);
+      container.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    function goToSlide(index) {
+      const totalSlides = document.querySelectorAll('.slide').length;
+      slideIndex = (index + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+      
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === slideIndex);
+      });
+    }
+
+    function nextSlide() { goToSlide(slideIndex + 1); }
+    function prevSlide() { goToSlide(slideIndex - 1); }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    function stopAutoSlide() { clearInterval(slideInterval); }
 
     // RENDER PRODUCTS
     function renderProducts(filter = 'all') {
@@ -612,6 +978,50 @@
           el.classList.add('is-visible');
         });
       }, 100);
+    }
+
+    // RENDER FEATURED
+    function renderFeatured() {
+      featuredGrid.innerHTML = featuredProducts.map(product => `
+        <div class="product-card reveal">
+          <div class="image-wrap">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500/e8e0d2/6c2732?text=YERAS+TIBEB';">
+            <button class="wishlist-btn" data-id="${product.id}" aria-label="Save to wishlist">
+              <i class="far fa-heart"></i>
+            </button>
+          </div>
+          <div class="product-info">
+            <h3>${product.name}</h3>
+            <span class="category">${product.category}</span>
+            <div class="flex items-center justify-between mt-1">
+              <span class="price">$${product.price}</span>
+              <button class="add-btn" data-id="${product.id}">
+                <i class="fas fa-plus-circle"></i> Add
+              </button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+
+      document.querySelectorAll('#featuredGrid .add-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const id = parseInt(btn.dataset.id);
+          const product = products.find(p => p.id === id);
+          addToCart(product);
+        });
+      });
+
+      document.querySelectorAll('#featuredGrid .wishlist-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          btn.classList.toggle('liked');
+          const icon = btn.querySelector('i');
+          icon.classList.toggle('far');
+          icon.classList.toggle('fas');
+          showToast(btn.classList.contains('liked') ? 'Added to wishlist ❤️' : 'Removed from wishlist');
+        });
+      });
     }
 
     // ADD TO CART
@@ -699,7 +1109,6 @@
       else showToast('Checkout is ready for your order!');
     });
 
-    // Cart item controls
     cartItems.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-id]');
       if (!btn) return;
@@ -730,6 +1139,20 @@
       });
     });
 
+    // Category cards click
+    document.querySelectorAll('.category-card').forEach((card, index) => {
+      card.addEventListener('click', () => {
+        const categories = ['dresses', 'layers', 'accessories', 'traditional'];
+        const filter = categories[index];
+        document.querySelectorAll('.filter-btn').forEach(b => {
+          b.classList.toggle('active', b.dataset.filter === filter);
+        });
+        currentFilter = filter;
+        renderProducts(filter);
+        document.querySelector('.filter-section').scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
     // Mobile menu
     document.getElementById('menuButton').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('is-open');
@@ -753,9 +1176,11 @@
     // Keyboard shortcuts
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') closeCart();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
     });
 
-    // Reveal observer for product cards
+    // Reveal observer
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -766,7 +1191,15 @@
 
     // Initial render
     renderProducts('all');
+    renderFeatured();
     updateCartUI();
+    initSlideshow();
+
+    // Observe reveals
+    document.querySelectorAll('.reveal').forEach((el, i) => {
+      el.style.transitionDelay = `${Math.min(i * 40, 400)}ms`;
+      revealObserver.observe(el);
+    });
   </script>
 </body>
 </html>
