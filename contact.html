@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YERAS TIBEB · Contact</title>
+  <meta name="description" content="Get in touch with YERAS TIBEB." />
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1e1818;
+      --wine: #6c2732;
+      --coral: #d35343;
+      --sand: #f1ebdd;
+      --linen: #f8f5ed;
+      --line: rgba(30, 24, 24, 0.18);
+    }
+    * { box-sizing: border-box; }
+    body {
+      background: var(--sand);
+      color: var(--ink);
+      font-family: 'Manrope', sans-serif;
+    }
+    .font-display { font-family: 'Playfair Display', serif; }
+    .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
+
+    .site-header {
+      position: fixed;
+      z-index: 40;
+      top: 0;
+      left: 0;
+      right: 0;
+      color: var(--linen);
+      background: rgba(20, 12, 14, 0.3);
+      backdrop-filter: blur(4px);
+      transition: background 0.2s;
+    }
+    .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
+    .announcement {
+      border-bottom: 1px solid rgba(248, 245, 237, 0.15);
+      background: rgba(20, 12, 14, 0.3);
+      min-height: 32px;
+      font-size: 0.62rem;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.15); }
+    .nav-link {
+      position: relative;
+      opacity: 0.8;
+      transition: opacity 180ms ease;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .nav-link:hover { opacity: 1; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 100%;
+      bottom: -0.55rem;
+      height: 1px;
+      background: var(--linen);
+      transition: right 220ms ease;
+    }
+    .nav-link:hover::after { right: 0; }
+    .logo-mark {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(248, 245, 237, 0.7);
+      border-radius: 50%;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.82rem;
+      letter-spacing: -0.08em;
+    }
+    .icon-button {
+      position: relative;
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      transition: color 180ms ease, transform 180ms ease;
+    }
+    .icon-button:hover { color: #f3b292; transform: translateY(-1px); }
+    .cart-count {
+      position: absolute;
+      top: -2px;
+      right: -4px;
+      display: grid;
+      place-items: center;
+      min-width: 16px;
+      height: 16px;
+      padding: 0 3px;
+      border-radius: 999px;
+      background: var(--coral);
+      color: white;
+      font-size: 0.58rem;
+      font-weight: 800;
+    }
+    .button-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      min-height: 48px;
+      padding: 0.78rem 1.15rem;
+      border: 1px solid transparent;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: background 220ms ease, transform 220ms ease;
+      background: var(--coral);
+      color: white;
+    }
+    .button-primary:hover { background: #e06654; transform: translateY(-2px); }
+    .section { padding: clamp(5rem, 10vw, 9rem) 0; }
+    .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
+    .section-rule { border-top: 1px solid var(--line); }
+
+    .contact-card { background: white; padding: 1.5rem; border-radius: 4px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
+    .contact-card .icon { color: var(--coral); font-size: 1.3rem; width: 2rem; text-align: center; }
+
+    .footer { background: var(--ink); color: var(--linen); }
+    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
+    .footer-brand { max-width: 260px; }
+    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
+    .footer-heading { color: #f2b596; font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.16); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.25rem 1.5rem 1.5rem; background: rgba(35,18,22,0.97); border-bottom: 1px solid rgba(248,245,237,0.18); }
+    .mobile-menu.is-open { display: grid; gap: 1rem; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; }
+
+    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    @media (max-width: 900px) {
+      .desktop-nav { display: none; }
+      .mobile-toggle { display: grid !important; }
+    }
+    @media (max-width: 640px) {
+      .announcement { font-size: 0.55rem; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="siteHeader">
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
+    <div class="nav-shell">
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
+        <a class="flex items-center gap-3" href="index.html">
+          <span class="logo-mark">YT</span>
+          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
+        </a>
+        <nav class="desktop-nav flex items-center gap-8">
+          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link" href="about.html">About</a>
+          <a class="nav-link" href="contact.html">Contact</a>
+        </nav>
+        <div class="flex items-center gap-1">
+          <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          </button>
+        </div>
+      </div>
+      <nav class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" style="padding-top: 8rem;" id="contact">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
+          <div class="section-heading">
+            <p class="eyebrow text-[var(--coral)]">Connect / 03</p>
+            <h2 class="font-display">We’d love<br><em>to hear.</em></h2>
+            <p class="max-w-[410px] mt-4 text-black/60">Reach out for custom orders, collaborations, or simply to say hello.</p>
+          </div>
+        </div>
+
+        <div class="mt-8 grid gap-10 md:grid-cols-2">
+          <div class="space-y-6">
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📍</span>
+              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Visit us</p><p class="text-lg font-medium">Bole Atlas Grace Plaza, Addis Ababa</p></div>
+            </div>
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📲</span>
+              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Call</p><p class="text-lg font-medium">+251 91 010 3956</p></div>
+            </div>
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">📧</span>
+              <div><p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Email</p><p class="text-lg font-medium">kidistdemessew@gmail.com</p></div>
+            </div>
+            <div class="contact-card flex items-start gap-4">
+              <span class="icon">🔗</span>
+              <div>
+                <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50">Connect</p>
+                <div class="flex flex-wrap gap-4 text-sm font-medium">
+                  <a href="https://pin.it/4uNPbwy" target="_blank" class="text-[var(--wine)] hover:underline">Pinterest</a>
+                  <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="text-[var(--wine)] hover:underline">Facebook</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <form id="contactForm" class="flex flex-col gap-5 bg-white p-6 shadow-sm">
+              <h3 class="font-display text-2xl">Send a message</h3>
+              <div>
+                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactName">Name</label>
+                <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactName" type="text" placeholder="Your name" required>
+              </div>
+              <div>
+                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactEmail">Email</label>
+                <input class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactEmail" type="email" placeholder="hello@domain.com" required>
+              </div>
+              <div>
+                <label class="block text-[0.6rem] font-bold uppercase tracking-[0.12em] text-black/60" for="contactMessage">Message</label>
+                <textarea class="w-full border-b border-black/20 bg-transparent py-2 text-sm outline-none focus:border-[var(--wine)]" id="contactMessage" rows="4" placeholder="Tell us what's on your mind..."></textarea>
+              </div>
+              <button class="button-primary w-fit" type="submit">Send message <span aria-hidden="true">&#8594;</span></button>
+              <p class="text-[#6c2732] text-sm mt-2" id="contactMessageStatus"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer section pb-6">
+    <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="eyebrow text-[#f2b596]">Yeras Tibeb</p>
+          <h2>Wear the story.</h2>
+          <p>Thoughtful clothing for people who know that the best things take time.</p>
+        </div>
+        <div>
+          <p class="footer-heading">Explore</p>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <p class="footer-heading">Stay close</p>
+          <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
+          <form class="newsletter-form flex border-b border-white/45 mt-3" id="newsletterForm">
+            <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
+            <button class="text-[#f2b596] text-xs font-bold uppercase tracking-[0.1em]" type="submit">Join</button>
+          </form>
+          <p class="newsletter-message text-[#f2b596] text-xs mt-2" id="newsletterMessage"></p>
+        </div>
+      </div>
+      <div class="footer-bottom"><span>Yeras Tibeb · Addis Ababa</span><span>Crafted with care · 2024</span></div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    // Cart count
+    let cart = JSON.parse(localStorage.getItem('cart') || '[]');
+    function updateCartCount() {
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cartCount').textContent = count;
+    }
+    updateCartCount();
+
+    document.getElementById('cartButton').addEventListener('click', () => { window.location.href = 'shop.html'; });
+
+    document.getElementById('menuButton').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('is-open');
+    });
+    document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.remove('is-open');
+    }));
+
+    window.addEventListener('scroll', () => {
+      document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    document.getElementById('newsletterForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('newsletterMessage').textContent = 'You are on the list. Welcome in.';
+      e.target.reset();
+    });
+
+    document.getElementById('contactForm').addEventListener('submit', e => {
+      e.preventDefault();
+      document.getElementById('contactMessageStatus').textContent = 'Your message has been sent. We\'ll reply within 2 days.';
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
