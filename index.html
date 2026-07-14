@@ -58,6 +58,7 @@
     .nav-shell { 
       border-bottom: 1px solid rgba(248, 245, 237, 0.12);
       padding: 10px 0;
+      background: transparent;
     }
     .nav-link {
       position: relative;
@@ -81,29 +82,50 @@
     }
     .nav-link:hover::after { right: 0; }
     
-    /* MASSIVE LOGO - FULL WIDTH */
-    .logo-wrapper {
+    /* LOGO WITH TEXT - YERAS TIBEB */
+    .brand-logo {
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      gap: 16px;
+      text-decoration: none;
     }
-    .logo-img {
-      height: 95px;
+    .brand-logo .logo-img {
+      height: 60px;
       width: auto;
-      max-width: 400px;
-      border-radius: 16px;
+      max-width: 200px;
       object-fit: contain;
-      filter: brightness(1.05) contrast(1.05);
-      box-shadow: 0 6px 35px rgba(0,0,0,0.4);
-      border: 3px solid rgba(255,255,255,0.3);
+      filter: drop-shadow(0 2px 12px rgba(0,0,0,0.2));
       transition: all 0.3s ease;
-      background: rgba(255,255,255,0.1);
-      padding: 10px 18px;
+      border-radius: 8px;
     }
-    .logo-img:hover {
+    .brand-logo .logo-img:hover {
       transform: scale(1.04);
-      border-color: var(--gold);
-      box-shadow: 0 6px 45px rgba(201,168,76,0.45);
+      filter: drop-shadow(0 4px 20px rgba(201,168,76,0.3));
+    }
+    .brand-logo .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      border-left: 2px solid rgba(255,255,255,0.2);
+      padding-left: 16px;
+    }
+    .brand-logo .logo-text .main {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.06em;
+    }
+    .brand-logo .logo-text .main span {
+      color: var(--gold);
+    }
+    .brand-logo .logo-text .sub {
+      font-size: 0.55rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      margin-top: 2px;
     }
     
     .icon-button {
@@ -522,24 +544,31 @@
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
     .footer-brand .footer-logo {
-      height: 85px;
-      width: auto;
-      max-width: 320px;
-      border-radius: 14px;
-      object-fit: contain;
-      border: 2.5px solid rgba(255,255,255,0.15);
-      padding: 8px 16px;
-      background: rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      gap: 12px;
       margin-bottom: 0.8rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 28px rgba(0,0,0,0.3);
     }
-    .footer-brand .footer-logo:hover {
-      border-color: var(--gold);
-      transform: scale(1.03);
-      box-shadow: 0 4px 40px rgba(201,168,76,0.3);
+    .footer-brand .footer-logo img {
+      height: 50px;
+      width: auto;
+      max-width: 150px;
+      object-fit: contain;
+      border-radius: 6px;
     }
-    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
+    .footer-brand .footer-logo .ft-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.04em;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 12px;
+    }
+    .footer-brand .footer-logo .ft-text span {
+      color: var(--gold);
+    }
+    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; display: none; }
     .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
     .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
     .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
@@ -605,8 +634,11 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
-      .logo-img { height: 70px; max-width: 280px; padding: 6px 12px; }
-      .footer-brand .footer-logo { height: 65px; max-width: 250px; }
+      .brand-logo .logo-img { height: 48px; max-width: 150px; }
+      .brand-logo .logo-text .main { font-size: 1.2rem; }
+      .brand-logo .logo-text .sub { font-size: 0.45rem; }
+      .footer-brand .footer-logo img { height: 40px; max-width: 120px; }
+      .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
@@ -628,8 +660,12 @@
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .logo-img { height: 55px; max-width: 200px; padding: 5px 10px; }
-      .footer-brand .footer-logo { height: 55px; max-width: 200px; padding: 5px 10px; }
+      .brand-logo .logo-img { height: 38px; max-width: 110px; }
+      .brand-logo .logo-text .main { font-size: 0.9rem; }
+      .brand-logo .logo-text .sub { display: none; }
+      .brand-logo .logo-text { padding-left: 8px; border-left-width: 1px; }
+      .footer-brand .footer-logo img { height: 32px; max-width: 100px; }
+      .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
       .banner-image { height: 220px; }
       .collection-preview .preview-img { height: 220px; }
       .gallery-grid { gap: 5px; }
@@ -652,9 +688,11 @@
     </div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-2 lg:px-10">
-        <a class="flex items-center" href="index.html">
-          <div class="logo-wrapper">
-            <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+        <a class="brand-logo" href="index.html">
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+          <div class="logo-text">
+            <span class="main">YERAS <span>TIBEB</span></span>
+            <span class="sub">Wear the story</span>
           </div>
         </a>
         <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
@@ -1104,9 +1142,10 @@
     <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="1.jpg" alt="YERAS TIBEB" class="footer-logo" onerror="this.style.display='none';" />
-          <p class="eyebrow text-[var(--gold)]">Yeras Tibeb</p>
-          <h2>Wear the story.</h2>
+          <div class="footer-logo">
+            <img src="1.jpg" alt="YERAS TIBEB" onerror="this.style.display='none';" />
+            <span class="ft-text">YERAS <span>TIBEB</span></span>
+          </div>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
           <div class="flex gap-3 mt-4">
             <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
