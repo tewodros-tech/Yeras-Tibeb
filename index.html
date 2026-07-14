@@ -77,23 +77,24 @@
     }
     .nav-link:hover::after { right: 0; }
     
+    /* LARGER VISIBLE LOGO */
     .logo-img {
-      height: 60px;
+      height: 75px;
       width: auto;
-      max-width: 200px;
-      border-radius: 10px;
+      max-width: 240px;
+      border-radius: 12px;
       object-fit: contain;
       filter: brightness(1.05) contrast(1.05);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-      border: 2px solid rgba(255,255,255,0.2);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+      border: 2px solid rgba(255,255,255,0.25);
       transition: all 0.3s ease;
       background: rgba(255,255,255,0.08);
-      padding: 4px;
+      padding: 5px;
     }
     .logo-img:hover {
       transform: scale(1.05);
       border-color: var(--gold);
-      box-shadow: 0 4px 25px rgba(201,168,76,0.3);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.35);
     }
     
     .icon-button {
@@ -310,7 +311,7 @@
       border-radius: 5px;
     }
 
-    /* Image Gallery Grid - FULL SIZE FIXED */
+    /* Image Gallery Grid */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -392,7 +393,7 @@
       display: block;
     }
 
-    /* Collection Preview - FULL SIZE FIXED */
+    /* Collection Preview */
     .collection-preview {
       background: white;
       border-radius: 12px;
@@ -416,24 +417,35 @@
       padding: 1.2rem 1.2rem 1.5rem;
     }
 
-    /* Stats */
+    /* Stats - REMOVED NUMBERS */
     .stat-card {
       text-align: center;
-      padding: 1.5rem;
+      padding: 1.8rem 1.5rem;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+      transition: all 0.3s ease;
     }
-    .stat-number {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.5rem;
-      font-weight: 600;
+    .stat-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    }
+    .stat-icon {
+      font-size: 2.5rem;
       color: var(--coral);
-      line-height: 1;
+      margin-bottom: 0.5rem;
+      display: block;
     }
     .stat-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--ink);
+      letter-spacing: 0.04em;
+    }
+    .stat-sub {
       font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
       color: rgba(30,24,24,0.5);
-      margin-top: 0.3rem;
+      margin-top: 0.2rem;
     }
 
     /* Testimonials */
@@ -479,7 +491,7 @@
       border-radius: 50%;
     }
 
-    /* Instagram Feed - FULL SIZE FIXED */
+    /* Instagram Feed */
     .instagram-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -501,20 +513,22 @@
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
     .footer-brand .footer-logo {
-      height: 65px;
+      height: 80px;
       width: auto;
-      max-width: 220px;
-      border-radius: 10px;
+      max-width: 250px;
+      border-radius: 12px;
       object-fit: contain;
-      border: 2px solid rgba(255,255,255,0.12);
-      padding: 4px;
+      border: 2px solid rgba(255,255,255,0.15);
+      padding: 5px;
       background: rgba(255,255,255,0.05);
       margin-bottom: 0.8rem;
       transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
     }
     .footer-brand .footer-logo:hover {
       border-color: var(--gold);
       transform: scale(1.02);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.2);
     }
     .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
     .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
@@ -541,7 +555,7 @@
       transform: translateY(0);
     }
 
-    /* Full-width banner - FULL SIZE FIXED */
+    /* Full-width banner */
     .banner-image {
       width: 100%;
       height: 500px;
@@ -582,8 +596,8 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
-      .logo-img { height: 48px; max-width: 160px; }
-      .footer-brand .footer-logo { height: 50px; max-width: 180px; }
+      .logo-img { height: 60px; max-width: 180px; }
+      .footer-brand .footer-logo { height: 65px; max-width: 200px; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
@@ -600,11 +614,13 @@
       .hero-actions a { width: fit-content; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
-      .stat-number { font-size: 2.5rem; }
+      .stat-card { padding: 1.2rem; }
+      .stat-icon { font-size: 2rem; }
+      .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .logo-img { height: 40px; max-width: 130px; padding: 3px; }
-      .footer-brand .footer-logo { height: 42px; max-width: 150px; }
+      .logo-img { height: 50px; max-width: 150px; padding: 4px; }
+      .footer-brand .footer-logo { height: 55px; max-width: 170px; }
       .banner-image { height: 220px; }
       .collection-preview .preview-img { height: 220px; }
       .gallery-grid { gap: 5px; }
@@ -689,6 +705,34 @@
       </div>
     </section>
 
+    <!-- STATS SECTION - REMOVED NUMBERS -->
+    <section class="section bg-white">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div class="stat-card reveal">
+            <span class="stat-icon"><i class="fas fa-smile"></i></span>
+            <div class="stat-label">Happy Customers</div>
+            <div class="stat-sub">Across the globe</div>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-icon"><i class="fas fa-hands"></i></span>
+            <div class="stat-label">Master Weavers</div>
+            <div class="stat-sub">Preserving heritage</div>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-icon"><i class="fas fa-heart"></i></span>
+            <div class="stat-label">Handcrafted</div>
+            <div class="stat-sub">With love & care</div>
+          </div>
+          <div class="stat-card reveal">
+            <span class="stat-icon"><i class="fas fa-star"></i></span>
+            <div class="stat-label">Customer Rating</div>
+            <div class="stat-sub">Excellence guaranteed</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- SLIDESHOW -->
     <section style="background: var(--sand); padding-top: 2rem;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -743,30 +787,6 @@
           <button class="slideshow-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
           <button class="slideshow-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
           <div class="slideshow-dots" id="dots"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS SECTION -->
-    <section class="section bg-white">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="stat-card reveal">
-            <div class="stat-number">500+</div>
-            <div class="stat-label">Happy Customers</div>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number">12</div>
-            <div class="stat-label">Master Weavers</div>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number">100%</div>
-            <div class="stat-label">Handcrafted</div>
-          </div>
-          <div class="stat-card reveal">
-            <div class="stat-number">4.9★</div>
-            <div class="stat-label">Customer Rating</div>
-          </div>
         </div>
       </div>
     </section>
@@ -849,7 +869,7 @@
       </div>
     </section>
 
-    <!-- COLLECTION PREVIEW - FIXED: Larger, properly fitted images -->
+    <!-- COLLECTION PREVIEW -->
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
@@ -1176,7 +1196,6 @@
     const totalSlides = document.querySelectorAll('.slide').length;
 
     function initSlideshow() {
-      // Create dots
       dotsContainer.innerHTML = '';
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('div');
@@ -1191,7 +1210,6 @@
       
       startAutoSlide();
       
-      // Pause on hover
       const container = document.getElementById('slideshow');
       container.addEventListener('mouseenter', stopAutoSlide);
       container.addEventListener('mouseleave', startAutoSlide);
