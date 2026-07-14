@@ -77,7 +77,6 @@
     }
     .nav-link:hover::after { right: 0; }
     
-    /* LARGE VISIBLE LOGO */
     .logo-img {
       height: 60px;
       width: auto;
@@ -178,7 +177,7 @@
       inset: 0;
       background-image: url('54.jpg');
       background-size: cover;
-      background-position: center 28%;
+      background-position: center center;
       transform: scale(1.02);
       animation: heroBreath 14s ease-out both;
     }
@@ -216,16 +215,111 @@
       border: 1px solid rgba(255,255,255,0.1);
     }
 
-    /* Image Gallery Grid - FIXED: Images fit perfectly */
+    /* SLIDESHOW */
+    .slideshow-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      aspect-ratio: 16/9;
+      background: var(--wine-deep);
+    }
+    .slideshow-container .slides {
+      display: flex;
+      transition: transform 0.8s cubic-bezier(.2,.8,.2,1);
+      height: 100%;
+    }
+    .slideshow-container .slide {
+      min-width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .slideshow-container .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center center;
+    }
+    .slideshow-container .slide .slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(26,14,17,0.6) 0%, transparent 60%);
+      display: flex;
+      align-items: center;
+      padding: 3rem;
+    }
+    .slideshow-container .slide .slide-overlay h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 4rem);
+      color: white;
+      max-width: 500px;
+      line-height: 1.1;
+    }
+    .slideshow-container .slide .slide-overlay h2 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+    .slideshow-container .slide .slide-overlay p {
+      color: rgba(255,255,255,0.7);
+      margin-top: 0.5rem;
+      font-size: 1rem;
+    }
+    .slideshow-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: white;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 10;
+      display: grid;
+      place-items: center;
+    }
+    .slideshow-btn:hover {
+      background: rgba(255,255,255,0.3);
+      transform: translateY(-50%) scale(1.05);
+    }
+    .slideshow-btn.prev { left: 20px; }
+    .slideshow-btn.next { right: 20px; }
+    .slideshow-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+    .slideshow-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .slideshow-dots .dot.active {
+      background: var(--gold);
+      width: 30px;
+      border-radius: 5px;
+    }
+
+    /* Image Gallery Grid - FULL SIZE FIXED */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 10px;
+      gap: 12px;
     }
     .gallery-grid .gallery-item {
       position: relative;
       overflow: hidden;
-      border-radius: 10px;
+      border-radius: 12px;
       aspect-ratio: 1 / 1;
       cursor: pointer;
       background: #ddd;
@@ -234,6 +328,7 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center center;
       transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
     }
     .gallery-grid .gallery-item:hover img {
@@ -297,7 +392,7 @@
       display: block;
     }
 
-    /* Collection Preview - FIXED: Images fit */
+    /* Collection Preview - FULL SIZE FIXED */
     .collection-preview {
       background: white;
       border-radius: 12px;
@@ -309,13 +404,17 @@
       transform: translateY(-6px);
       box-shadow: 0 12px 40px rgba(0,0,0,0.08);
     }
-    .collection-preview img {
+    .collection-preview .preview-img {
       width: 100%;
-      height: 320px;
+      height: 340px;
       object-fit: cover;
+      object-position: center center;
       transition: transform 0.6s ease;
     }
-    .collection-preview:hover img { transform: scale(1.04); }
+    .collection-preview:hover .preview-img { transform: scale(1.04); }
+    .collection-preview .p-4 {
+      padding: 1.2rem 1.2rem 1.5rem;
+    }
 
     /* Stats */
     .stat-card {
@@ -380,21 +479,22 @@
       border-radius: 50%;
     }
 
-    /* Instagram Feed - FIXED: Images fit */
+    /* Instagram Feed - FULL SIZE FIXED */
     .instagram-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
-      gap: 6px;
+      gap: 8px;
     }
-    .instagram-grid img {
+    .instagram-grid .insta-img {
       width: 100%;
       aspect-ratio: 1 / 1;
       object-fit: cover;
+      object-position: center center;
       transition: transform 0.3s ease;
       cursor: pointer;
-      border-radius: 6px;
+      border-radius: 8px;
     }
-    .instagram-grid img:hover { transform: scale(1.04); }
+    .instagram-grid .insta-img:hover { transform: scale(1.04); }
 
     /* Footer */
     .footer { background: var(--ink); color: var(--linen); }
@@ -441,31 +541,30 @@
       transform: translateY(0);
     }
 
-    /* Full-width banner image - FIXED: fits properly */
+    /* Full-width banner - FULL SIZE FIXED */
     .banner-image {
       width: 100%;
       height: 500px;
       object-fit: cover;
+      object-position: center center;
       border-radius: 12px;
     }
-
-    /* Gallery row images - FIXED: fit properly */
     .gallery-row-img {
       width: 100%;
       height: 280px;
       object-fit: cover;
+      object-position: center center;
       border-radius: 10px;
       transition: transform 0.5s ease;
     }
     .gallery-row-img:hover {
       transform: scale(1.04);
     }
-
-    /* Final banner images - FIXED: fit properly */
     .final-banner-img {
       width: 100%;
       height: 300px;
       object-fit: cover;
+      object-position: center center;
       border-radius: 10px;
       transition: transform 0.5s ease;
     }
@@ -486,7 +585,7 @@
       .logo-img { height: 48px; max-width: 160px; }
       .footer-brand .footer-logo { height: 50px; max-width: 180px; }
       .banner-image { height: 350px; }
-      .collection-preview img { height: 250px; }
+      .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
       .final-banner-img { height: 220px; }
     }
@@ -507,10 +606,15 @@
       .logo-img { height: 40px; max-width: 130px; padding: 3px; }
       .footer-brand .footer-logo { height: 42px; max-width: 150px; }
       .banner-image { height: 220px; }
-      .collection-preview img { height: 200px; }
+      .collection-preview .preview-img { height: 220px; }
       .gallery-grid { gap: 5px; }
       .gallery-row-img { height: 150px; }
       .final-banner-img { height: 160px; }
+      .slideshow-container .slide .slide-overlay { padding: 1.5rem; }
+      .slideshow-container .slide .slide-overlay h2 { font-size: 1.5rem; }
+      .slideshow-btn { width: 32px; height: 32px; font-size: 0.8rem; }
+      .slideshow-btn.prev { left: 8px; }
+      .slideshow-btn.next { right: 8px; }
     }
   </style>
 </head>
@@ -585,6 +689,64 @@
       </div>
     </section>
 
+    <!-- SLIDESHOW -->
+    <section style="background: var(--sand); padding-top: 2rem;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="slideshow-container reveal" id="slideshow">
+          <div class="slides" id="slides">
+            <div class="slide">
+              <img src="54.jpg" alt="YERAS TIBEB Collection" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Handwoven <em>with love</em></h2>
+                  <p>Every piece tells a story of Ethiopian heritage</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="51.jpg" alt="Ethiopian Textiles" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Timeless <em>craftsmanship</em></h2>
+                  <p>Ancient techniques meet modern silhouettes</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="52.jpg" alt="YERAS TIBEB Fashion" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Wear the <em>story</em></h2>
+                  <p>Each thread carries a piece of Ethiopia</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="55.jpg" alt="Ethiopian Weaving" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Preserving <em>heritage</em></h2>
+                  <p>Supporting master weavers across Ethiopia</p>
+                </div>
+              </div>
+            </div>
+            <div class="slide">
+              <img src="57.jpg" alt="YERAS TIBEB Collection" />
+              <div class="slide-overlay">
+                <div>
+                  <h2>Modern <em>Ethiopian</em></h2>
+                  <p>Contemporary fashion rooted in tradition</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="slideshow-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
+          <button class="slideshow-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+          <div class="slideshow-dots" id="dots"></div>
+        </div>
+      </div>
+    </section>
+
     <!-- STATS SECTION -->
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -609,7 +771,7 @@
       </div>
     </section>
 
-    <!-- GALLERY SECTION - FIXED: Images now fit perfectly -->
+    <!-- GALLERY SECTION -->
     <section class="section" style="background: var(--sand);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
@@ -619,31 +781,31 @@
         </div>
         <div class="gallery-grid">
           <div class="gallery-item reveal">
-            <img src="54.jpg" alt="Ethiopian weaving" loading="lazy" />
+            <img src="53.jpg" alt="Ethiopian weaving" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-heart mr-1"></i> Heritage</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="51.jpg" alt="Traditional textile" loading="lazy" />
+            <img src="56.jpg" alt="Traditional textile" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-hands mr-1"></i> Craft</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="52.jpg" alt="Handwoven fabric" loading="lazy" />
+            <img src="58.jpg" alt="Handwoven fabric" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-palette mr-1"></i> Art</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="53.jpg" alt="Ethiopian culture" loading="lazy" />
+            <img src="59.jpg" alt="Ethiopian culture" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-flag mr-1"></i> Culture</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="55.jpg" alt="Weaving process" loading="lazy" />
+            <img src="60.jpg" alt="Weaving process" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-spinner mr-1"></i> Process</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="56.jpg" alt="Textile detail" loading="lazy" />
+            <img src="61.jpg" alt="Textile detail" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-magnifying-glass mr-1"></i> Detail</span></div>
           </div>
           <div class="gallery-item reveal">
-            <img src="57.jpg" alt="Ethiopian fashion" loading="lazy" />
+            <img src="62.jpg" alt="Ethiopian fashion" loading="lazy" />
             <div class="overlay"><span><i class="fas fa-tshirt mr-1"></i> Fashion</span></div>
           </div>
         </div>
@@ -682,12 +844,12 @@
     <section class="section" style="background: var(--sand); padding: 0;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="reveal">
-          <img src="58.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" />
+          <img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" />
         </div>
       </div>
     </section>
 
-    <!-- COLLECTION PREVIEW -->
+    <!-- COLLECTION PREVIEW - FIXED: Larger, properly fitted images -->
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
@@ -697,46 +859,46 @@
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <div class="collection-preview reveal">
-            <img src="59.jpg" alt="The Segen Dress" loading="lazy" />
+            <img src="65.jpg" alt="The Segen Dress" class="preview-img" loading="lazy" />
             <div class="p-4">
               <h4 class="font-display text-lg">The Segen Dress</h4>
               <p class="text-sm text-black/50">Handloom cotton · coral</p>
               <div class="flex items-center justify-between mt-2">
                 <span class="font-bold text-[var(--wine)]">$248</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
               </div>
             </div>
           </div>
           <div class="collection-preview reveal">
-            <img src="60.jpg" alt="The Addis Wrap" loading="lazy" />
+            <img src="66.jpg" alt="The Addis Wrap" class="preview-img" loading="lazy" />
             <div class="p-4">
               <h4 class="font-display text-lg">The Addis Wrap</h4>
               <p class="text-sm text-black/50">Hand-spun cotton · indigo</p>
               <div class="flex items-center justify-between mt-2">
                 <span class="font-bold text-[var(--wine)]">$165</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
               </div>
             </div>
           </div>
           <div class="collection-preview reveal">
-            <img src="61.jpg" alt="The Simien Dress" loading="lazy" />
+            <img src="67.jpg" alt="The Simien Dress" class="preview-img" loading="lazy" />
             <div class="p-4">
               <h4 class="font-display text-lg">The Simien Dress</h4>
               <p class="text-sm text-black/50">Organic cotton · ivory</p>
               <div class="flex items-center justify-between mt-2">
                 <span class="font-bold text-[var(--wine)]">$220</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
               </div>
             </div>
           </div>
           <div class="collection-preview reveal">
-            <img src="62.jpg" alt="The Wollo Shawl" loading="lazy" />
+            <img src="68.jpg" alt="The Wollo Shawl" class="preview-img" loading="lazy" />
             <div class="p-4">
               <h4 class="font-display text-lg">The Wollo Shawl</h4>
               <p class="text-sm text-black/50">Handwoven wool · earth</p>
               <div class="flex items-center justify-between mt-2">
                 <span class="font-bold text-[var(--wine)]">$190</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm">Shop now →</a>
+                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
               </div>
             </div>
           </div>
@@ -775,9 +937,9 @@
           <div class="relative reveal">
             <div class="aspect-[4/3] overflow-hidden rounded-lg">
               <img 
-                src="64.jpg" 
+                src="69.jpg" 
                 alt="Ethiopian weaving tradition" 
-                class="w-full h-full object-cover"
+                class="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>
@@ -792,21 +954,21 @@
       </div>
     </section>
 
-    <!-- ADDITIONAL GALLERY ROW - FIXED: Images fit properly -->
+    <!-- ADDITIONAL GALLERY ROW -->
     <section class="section" style="background: var(--sand);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
           <div class="reveal overflow-hidden rounded-lg">
-            <img src="65.jpg" alt="Ethiopian textile" class="gallery-row-img" loading="lazy" />
+            <img src="70.jpg" alt="Ethiopian textile" class="gallery-row-img" loading="lazy" />
           </div>
           <div class="reveal overflow-hidden rounded-lg">
-            <img src="66.jpg" alt="Traditional weaving" class="gallery-row-img" loading="lazy" />
+            <img src="71.jpg" alt="Traditional weaving" class="gallery-row-img" loading="lazy" />
           </div>
           <div class="reveal overflow-hidden rounded-lg">
-            <img src="67.jpg" alt="Handwoven fabric" class="gallery-row-img" loading="lazy" />
+            <img src="72.jpg" alt="Handwoven fabric" class="gallery-row-img" loading="lazy" />
           </div>
           <div class="reveal overflow-hidden rounded-lg">
-            <img src="68.jpg" alt="Ethiopian culture" class="gallery-row-img" loading="lazy" />
+            <img src="73.jpg" alt="Ethiopian culture" class="gallery-row-img" loading="lazy" />
           </div>
         </div>
       </div>
@@ -848,7 +1010,7 @@
       </div>
     </section>
 
-    <!-- INSTAGRAM FEED - FIXED: Images fit properly -->
+    <!-- INSTAGRAM FEED -->
     <section class="section" style="background: var(--sand);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-10 reveal">
@@ -857,12 +1019,12 @@
           <p class="mt-2 text-black/60">Join our community and see the stories behind the stitches.</p>
         </div>
         <div class="instagram-grid">
-          <img src="69.jpg" alt="Instagram feed" loading="lazy" />
-          <img src="70.jpg" alt="Instagram feed" loading="lazy" />
-          <img src="71.jpg" alt="Instagram feed" loading="lazy" />
-          <img src="72.jpg" alt="Instagram feed" loading="lazy" />
-          <img src="73.jpg" alt="Instagram feed" loading="lazy" />
-          <img src="74.jpg" alt="Instagram feed" loading="lazy" />
+          <img src="74.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
+          <img src="78.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
+          <img src="80.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
+          <img src="51.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
+          <img src="52.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
+          <img src="53.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
         </div>
         <div class="text-center mt-6 reveal">
           <a href="#" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all text-sm uppercase tracking-[0.1em]">
@@ -896,13 +1058,13 @@
       </div>
     </section>
 
-    <!-- FINAL GALLERY BANNER - FIXED: Images fit properly -->
+    <!-- FINAL GALLERY BANNER -->
     <section class="section" style="background: var(--sand); padding: 0;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="grid gap-4 grid-cols-2 md:grid-cols-3 reveal">
-          <img src="78.jpg" alt="Ethiopian fashion" class="final-banner-img" loading="lazy" />
-          <img src="80.jpg" alt="Traditional textile" class="final-banner-img" loading="lazy" />
-          <img src="52.jpg" alt="Handwoven fabric" class="final-banner-img hidden md:block" loading="lazy" />
+          <img src="55.jpg" alt="Ethiopian fashion" class="final-banner-img" loading="lazy" />
+          <img src="56.jpg" alt="Traditional textile" class="final-banner-img" loading="lazy" />
+          <img src="57.jpg" alt="Handwoven fabric" class="final-banner-img hidden md:block" loading="lazy" />
         </div>
       </div>
     </section>
@@ -1005,6 +1167,55 @@
       el.style.transitionDelay = `${Math.min(i * 60, 400)}ms`;
       revealObserver.observe(el);
     });
+
+    // SLIDESHOW
+    let slideIndex = 0;
+    let slideInterval;
+    const slides = document.getElementById('slides');
+    const dotsContainer = document.getElementById('dots');
+    const totalSlides = document.querySelectorAll('.slide').length;
+
+    function initSlideshow() {
+      // Create dots
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < totalSlides; i++) {
+        const dot = document.createElement('div');
+        dot.className = `dot ${i === 0 ? 'active' : ''}`;
+        dot.dataset.index = i;
+        dot.addEventListener('click', () => goToSlide(i));
+        dotsContainer.appendChild(dot);
+      }
+
+      document.getElementById('prevSlide').addEventListener('click', prevSlide);
+      document.getElementById('nextSlide').addEventListener('click', nextSlide);
+      
+      startAutoSlide();
+      
+      // Pause on hover
+      const container = document.getElementById('slideshow');
+      container.addEventListener('mouseenter', stopAutoSlide);
+      container.addEventListener('mouseleave', startAutoSlide);
+    }
+
+    function goToSlide(index) {
+      slideIndex = (index + totalSlides) % totalSlides;
+      slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+      
+      document.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === slideIndex);
+      });
+    }
+
+    function nextSlide() { goToSlide(slideIndex + 1); }
+    function prevSlide() { goToSlide(slideIndex - 1); }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    function stopAutoSlide() { clearInterval(slideInterval); }
+
+    initSlideshow();
   </script>
 </body>
 </html>
