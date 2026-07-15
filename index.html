@@ -57,7 +57,7 @@
     }
     .nav-shell { 
       border-bottom: 1px solid rgba(248, 245, 237, 0.12);
-      padding: 10px 0;
+      padding: 8px 0;
       background: transparent;
     }
     .nav-link {
@@ -82,17 +82,17 @@
     }
     .nav-link:hover::after { right: 0; }
     
-    /* LOGO WITH TEXT - YERAS TIBEB */
+    /* LOGO IN HEADER */
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 14px;
       text-decoration: none;
     }
     .brand-logo .logo-img {
-      height: 60px;
+      height: 50px;
       width: auto;
-      max-width: 200px;
+      max-width: 160px;
       object-fit: contain;
       filter: drop-shadow(0 2px 12px rgba(0,0,0,0.2));
       transition: all 0.3s ease;
@@ -107,11 +107,11 @@
       flex-direction: column;
       line-height: 1;
       border-left: 2px solid rgba(255,255,255,0.2);
-      padding-left: 16px;
+      padding-left: 14px;
     }
     .brand-logo .logo-text .main {
       font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-weight: 700;
       color: white;
       letter-spacing: 0.06em;
@@ -120,11 +120,11 @@
       color: var(--gold);
     }
     .brand-logo .logo-text .sub {
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       font-weight: 400;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.4);
       margin-top: 2px;
     }
     
@@ -193,7 +193,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO */
+    /* HERO - WITH LOGO AS HEADLINE */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -220,20 +220,72 @@
       background: linear-gradient(90deg, rgba(26,14,17,0.85) 0%, rgba(26,14,17,0.55) 40%, rgba(26,14,17,0.15) 80%),
                   linear-gradient(0deg, rgba(24,12,15,0.8) 0%, rgba(24,12,15,0.05) 55%);
     }
-    .hero-content { position: relative; z-index: 1; width: 100%; padding-bottom: clamp(4.5rem, 12vh, 8rem); }
-    .hero-kicker { color: var(--gold); animation: riseIn 800ms 80ms both; }
-    .hero-brand {
-      margin: 1.1rem 0 1rem;
-      font-size: clamp(4rem, 12vw, 10rem);
-      line-height: 0.82;
-      letter-spacing: -0.075em;
-      font-weight: 500;
-      max-width: 900px;
-      animation: riseIn 900ms 160ms both;
+    .hero-content { 
+      position: relative; 
+      z-index: 1; 
+      width: 100%; 
+      padding-bottom: clamp(4.5rem, 12vh, 8rem); 
     }
-    .hero-brand em { font-weight: 400; color: var(--gold); }
-    .hero-copy { max-width: 440px; color: rgba(248,245,237,0.85); line-height: 1.7; font-size: 1.05rem; animation: riseIn 800ms 290ms both; }
-    .hero-actions { animation: riseIn 800ms 390ms both; }
+    
+    /* HERO LOGO - YERAS TIBEB */
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 1.5rem;
+      animation: riseIn 900ms 100ms both;
+    }
+    .hero-logo .hero-logo-img {
+      height: 80px;
+      width: auto;
+      max-width: 280px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
+      border-radius: 12px;
+      background: rgba(255,255,255,0.05);
+      padding: 4px 8px;
+    }
+    .hero-logo .hero-logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      border-left: 2px solid rgba(255,255,255,0.15);
+      padding-left: 20px;
+    }
+    .hero-logo .hero-logo-text .main {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+    }
+    .hero-logo .hero-logo-text .main span {
+      color: var(--gold);
+    }
+    .hero-logo .hero-logo-text .sub {
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      margin-top: 4px;
+    }
+    
+    .hero-kicker { 
+      color: var(--gold); 
+      animation: riseIn 800ms 80ms both; 
+    }
+    .hero-copy { 
+      max-width: 480px; 
+      color: rgba(248,245,237,0.85); 
+      line-height: 1.7; 
+      font-size: 1.05rem; 
+      animation: riseIn 800ms 290ms both; 
+    }
+    .hero-actions { 
+      animation: riseIn 800ms 390ms both; 
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -245,6 +297,27 @@
       font-size: 0.65rem;
       letter-spacing: 0.08em;
       border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .trust-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem 2rem;
+      margin-top: 2rem;
+      animation: riseIn 800ms 450ms both;
+    }
+    .trust-badges span {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.5);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .trust-badges span i {
+      color: var(--gold);
+      font-size: 0.8rem;
     }
 
     /* SLIDESHOW */
@@ -550,15 +623,15 @@
       margin-bottom: 0.8rem;
     }
     .footer-brand .footer-logo img {
-      height: 50px;
+      height: 45px;
       width: auto;
-      max-width: 150px;
+      max-width: 140px;
       object-fit: contain;
       border-radius: 6px;
     }
     .footer-brand .footer-logo .ft-text {
       font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       font-weight: 700;
       color: white;
       letter-spacing: 0.04em;
@@ -568,8 +641,7 @@
     .footer-brand .footer-logo .ft-text span {
       color: var(--gold);
     }
-    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; display: none; }
-    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
+    .footer-brand p { color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
     .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
     .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
     .footer-links a:hover { color: white; }
@@ -634,10 +706,14 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
-      .brand-logo .logo-img { height: 48px; max-width: 150px; }
-      .brand-logo .logo-text .main { font-size: 1.2rem; }
-      .brand-logo .logo-text .sub { font-size: 0.45rem; }
-      .footer-brand .footer-logo img { height: 40px; max-width: 120px; }
+      .brand-logo .logo-img { height: 40px; max-width: 130px; }
+      .brand-logo .logo-text .main { font-size: 1rem; }
+      .brand-logo .logo-text .sub { font-size: 0.4rem; }
+      .hero-logo .hero-logo-img { height: 60px; max-width: 200px; }
+      .hero-logo .hero-logo-text .main { font-size: clamp(2rem, 5vw, 3.5rem); }
+      .hero-logo { gap: 16px; }
+      .hero-logo .hero-logo-text { padding-left: 14px; }
+      .footer-brand .footer-logo img { height: 38px; max-width: 120px; }
       .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
@@ -650,9 +726,16 @@
       .hero::before { background-position: 57% center; }
       .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.8), rgba(26,14,17,0.3)), linear-gradient(0deg, rgba(24,12,15,0.85), rgba(24,12,15,0.06) 65%); }
       .hero-content { padding-bottom: 4.2rem; }
-      .hero-brand { font-size: clamp(3.5rem, 18vw, 6rem); }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
+      .hero-logo { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .hero-logo .hero-logo-img { height: 50px; max-width: 160px; }
+      .hero-logo .hero-logo-text { border-left: none; padding-left: 0; }
+      .hero-logo .hero-logo-text .main { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+      .hero-logo .hero-logo-text .sub { font-size: 0.5rem; }
+      .hero-copy { font-size: 0.9rem; }
+      .trust-badges { gap: 0.8rem 1.2rem; }
+      .trust-badges span { font-size: 0.55rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .stat-card { padding: 1.2rem; }
@@ -660,8 +743,8 @@
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .brand-logo .logo-img { height: 38px; max-width: 110px; }
-      .brand-logo .logo-text .main { font-size: 0.9rem; }
+      .brand-logo .logo-img { height: 35px; max-width: 110px; }
+      .brand-logo .logo-text .main { font-size: 0.85rem; }
       .brand-logo .logo-text .sub { display: none; }
       .brand-logo .logo-text { padding-left: 8px; border-left-width: 1px; }
       .footer-brand .footer-logo img { height: 32px; max-width: 100px; }
@@ -721,7 +804,7 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION - WITH LOGO AS HEADLINE -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -729,11 +812,18 @@
             <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
-          <p class="hero-kicker eyebrow">
-            <i class="fas fa-asterisk mr-1" style="font-size:0.4rem;"></i> A new language for heritage
-          </p>
-          <h1 class="hero-brand" id="hero-title">YERAS<br><em>TIBEB</em></h1>
+          
+          <!-- HERO LOGO - YERAS TIBEB -->
+          <div class="hero-logo">
+            <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
+            <div class="hero-logo-text">
+              <span class="main">YERAS<br><span>TIBEB</span></span>
+              <span class="sub">Wear the story</span>
+            </div>
+          </div>
+          
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
+          
           <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
             <a class="button-primary" href="shop.html">
               <i class="fas fa-shopping-bag"></i> Explore the collection
@@ -743,11 +833,12 @@
               <i class="fas fa-users"></i> Meet the makers
             </a>
           </div>
-          <div class="mt-8 flex flex-wrap items-center gap-5 text-xs text-white/50">
-            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Ethically made</span>
-            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Handwoven</span>
-            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Slow fashion</span>
-            <span><i class="fas fa-check-circle text-[var(--gold)] mr-1"></i> Fair trade</span>
+          
+          <div class="trust-badges">
+            <span><i class="fas fa-check-circle"></i> Ethically made</span>
+            <span><i class="fas fa-check-circle"></i> Handwoven</span>
+            <span><i class="fas fa-check-circle"></i> Slow fashion</span>
+            <span><i class="fas fa-check-circle"></i> Fair trade</span>
           </div>
         </div>
       </div>
