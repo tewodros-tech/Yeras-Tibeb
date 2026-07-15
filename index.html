@@ -368,7 +368,7 @@
     }
     .slideshow-dots .dot.active { background: var(--gold); width: 30px; border-radius: 5px; }
 
-    /* GALLERY GRID - FIXED: Images fit perfectly */
+    /* GALLERY GRID */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -446,7 +446,7 @@
       display: block;
     }
 
-    /* COLLECTION PREVIEW - FIXED: Images fit */
+    /* COLLECTION PREVIEW - NO PRICING */
     .collection-preview {
       background: white;
       border-radius: 12px;
@@ -523,7 +523,7 @@
       border-radius: 50%;
     }
 
-    /* INSTAGRAM FEED - FIXED: Images fit */
+    /* INSTAGRAM FEED */
     .instagram-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -588,7 +588,7 @@
     }
     .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* BANNERS - FIXED: Images fit */
+    /* BANNERS */
     .banner-image {
       width: 100%;
       height: 500px;
@@ -813,7 +813,7 @@
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10"><div class="reveal"><img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" /></div></div>
     </section>
 
-    <!-- COLLECTION PREVIEW -->
+    <!-- COLLECTION PREVIEW - NO PRICING -->
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
@@ -822,10 +822,38 @@
           <p class="mt-3 text-black/60 max-w-lg mx-auto">Each garment carries the stories of the hands that made it.</p>
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div class="collection-preview reveal"><img src="65.jpg" alt="The Segen Dress" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Segen Dress</h4><p class="text-sm text-black/50">Handloom cotton · coral</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$248</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
-          <div class="collection-preview reveal"><img src="66.jpg" alt="The Addis Wrap" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Addis Wrap</h4><p class="text-sm text-black/50">Hand-spun cotton · indigo</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$165</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
-          <div class="collection-preview reveal"><img src="67.jpg" alt="The Simien Dress" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Simien Dress</h4><p class="text-sm text-black/50">Organic cotton · ivory</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$220</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
-          <div class="collection-preview reveal"><img src="68.jpg" alt="The Wollo Shawl" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Wollo Shawl</h4><p class="text-sm text-black/50">Handwoven wool · earth</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$190</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
+          <div class="collection-preview reveal">
+            <img src="65.jpg" alt="The Segen Dress" class="preview-img" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Segen Dress</h4>
+              <p class="text-sm text-black/50">Handloom cotton · coral</p>
+              <div class="mt-2"><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div>
+            </div>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="66.jpg" alt="The Addis Wrap" class="preview-img" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Addis Wrap</h4>
+              <p class="text-sm text-black/50">Hand-spun cotton · indigo</p>
+              <div class="mt-2"><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div>
+            </div>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="67.jpg" alt="The Simien Dress" class="preview-img" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Simien Dress</h4>
+              <p class="text-sm text-black/50">Organic cotton · ivory</p>
+              <div class="mt-2"><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div>
+            </div>
+          </div>
+          <div class="collection-preview reveal">
+            <img src="68.jpg" alt="The Wollo Shawl" class="preview-img" loading="lazy" />
+            <div class="p-4">
+              <h4 class="font-display text-lg">The Wollo Shawl</h4>
+              <p class="text-sm text-black/50">Handwoven wool · earth</p>
+              <div class="mt-2"><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div>
+            </div>
+          </div>
         </div>
         <div class="text-center mt-10 reveal"><a href="shop.html" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all">View all pieces <span aria-hidden="true">&#8594;</span></a></div>
       </div>
