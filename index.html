@@ -33,7 +33,7 @@
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
-    /* HEADER - NO ANNOUNCEMENT */
+    /* HEADER */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -51,10 +51,7 @@
       padding: 10px 0;
       background: transparent;
     }
-    .brand-placeholder {
-      width: 20px;
-      height: 20px;
-    }
+    .brand-placeholder { width: 20px; height: 20px; }
     .nav-link {
       position: relative;
       opacity: 0.8;
@@ -77,21 +74,20 @@
     }
     .nav-link:hover::after { right: 0; }
     
-    /* Social Icons in Header */
     .header-social {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .header-social a {
       color: rgba(255,255,255,0.5);
       transition: all 0.3s ease;
-      font-size: 1.1rem;
+      font-size: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
@@ -104,8 +100,8 @@
     }
     .header-social .divider {
       width: 1px;
-      height: 28px;
-      background: rgba(255,255,255,0.15);
+      height: 24px;
+      background: rgba(255,255,255,0.12);
     }
     
     .icon-button {
@@ -207,7 +203,6 @@
       padding-bottom: clamp(4.5rem, 12vh, 8rem); 
     }
     
-    /* HERO - SMALL LOGO */
     .hero-logo-area {
       display: flex;
       flex-direction: column;
@@ -233,9 +228,7 @@
       letter-spacing: 0.04em;
       line-height: 1.05;
     }
-    .hero-logo-area .hero-brand-text span {
-      color: var(--gold);
-    }
+    .hero-logo-area .hero-brand-text span { color: var(--gold); }
     .hero-logo-area .hero-tagline {
       font-size: 0.6rem;
       font-weight: 400;
@@ -245,10 +238,7 @@
       margin-top: 2px;
     }
     
-    .hero-kicker { 
-      color: var(--gold); 
-      animation: riseIn 800ms 80ms both; 
-    }
+    .hero-kicker { color: var(--gold); animation: riseIn 800ms 80ms both; }
     .hero-copy { 
       max-width: 480px; 
       color: rgba(255,255,255,0.8); 
@@ -258,9 +248,7 @@
       margin-top: 0.3rem;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
-    .hero-actions { 
-      animation: riseIn 800ms 390ms both; 
-    }
+    .hero-actions { animation: riseIn 800ms 390ms both; }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -290,10 +278,7 @@
       align-items: center;
       gap: 0.5rem;
     }
-    .trust-badges span i {
-      color: var(--gold);
-      font-size: 0.7rem;
-    }
+    .trust-badges span i { color: var(--gold); font-size: 0.7rem; }
 
     /* SLIDESHOW */
     .slideshow-container {
@@ -334,10 +319,7 @@
       max-width: 500px;
       line-height: 1.1;
     }
-    .slideshow-container .slide .slide-overlay h2 em {
-      color: var(--gold);
-      font-weight: 400;
-    }
+    .slideshow-container .slide .slide-overlay h2 em { color: var(--gold); font-weight: 400; }
     .slideshow-container .slide .slide-overlay p {
       color: rgba(255,255,255,0.7);
       margin-top: 0.5rem;
@@ -384,17 +366,13 @@
       cursor: pointer;
       transition: all 0.3s ease;
     }
-    .slideshow-dots .dot.active {
-      background: var(--gold);
-      width: 30px;
-      border-radius: 5px;
-    }
+    .slideshow-dots .dot.active { background: var(--gold); width: 30px; border-radius: 5px; }
 
-    /* Image Gallery Grid */
+    /* GALLERY GRID - FIXED: Images fit perfectly */
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
+      gap: 14px;
     }
     .gallery-grid .gallery-item {
       position: relative;
@@ -411,9 +389,7 @@
       object-position: center center;
       transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
     }
-    .gallery-grid .gallery-item:hover img {
-      transform: scale(1.06);
-    }
+    .gallery-grid .gallery-item:hover img { transform: scale(1.06); }
     .gallery-grid .gallery-item .overlay {
       position: absolute;
       inset: 0;
@@ -424,9 +400,7 @@
       align-items: flex-end;
       padding: 1rem;
     }
-    .gallery-grid .gallery-item:hover .overlay {
-      opacity: 1;
-    }
+    .gallery-grid .gallery-item:hover .overlay { opacity: 1; }
     .gallery-grid .gallery-item .overlay span {
       color: white;
       font-size: 0.7rem;
@@ -438,7 +412,7 @@
     .gallery-grid .gallery-item:nth-child(4) { grid-column: span 1; }
     .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
 
-    /* Feature Cards */
+    /* FEATURE CARDS */
     .feature-card {
       background: white;
       padding: 2.2rem 1.8rem;
@@ -472,7 +446,7 @@
       display: block;
     }
 
-    /* Collection Preview */
+    /* COLLECTION PREVIEW - FIXED: Images fit */
     .collection-preview {
       background: white;
       border-radius: 12px;
@@ -492,11 +466,9 @@
       transition: transform 0.6s ease;
     }
     .collection-preview:hover .preview-img { transform: scale(1.04); }
-    .collection-preview .p-4 {
-      padding: 1.2rem 1.2rem 1.5rem;
-    }
+    .collection-preview .p-4 { padding: 1.2rem 1.2rem 1.5rem; }
 
-    /* Stats */
+    /* STATS */
     .stat-card {
       text-align: center;
       padding: 1.8rem 1.5rem;
@@ -509,25 +481,11 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .stat-icon {
-      font-size: 2.5rem;
-      color: var(--coral);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .stat-label {
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: 0.04em;
-    }
-    .stat-sub {
-      font-size: 0.75rem;
-      color: rgba(30,24,24,0.5);
-      margin-top: 0.2rem;
-    }
+    .stat-icon { font-size: 2.5rem; color: var(--coral); margin-bottom: 0.5rem; display: block; }
+    .stat-label { font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; }
+    .stat-sub { font-size: 0.75rem; color: rgba(30,24,24,0.5); margin-top: 0.2rem; }
 
-    /* Testimonials */
+    /* TESTIMONIALS */
     .testimonial-card {
       background: white;
       padding: 2rem;
@@ -539,12 +497,7 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .testimonial-card .quote-icon {
-      color: var(--coral);
-      font-size: 2rem;
-      opacity: 0.3;
-      margin-bottom: 0.5rem;
-    }
+    .testimonial-card .quote-icon { color: var(--coral); font-size: 2rem; opacity: 0.3; margin-bottom: 0.5rem; }
     .testimonial-card .quote-text {
       font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
@@ -553,7 +506,7 @@
       line-height: 1.7;
     }
 
-    /* CTA Section */
+    /* CTA */
     .cta-section {
       background: linear-gradient(135deg, var(--wine-deep) 0%, var(--wine) 100%);
       position: relative;
@@ -570,7 +523,7 @@
       border-radius: 50%;
     }
 
-    /* Instagram Feed */
+    /* INSTAGRAM FEED - FIXED: Images fit */
     .instagram-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -587,7 +540,7 @@
     }
     .instagram-grid .insta-img:hover { transform: scale(1.04); }
 
-    /* Footer */
+    /* FOOTER */
     .footer { background: var(--ink); color: var(--linen); }
     .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
     .footer-brand { max-width: 260px; }
@@ -613,9 +566,7 @@
       border-left: 1px solid rgba(255,255,255,0.15);
       padding-left: 12px;
     }
-    .footer-brand .footer-logo .ft-text span {
-      color: var(--gold);
-    }
+    .footer-brand .footer-logo .ft-text span { color: var(--gold); }
     .footer-brand p { color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
     .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
     .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
@@ -635,12 +586,9 @@
       transform: translateY(30px);
       transition: opacity 0.7s cubic-bezier(.2,.8,.2,1), transform 0.7s cubic-bezier(.2,.8,.2,1);
     }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-    /* Full-width banner */
+    /* BANNERS - FIXED: Images fit */
     .banner-image {
       width: 100%;
       height: 500px;
@@ -656,9 +604,7 @@
       border-radius: 10px;
       transition: transform 0.5s ease;
     }
-    .gallery-row-img:hover {
-      transform: scale(1.04);
-    }
+    .gallery-row-img:hover { transform: scale(1.04); }
     .final-banner-img {
       width: 100%;
       height: 300px;
@@ -667,9 +613,7 @@
       border-radius: 10px;
       transition: transform 0.5s ease;
     }
-    .final-banner-img:hover {
-      transform: scale(1.03);
-    }
+    .final-banner-img:hover { transform: scale(1.03); }
 
     @keyframes heroBreath { from { transform: scale(1.08); } to { transform: scale(1.02); } }
     @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -730,34 +674,21 @@
   <header class="site-header" id="siteHeader">
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-2 lg:px-10">
-        <!-- Empty placeholder - no logo -->
         <div class="brand-placeholder"></div>
-        
         <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="shop.html">Shop</a>
           <a class="nav-link" href="about.html">About</a>
           <a class="nav-link" href="contact.html">Contact</a>
         </nav>
-        
         <div class="flex items-center gap-3">
-          <!-- Social Icons -->
           <div class="header-social">
-            <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" aria-label="Facebook">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="https://t.me/+251910103956" target="_blank" aria-label="Telegram">
-              <i class="fab fa-telegram-plane"></i>
-            </a>
-            <a href="https://pin.it/4uNPbwy" target="_blank" aria-label="Pinterest">
-              <i class="fab fa-pinterest-p"></i>
-            </a>
-            <a href="#" target="_blank" aria-label="Instagram">
-              <i class="fab fa-instagram"></i>
-            </a>
+            <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+251910103956" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://pin.it/4uNPbwy" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <span class="divider"></span>
           </div>
-          
           <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
@@ -791,26 +722,16 @@
             <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
-          
-          <!-- HERO - SMALL LOGO -->
           <div class="hero-logo-area">
             <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
             <div class="hero-brand-text">YERAS <span>TIBEB</span></div>
             <div class="hero-tagline">Wear the story</div>
           </div>
-          
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
-          
           <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
-            <a class="button-primary" href="shop.html">
-              <i class="fas fa-shopping-bag"></i> Explore the collection
-              <span aria-hidden="true">&#8594;</span>
-            </a>
-            <a class="button-secondary" href="about.html">
-              <i class="fas fa-users"></i> Meet the makers
-            </a>
+            <a class="button-primary" href="shop.html"><i class="fas fa-shopping-bag"></i> Explore the collection <span aria-hidden="true">&#8594;</span></a>
+            <a class="button-secondary" href="about.html"><i class="fas fa-users"></i> Meet the makers</a>
           </div>
-          
           <div class="trust-badges">
             <span><i class="fas fa-check-circle"></i> Ethically made</span>
             <span><i class="fas fa-check-circle"></i> Handwoven</span>
@@ -825,26 +746,10 @@
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          <div class="stat-card reveal">
-            <span class="stat-icon"><i class="fas fa-smile"></i></span>
-            <div class="stat-label">Happy Customers</div>
-            <div class="stat-sub">Across the globe</div>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-icon"><i class="fas fa-hands"></i></span>
-            <div class="stat-label">Master Weavers</div>
-            <div class="stat-sub">Preserving heritage</div>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-icon"><i class="fas fa-heart"></i></span>
-            <div class="stat-label">Handcrafted</div>
-            <div class="stat-sub">With love & care</div>
-          </div>
-          <div class="stat-card reveal">
-            <span class="stat-icon"><i class="fas fa-star"></i></span>
-            <div class="stat-label">Customer Rating</div>
-            <div class="stat-sub">Excellence guaranteed</div>
-          </div>
+          <div class="stat-card reveal"><span class="stat-icon"><i class="fas fa-smile"></i></span><div class="stat-label">Happy Customers</div><div class="stat-sub">Across the globe</div></div>
+          <div class="stat-card reveal"><span class="stat-icon"><i class="fas fa-hands"></i></span><div class="stat-label">Master Weavers</div><div class="stat-sub">Preserving heritage</div></div>
+          <div class="stat-card reveal"><span class="stat-icon"><i class="fas fa-heart"></i></span><div class="stat-label">Handcrafted</div><div class="stat-sub">With love & care</div></div>
+          <div class="stat-card reveal"><span class="stat-icon"><i class="fas fa-star"></i></span><div class="stat-label">Customer Rating</div><div class="stat-sub">Excellence guaranteed</div></div>
         </div>
       </div>
     </section>
@@ -854,51 +759,11 @@
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="slideshow-container reveal" id="slideshow">
           <div class="slides" id="slides">
-            <div class="slide">
-              <img src="54.jpg" alt="YERAS TIBEB Collection" />
-              <div class="slide-overlay">
-                <div>
-                  <h2>Handwoven <em>with love</em></h2>
-                  <p>Every piece tells a story of Ethiopian heritage</p>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="51.jpg" alt="Ethiopian Textiles" />
-              <div class="slide-overlay">
-                <div>
-                  <h2>Timeless <em>craftsmanship</em></h2>
-                  <p>Ancient techniques meet modern silhouettes</p>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="52.jpg" alt="YERAS TIBEB Fashion" />
-              <div class="slide-overlay">
-                <div>
-                  <h2>Wear the <em>story</em></h2>
-                  <p>Each thread carries a piece of Ethiopia</p>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="55.jpg" alt="Ethiopian Weaving" />
-              <div class="slide-overlay">
-                <div>
-                  <h2>Preserving <em>heritage</em></h2>
-                  <p>Supporting master weavers across Ethiopia</p>
-                </div>
-              </div>
-            </div>
-            <div class="slide">
-              <img src="57.jpg" alt="YERAS TIBEB Collection" />
-              <div class="slide-overlay">
-                <div>
-                  <h2>Modern <em>Ethiopian</em></h2>
-                  <p>Contemporary fashion rooted in tradition</p>
-                </div>
-              </div>
-            </div>
+            <div class="slide"><img src="54.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Handwoven <em>with love</em></h2><p>Every piece tells a story of Ethiopian heritage</p></div></div></div>
+            <div class="slide"><img src="51.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
+            <div class="slide"><img src="52.jpg" alt="YERAS TIBEB Fashion" /><div class="slide-overlay"><div><h2>Wear the <em>story</em></h2><p>Each thread carries a piece of Ethiopia</p></div></div></div>
+            <div class="slide"><img src="55.jpg" alt="Ethiopian Weaving" /><div class="slide-overlay"><div><h2>Preserving <em>heritage</em></h2><p>Supporting master weavers across Ethiopia</p></div></div></div>
+            <div class="slide"><img src="57.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Modern <em>Ethiopian</em></h2><p>Contemporary fashion rooted in tradition</p></div></div></div>
           </div>
           <button class="slideshow-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
           <button class="slideshow-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
@@ -916,34 +781,13 @@
           <p class="mt-3 text-black/60 max-w-lg mx-auto">From the loom to you — every step tells a story.</p>
         </div>
         <div class="gallery-grid">
-          <div class="gallery-item reveal">
-            <img src="53.jpg" alt="Ethiopian weaving" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-heart mr-1"></i> Heritage</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="56.jpg" alt="Traditional textile" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-hands mr-1"></i> Craft</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="58.jpg" alt="Handwoven fabric" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-palette mr-1"></i> Art</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="59.jpg" alt="Ethiopian culture" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-flag mr-1"></i> Culture</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="60.jpg" alt="Weaving process" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-spinner mr-1"></i> Process</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="61.jpg" alt="Textile detail" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-magnifying-glass mr-1"></i> Detail</span></div>
-          </div>
-          <div class="gallery-item reveal">
-            <img src="62.jpg" alt="Ethiopian fashion" loading="lazy" />
-            <div class="overlay"><span><i class="fas fa-tshirt mr-1"></i> Fashion</span></div>
-          </div>
+          <div class="gallery-item reveal"><img src="53.jpg" alt="Ethiopian weaving" loading="lazy" /><div class="overlay"><span><i class="fas fa-heart mr-1"></i> Heritage</span></div></div>
+          <div class="gallery-item reveal"><img src="56.jpg" alt="Traditional textile" loading="lazy" /><div class="overlay"><span><i class="fas fa-hands mr-1"></i> Craft</span></div></div>
+          <div class="gallery-item reveal"><img src="58.jpg" alt="Handwoven fabric" loading="lazy" /><div class="overlay"><span><i class="fas fa-palette mr-1"></i> Art</span></div></div>
+          <div class="gallery-item reveal"><img src="59.jpg" alt="Ethiopian culture" loading="lazy" /><div class="overlay"><span><i class="fas fa-flag mr-1"></i> Culture</span></div></div>
+          <div class="gallery-item reveal"><img src="60.jpg" alt="Weaving process" loading="lazy" /><div class="overlay"><span><i class="fas fa-spinner mr-1"></i> Process</span></div></div>
+          <div class="gallery-item reveal"><img src="61.jpg" alt="Textile detail" loading="lazy" /><div class="overlay"><span><i class="fas fa-magnifying-glass mr-1"></i> Detail</span></div></div>
+          <div class="gallery-item reveal"><img src="62.jpg" alt="Ethiopian fashion" loading="lazy" /><div class="overlay"><span><i class="fas fa-tshirt mr-1"></i> Fashion</span></div></div>
         </div>
       </div>
     </section>
@@ -957,32 +801,16 @@
           <p class="mt-3 text-black/60 max-w-lg mx-auto">Every piece is a collaboration between tradition and modernity.</p>
         </div>
         <div class="grid gap-8 md:grid-cols-3">
-          <div class="feature-card reveal">
-            <span class="icon"><i class="fas fa-hands"></i></span>
-            <h3 class="font-display text-xl mb-2">Handwoven with Care</h3>
-            <p class="text-sm text-black/60 leading-relaxed">Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p>
-          </div>
-          <div class="feature-card reveal">
-            <span class="icon"><i class="fas fa-leaf"></i></span>
-            <h3 class="font-display text-xl mb-2">Sustainable Materials</h3>
-            <p class="text-sm text-black/60 leading-relaxed">We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p>
-          </div>
-          <div class="feature-card reveal">
-            <span class="icon"><i class="fas fa-heart"></i></span>
-            <h3 class="font-display text-xl mb-2">Ethical Fashion</h3>
-            <p class="text-sm text-black/60 leading-relaxed">Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p>
-          </div>
+          <div class="feature-card reveal"><span class="icon"><i class="fas fa-hands"></i></span><h3 class="font-display text-xl mb-2">Handwoven with Care</h3><p class="text-sm text-black/60 leading-relaxed">Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p></div>
+          <div class="feature-card reveal"><span class="icon"><i class="fas fa-leaf"></i></span><h3 class="font-display text-xl mb-2">Sustainable Materials</h3><p class="text-sm text-black/60 leading-relaxed">We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p></div>
+          <div class="feature-card reveal"><span class="icon"><i class="fas fa-heart"></i></span><h3 class="font-display text-xl mb-2">Ethical Fashion</h3><p class="text-sm text-black/60 leading-relaxed">Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p></div>
         </div>
       </div>
     </section>
 
     <!-- FULL WIDTH BANNER -->
     <section class="section" style="background: var(--sand); padding: 0;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="reveal">
-          <img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" />
-        </div>
-      </div>
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10"><div class="reveal"><img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" /></div></div>
     </section>
 
     <!-- COLLECTION PREVIEW -->
@@ -994,56 +822,12 @@
           <p class="mt-3 text-black/60 max-w-lg mx-auto">Each garment carries the stories of the hands that made it.</p>
         </div>
         <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-          <div class="collection-preview reveal">
-            <img src="65.jpg" alt="The Segen Dress" class="preview-img" loading="lazy" />
-            <div class="p-4">
-              <h4 class="font-display text-lg">The Segen Dress</h4>
-              <p class="text-sm text-black/50">Handloom cotton · coral</p>
-              <div class="flex items-center justify-between mt-2">
-                <span class="font-bold text-[var(--wine)]">$248</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
-              </div>
-            </div>
-          </div>
-          <div class="collection-preview reveal">
-            <img src="66.jpg" alt="The Addis Wrap" class="preview-img" loading="lazy" />
-            <div class="p-4">
-              <h4 class="font-display text-lg">The Addis Wrap</h4>
-              <p class="text-sm text-black/50">Hand-spun cotton · indigo</p>
-              <div class="flex items-center justify-between mt-2">
-                <span class="font-bold text-[var(--wine)]">$165</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
-              </div>
-            </div>
-          </div>
-          <div class="collection-preview reveal">
-            <img src="67.jpg" alt="The Simien Dress" class="preview-img" loading="lazy" />
-            <div class="p-4">
-              <h4 class="font-display text-lg">The Simien Dress</h4>
-              <p class="text-sm text-black/50">Organic cotton · ivory</p>
-              <div class="flex items-center justify-between mt-2">
-                <span class="font-bold text-[var(--wine)]">$220</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
-              </div>
-            </div>
-          </div>
-          <div class="collection-preview reveal">
-            <img src="68.jpg" alt="The Wollo Shawl" class="preview-img" loading="lazy" />
-            <div class="p-4">
-              <h4 class="font-display text-lg">The Wollo Shawl</h4>
-              <p class="text-sm text-black/50">Handwoven wool · earth</p>
-              <div class="flex items-center justify-between mt-2">
-                <span class="font-bold text-[var(--wine)]">$190</span>
-                <a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a>
-              </div>
-            </div>
-          </div>
+          <div class="collection-preview reveal"><img src="65.jpg" alt="The Segen Dress" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Segen Dress</h4><p class="text-sm text-black/50">Handloom cotton · coral</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$248</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
+          <div class="collection-preview reveal"><img src="66.jpg" alt="The Addis Wrap" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Addis Wrap</h4><p class="text-sm text-black/50">Hand-spun cotton · indigo</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$165</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
+          <div class="collection-preview reveal"><img src="67.jpg" alt="The Simien Dress" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Simien Dress</h4><p class="text-sm text-black/50">Organic cotton · ivory</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$220</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
+          <div class="collection-preview reveal"><img src="68.jpg" alt="The Wollo Shawl" class="preview-img" loading="lazy" /><div class="p-4"><h4 class="font-display text-lg">The Wollo Shawl</h4><p class="text-sm text-black/50">Handwoven wool · earth</p><div class="flex items-center justify-between mt-2"><span class="font-bold text-[var(--wine)]">$190</span><a href="shop.html" class="text-[var(--coral)] hover:underline text-sm font-semibold">Shop now →</a></div></div></div>
         </div>
-        <div class="text-center mt-10 reveal">
-          <a href="shop.html" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all">
-            View all pieces <span aria-hidden="true">&#8594;</span>
-          </a>
-        </div>
+        <div class="text-center mt-10 reveal"><a href="shop.html" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all">View all pieces <span aria-hidden="true">&#8594;</span></a></div>
       </div>
     </section>
 
@@ -1052,39 +836,16 @@
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="grid gap-12 lg:grid-cols-2 items-center">
           <div class="reveal">
-            <p class="eyebrow text-[var(--gold)]">
-              <i class="fas fa-feather-alt mr-1"></i> Our story
-            </p>
-            <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.05]">
-              The cloth<br><em style="font-weight:400; color:var(--gold);">remembers.</em>
-            </h2>
-            <p class="mt-4 text-white/70 max-w-lg leading-relaxed">
-              Yeras Tibeb means "the beauty of heritage." We work with weavers and makers in Ethiopia to keep the language of handwoven cloth alive, then give it room to move through the world.
-            </p>
-            <p class="mt-3 text-white/50 max-w-lg leading-relaxed">
-              From the highlands of Wollo to the streets of Addis, our pieces are a bridge between past and future — honoring tradition while embracing modern silhouettes.
-            </p>
-            <div class="mt-6 flex flex-wrap gap-4">
-              <a href="about.html" class="inline-flex items-center gap-2 text-[var(--gold)] font-bold text-sm uppercase tracking-[0.1em] hover:text-white transition-all hover:gap-3">
-                Learn more <span aria-hidden="true">&#8594;</span>
-              </a>
-            </div>
+            <p class="eyebrow text-[var(--gold)]"><i class="fas fa-feather-alt mr-1"></i> Our story</p>
+            <h2 class="font-display text-4xl md:text-5xl mt-3 leading-[1.05]">The cloth<br><em style="font-weight:400; color:var(--gold);">remembers.</em></h2>
+            <p class="mt-4 text-white/70 max-w-lg leading-relaxed">Yeras Tibeb means "the beauty of heritage." We work with weavers and makers in Ethiopia to keep the language of handwoven cloth alive, then give it room to move through the world.</p>
+            <p class="mt-3 text-white/50 max-w-lg leading-relaxed">From the highlands of Wollo to the streets of Addis, our pieces are a bridge between past and future — honoring tradition while embracing modern silhouettes.</p>
+            <div class="mt-6 flex flex-wrap gap-4"><a href="about.html" class="inline-flex items-center gap-2 text-[var(--gold)] font-bold text-sm uppercase tracking-[0.1em] hover:text-white transition-all hover:gap-3">Learn more <span aria-hidden="true">&#8594;</span></a></div>
           </div>
           <div class="relative reveal">
-            <div class="aspect-[4/3] overflow-hidden rounded-lg">
-              <img 
-                src="69.jpg" 
-                alt="Ethiopian weaving tradition" 
-                class="w-full h-full object-cover object-center"
-                loading="lazy"
-              />
-            </div>
-            <div class="absolute -bottom-4 -right-4 bg-[var(--gold)] text-[var(--ink)] text-sm font-bold px-5 py-3 rounded-lg shadow-xl">
-              <i class="fas fa-star mr-1"></i> Since 2024
-            </div>
-            <div class="absolute -top-4 -left-4 bg-[var(--coral)] text-white text-xs font-bold px-4 py-2 rounded-lg shadow-lg">
-              <i class="fas fa-hands mr-1"></i> Handwoven
-            </div>
+            <div class="aspect-[4/3] overflow-hidden rounded-lg"><img src="69.jpg" alt="Ethiopian weaving tradition" class="w-full h-full object-cover object-center" loading="lazy" /></div>
+            <div class="absolute -bottom-4 -right-4 bg-[var(--gold)] text-[var(--ink)] text-sm font-bold px-5 py-3 rounded-lg shadow-xl"><i class="fas fa-star mr-1"></i> Since 2024</div>
+            <div class="absolute -top-4 -left-4 bg-[var(--coral)] text-white text-xs font-bold px-4 py-2 rounded-lg shadow-lg"><i class="fas fa-hands mr-1"></i> Handwoven</div>
           </div>
         </div>
       </div>
@@ -1094,18 +855,10 @@
     <section class="section" style="background: var(--sand);">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="grid gap-4 grid-cols-2 md:grid-cols-4">
-          <div class="reveal overflow-hidden rounded-lg">
-            <img src="70.jpg" alt="Ethiopian textile" class="gallery-row-img" loading="lazy" />
-          </div>
-          <div class="reveal overflow-hidden rounded-lg">
-            <img src="71.jpg" alt="Traditional weaving" class="gallery-row-img" loading="lazy" />
-          </div>
-          <div class="reveal overflow-hidden rounded-lg">
-            <img src="72.jpg" alt="Handwoven fabric" class="gallery-row-img" loading="lazy" />
-          </div>
-          <div class="reveal overflow-hidden rounded-lg">
-            <img src="73.jpg" alt="Ethiopian culture" class="gallery-row-img" loading="lazy" />
-          </div>
+          <div class="reveal overflow-hidden rounded-lg"><img src="70.jpg" alt="Ethiopian textile" class="gallery-row-img" loading="lazy" /></div>
+          <div class="reveal overflow-hidden rounded-lg"><img src="71.jpg" alt="Traditional weaving" class="gallery-row-img" loading="lazy" /></div>
+          <div class="reveal overflow-hidden rounded-lg"><img src="72.jpg" alt="Handwoven fabric" class="gallery-row-img" loading="lazy" /></div>
+          <div class="reveal overflow-hidden rounded-lg"><img src="73.jpg" alt="Ethiopian culture" class="gallery-row-img" loading="lazy" /></div>
         </div>
       </div>
     </section>
@@ -1118,30 +871,9 @@
           <h2 class="font-display text-4xl md:text-5xl mt-2">What our <em style="color:var(--coral);">community</em> says</h2>
         </div>
         <div class="grid gap-6 md:grid-cols-3">
-          <div class="testimonial-card reveal">
-            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-            <div class="flex text-[var(--gold)] text-sm mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="quote-text">"The Segen Dress is absolutely stunning. The fabric feels like it has a soul — you can tell it was made with intention."</p>
-            <p class="mt-3 text-sm font-bold text-black/60">— Sara M., Addis Ababa</p>
-          </div>
-          <div class="testimonial-card reveal">
-            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-            <div class="flex text-[var(--gold)] text-sm mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="quote-text">"I love that I'm wearing a piece of Ethiopian heritage. The quality is incredible and the design is timeless."</p>
-            <p class="mt-3 text-sm font-bold text-black/60">— David K., London</p>
-          </div>
-          <div class="testimonial-card reveal">
-            <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
-            <div class="flex text-[var(--gold)] text-sm mb-3">
-              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-            </div>
-            <p class="quote-text">"Every piece tells a story. Yeras Tibeb is more than clothing — it's a movement to preserve our culture."</p>
-            <p class="mt-3 text-sm font-bold text-black/60">— Tigist W., Washington D.C.</p>
-          </div>
+          <div class="testimonial-card reveal"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><div class="flex text-[var(--gold)] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="quote-text">"The Segen Dress is absolutely stunning. The fabric feels like it has a soul — you can tell it was made with intention."</p><p class="mt-3 text-sm font-bold text-black/60">— Sara M., Addis Ababa</p></div>
+          <div class="testimonial-card reveal"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><div class="flex text-[var(--gold)] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="quote-text">"I love that I'm wearing a piece of Ethiopian heritage. The quality is incredible and the design is timeless."</p><p class="mt-3 text-sm font-bold text-black/60">— David K., London</p></div>
+          <div class="testimonial-card reveal"><div class="quote-icon"><i class="fas fa-quote-left"></i></div><div class="flex text-[var(--gold)] text-sm mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p class="quote-text">"Every piece tells a story. Yeras Tibeb is more than clothing — it's a movement to preserve our culture."</p><p class="mt-3 text-sm font-bold text-black/60">— Tigist W., Washington D.C.</p></div>
         </div>
       </div>
     </section>
@@ -1162,11 +894,7 @@
           <img src="52.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
           <img src="53.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
         </div>
-        <div class="text-center mt-6 reveal">
-          <a href="#" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all text-sm uppercase tracking-[0.1em]">
-            <i class="fab fa-instagram"></i> Follow @yerastibeb
-          </a>
-        </div>
+        <div class="text-center mt-6 reveal"><a href="#" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all text-sm uppercase tracking-[0.1em]"><i class="fab fa-instagram"></i> Follow @yerastibeb</a></div>
       </div>
     </section>
 
@@ -1175,20 +903,11 @@
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10 text-center relative z-10">
         <div class="reveal">
           <p class="eyebrow text-[var(--gold)]"><i class="fas fa-gem mr-1"></i> Discover the collection</p>
-          <h2 class="font-display text-4xl md:text-5xl text-white mt-2 leading-[1.1]">
-            Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em>
-          </h2>
-          <p class="text-white/70 max-w-md mx-auto mt-3 text-lg">
-            Each garment carries the stories of the hands that made it.
-          </p>
+          <h2 class="font-display text-4xl md:text-5xl text-white mt-2 leading-[1.1]">Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em></h2>
+          <p class="text-white/70 max-w-md mx-auto mt-3 text-lg">Each garment carries the stories of the hands that made it.</p>
           <div class="mt-8 flex flex-wrap justify-center gap-4">
-            <a href="shop.html" class="button-primary" style="background: var(--gold); color: var(--ink);">
-              <i class="fas fa-shopping-bag"></i> Shop now
-              <span aria-hidden="true">&#8594;</span>
-            </a>
-            <a href="about.html" class="button-secondary" style="border-color: rgba(255,255,255,0.3); color: white;">
-              <i class="fas fa-info-circle"></i> Our story
-            </a>
+            <a href="shop.html" class="button-primary" style="background: var(--gold); color: var(--ink);"><i class="fas fa-shopping-bag"></i> Shop now <span aria-hidden="true">&#8594;</span></a>
+            <a href="about.html" class="button-secondary" style="border-color: rgba(255,255,255,0.3); color: white;"><i class="fas fa-info-circle"></i> Our story</a>
           </div>
         </div>
       </div>
@@ -1210,10 +929,7 @@
     <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo">
-            <img src="1.jpg" alt="YERAS TIBEB" onerror="this.style.display='none';" />
-            <span class="ft-text">YERAS <span>TIBEB</span></span>
-          </div>
+          <div class="footer-logo"><img src="1.jpg" alt="YERAS TIBEB" onerror="this.style.display='none';" /><span class="ft-text">YERAS <span>TIBEB</span></span></div>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
           <div class="flex gap-3 mt-4">
             <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
@@ -1222,36 +938,16 @@
             <a href="#" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
-        <div>
-          <p class="footer-heading">Explore</p>
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-          </div>
-        </div>
-        <div>
-          <p class="footer-heading">Stay close</p>
-          <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
-          <form class="newsletter-form flex border-b border-white/30 mt-3" id="newsletterForm">
-            <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
-            <button class="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.1em] hover:text-white transition" type="submit">Join</button>
-          </form>
-          <p class="newsletter-message text-[var(--gold)] text-xs mt-2" id="newsletterMessage"></p>
-        </div>
+        <div><p class="footer-heading">Explore</p><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div>
+        <div><p class="footer-heading">Stay close</p><p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p><form class="newsletter-form flex border-b border-white/30 mt-3" id="newsletterForm"><input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required><button class="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.1em] hover:text-white transition" type="submit">Join</button></form><p class="newsletter-message text-[var(--gold)] text-xs mt-2" id="newsletterMessage"></p></div>
       </div>
-      <div class="footer-bottom">
-        <span><i class="far fa-copyright mr-1"></i> Yeras Tibeb · Addis Ababa</span>
-        <span>Crafted with care <i class="fas fa-heart text-[var(--coral)] mx-1"></i> 2024</span>
-      </div>
+      <div class="footer-bottom"><span><i class="far fa-copyright mr-1"></i> Yeras Tibeb · Addis Ababa</span><span>Crafted with care <i class="fas fa-heart text-[var(--coral)] mx-1"></i> 2024</span></div>
     </div>
   </footer>
 
   <div class="toast" id="toast"></div>
 
   <script>
-    // Cart state
     let cart = JSON.parse(localStorage.getItem('cart') || '[]');
     function updateCartCount() {
       const count = cart.reduce((s, i) => s + i.qty, 0);
@@ -1261,7 +957,6 @@
 
     document.getElementById('cartButton').addEventListener('click', () => { window.location.href = 'shop.html'; });
 
-    // Mobile menu
     document.getElementById('menuButton').addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.toggle('is-open');
     });
@@ -1269,19 +964,16 @@
       document.getElementById('mobileMenu').classList.remove('is-open');
     }));
 
-    // Header scroll
     window.addEventListener('scroll', () => {
       document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
     });
 
-    // Newsletter
     document.getElementById('newsletterForm').addEventListener('submit', e => {
       e.preventDefault();
       document.getElementById('newsletterMessage').textContent = '✓ You are on the list. Welcome in.';
       e.target.reset();
     });
 
-    // Toast
     const toast = document.getElementById('toast');
     let toastTimer;
     function showToast(msg) {
@@ -1291,7 +983,6 @@
       toastTimer = setTimeout(() => toast.classList.remove('is-visible'), 2400);
     }
 
-    // Reveal animations
     const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1321,12 +1012,9 @@
         dot.addEventListener('click', () => goToSlide(i));
         dotsContainer.appendChild(dot);
       }
-
       document.getElementById('prevSlide').addEventListener('click', prevSlide);
       document.getElementById('nextSlide').addEventListener('click', nextSlide);
-      
       startAutoSlide();
-      
       const container = document.getElementById('slideshow');
       container.addEventListener('mouseenter', stopAutoSlide);
       container.addEventListener('mouseleave', startAutoSlide);
@@ -1335,7 +1023,6 @@
     function goToSlide(index) {
       slideIndex = (index + totalSlides) % totalSlides;
       slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-      
       document.querySelectorAll('.dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === slideIndex);
       });
