@@ -368,16 +368,40 @@
     }
     .slideshow-dots .dot.active { background: var(--gold); width: 30px; border-radius: 5px; }
 
-    /* FEATURE CARDS */
+    /* FEATURE CARDS WITH BACKGROUND IMAGE */
+    .features-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4rem, 10vw, 8rem) 0;
+    }
+    .features-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: url('photo_2026-07-13_14-53-29.jpg');
+      background-size: cover;
+      background-position: center center;
+      filter: brightness(0.7);
+      transform: scale(1.02);
+    }
+    .features-section .features-overlay {
+      position: relative;
+      z-index: 1;
+      background: rgba(20, 12, 14, 0.4);
+      backdrop-filter: blur(2px);
+      padding: 2rem;
+      border-radius: 16px;
+    }
     .feature-card {
-      background: white;
+      background: rgba(255,255,255,0.95);
       padding: 2.2rem 1.8rem;
       border-radius: 12px;
       text-align: center;
       transition: all 0.4s cubic-bezier(.2,.8,.2,1);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
       position: relative;
       overflow: hidden;
+      backdrop-filter: blur(4px);
     }
     .feature-card::before {
       content: '';
@@ -393,13 +417,23 @@
     .feature-card:hover::before { transform: scaleX(1); }
     .feature-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+      box-shadow: 0 12px 48px rgba(0,0,0,0.2);
     }
     .feature-card .icon {
       font-size: 2.8rem;
       color: var(--coral);
       margin-bottom: 1rem;
       display: block;
+    }
+    .feature-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+    }
+    .feature-card p {
+      color: rgba(30,24,24,0.7);
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     /* COLLECTION PREVIEW - NO PRICING */
@@ -607,6 +641,8 @@
       .stat-icon { font-size: 2rem; }
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
+      .feature-card h3 { font-size: 1.1rem; }
+      .feature-card p { font-size: 0.8rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
       .footer-brand .footer-logo img { height: 35px; max-width: 110px; }
       .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
@@ -619,6 +655,7 @@
       .slideshow-btn { width: 32px; height: 32px; font-size: 0.8rem; }
       .slideshow-btn.prev { left: 8px; }
       .slideshow-btn.next { right: 8px; }
+      .features-section .features-overlay { padding: 1rem; }
     }
   </style>
 </head>
@@ -724,18 +761,32 @@
       </div>
     </section>
 
-    <!-- FEATURES SECTION -->
-    <section class="section bg-white">
+    <!-- FEATURES SECTION - WITH BACKGROUND IMAGE -->
+    <section class="features-section">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="text-center mb-12 reveal">
-          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-heart mr-1"></i> Why Yeras Tibeb</p>
-          <h2 class="font-display text-4xl md:text-5xl mt-2">Made with <em style="color:var(--coral);">intention.</em></h2>
-          <p class="mt-3 text-black/60 max-w-lg mx-auto">Every piece is a collaboration between tradition and modernity.</p>
-        </div>
-        <div class="grid gap-8 md:grid-cols-3">
-          <div class="feature-card reveal"><span class="icon"><i class="fas fa-hands"></i></span><h3 class="font-display text-xl mb-2">Handwoven with Care</h3><p class="text-sm text-black/60 leading-relaxed">Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p></div>
-          <div class="feature-card reveal"><span class="icon"><i class="fas fa-leaf"></i></span><h3 class="font-display text-xl mb-2">Sustainable Materials</h3><p class="text-sm text-black/60 leading-relaxed">We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p></div>
-          <div class="feature-card reveal"><span class="icon"><i class="fas fa-heart"></i></span><h3 class="font-display text-xl mb-2">Ethical Fashion</h3><p class="text-sm text-black/60 leading-relaxed">Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p></div>
+        <div class="features-overlay">
+          <div class="text-center mb-12 reveal">
+            <p class="eyebrow text-[var(--gold)]"><i class="fas fa-heart mr-1"></i> Why Yeras Tibeb</p>
+            <h2 class="font-display text-4xl md:text-5xl text-white mt-2">Made with <em style="color:var(--gold);">intention.</em></h2>
+            <p class="mt-3 text-white/70 max-w-lg mx-auto">Every piece is a collaboration between tradition and modernity.</p>
+          </div>
+          <div class="grid gap-8 md:grid-cols-3">
+            <div class="feature-card reveal">
+              <span class="icon"><i class="fas fa-hands"></i></span>
+              <h3>Handwoven with Care</h3>
+              <p>Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p>
+            </div>
+            <div class="feature-card reveal">
+              <span class="icon"><i class="fas fa-leaf"></i></span>
+              <h3>Sustainable Materials</h3>
+              <p>We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p>
+            </div>
+            <div class="feature-card reveal">
+              <span class="icon"><i class="fas fa-heart"></i></span>
+              <h3>Ethical Fashion</h3>
+              <p>Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
