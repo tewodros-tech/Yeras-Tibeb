@@ -33,7 +33,7 @@
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
-    /* HEADER - NO LOGO */
+    /* HEADER - NO ANNOUNCEMENT */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -46,21 +46,11 @@
       transition: background 0.3s ease;
     }
     .site-header.scrolled { background: rgba(20, 12, 14, 0.92); backdrop-filter: blur(12px); }
-    .announcement {
-      border-bottom: 1px solid rgba(248, 245, 237, 0.12);
-      background: rgba(20, 12, 14, 0.4);
-      min-height: 32px;
-      font-size: 0.6rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-      padding: 6px 0;
-    }
     .nav-shell { 
       border-bottom: 1px solid rgba(248, 245, 237, 0.12);
-      padding: 8px 0;
+      padding: 10px 0;
       background: transparent;
     }
-    /* Empty logo placeholder */
     .brand-placeholder {
       width: 20px;
       height: 20px;
@@ -152,7 +142,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO - BACKGROUND MORE VISIBLE */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -670,7 +660,6 @@
       .final-banner-img { height: 220px; }
     }
     @media (max-width: 640px) {
-      .announcement { font-size: 0.45rem; letter-spacing: 0.06em; }
       .hero { min-height: 760px; }
       .hero::before { background-position: 57% center; }
       .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.6), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.05) 65%); }
@@ -707,11 +696,6 @@
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="announcement flex items-center justify-center px-4 py-1 text-center">
-      <i class="fas fa-truck mr-2"></i> Complimentary delivery on orders over $180 · Addis Ababa + worldwide
-      <span class="hidden sm:inline mx-3">|</span>
-      <span class="hidden sm:inline"><i class="fas fa-undo mr-1"></i> 30-day returns</span>
-    </div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-2 lg:px-10">
         <!-- Empty placeholder - no logo -->
