@@ -82,17 +82,16 @@
     }
     .nav-link:hover::after { right: 0; }
     
-    /* LOGO IN HEADER */
+    /* HEADER LOGO - IMAGE ONLY */
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 14px;
       text-decoration: none;
     }
     .brand-logo .logo-img {
-      height: 50px;
+      height: 55px;
       width: auto;
-      max-width: 160px;
+      max-width: 200px;
       object-fit: contain;
       filter: drop-shadow(0 2px 12px rgba(0,0,0,0.2));
       transition: all 0.3s ease;
@@ -101,31 +100,6 @@
     .brand-logo .logo-img:hover {
       transform: scale(1.04);
       filter: drop-shadow(0 4px 20px rgba(201,168,76,0.3));
-    }
-    .brand-logo .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-      border-left: 2px solid rgba(255,255,255,0.2);
-      padding-left: 14px;
-    }
-    .brand-logo .logo-text .main {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: white;
-      letter-spacing: 0.06em;
-    }
-    .brand-logo .logo-text .main span {
-      color: var(--gold);
-    }
-    .brand-logo .logo-text .sub {
-      font-size: 0.5rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
-      margin-top: 2px;
     }
     
     .icon-button {
@@ -193,7 +167,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO - WITH LOGO AS HEADLINE */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -227,48 +201,41 @@
       padding-bottom: clamp(4.5rem, 12vh, 8rem); 
     }
     
-    /* HERO LOGO - YERAS TIBEB */
-    .hero-logo {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-      margin-bottom: 1.5rem;
-      animation: riseIn 900ms 100ms both;
-    }
-    .hero-logo .hero-logo-img {
-      height: 80px;
-      width: auto;
-      max-width: 280px;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 20px rgba(0,0,0,0.3));
-      border-radius: 12px;
-      background: rgba(255,255,255,0.05);
-      padding: 4px 8px;
-    }
-    .hero-logo .hero-logo-text {
+    /* HERO - PURE LOGO WITH TEXT BELOW */
+    .hero-logo-area {
       display: flex;
       flex-direction: column;
-      line-height: 1;
-      border-left: 2px solid rgba(255,255,255,0.15);
-      padding-left: 20px;
+      align-items: flex-start;
+      animation: riseIn 900ms 100ms both;
     }
-    .hero-logo .hero-logo-text .main {
+    .hero-logo-area .hero-logo-img {
+      height: 100px;
+      width: auto;
+      max-width: 350px;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 25px rgba(0,0,0,0.35));
+      border-radius: 14px;
+      background: rgba(255,255,255,0.05);
+      padding: 6px 12px;
+      margin-bottom: 0.5rem;
+    }
+    .hero-logo-area .hero-brand-text {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 700;
       color: white;
       letter-spacing: 0.04em;
       line-height: 1.05;
     }
-    .hero-logo .hero-logo-text .main span {
+    .hero-logo-area .hero-brand-text span {
       color: var(--gold);
     }
-    .hero-logo .hero-logo-text .sub {
-      font-size: 0.65rem;
+    .hero-logo-area .hero-tagline {
+      font-size: 0.7rem;
       font-weight: 400;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.35);
       margin-top: 4px;
     }
     
@@ -282,6 +249,7 @@
       line-height: 1.7; 
       font-size: 1.05rem; 
       animation: riseIn 800ms 290ms both; 
+      margin-top: 0.5rem;
     }
     .hero-actions { 
       animation: riseIn 800ms 390ms both; 
@@ -623,9 +591,9 @@
       margin-bottom: 0.8rem;
     }
     .footer-brand .footer-logo img {
-      height: 45px;
+      height: 50px;
       width: auto;
-      max-width: 140px;
+      max-width: 160px;
       object-fit: contain;
       border-radius: 6px;
     }
@@ -706,14 +674,10 @@
       .gallery-grid { grid-template-columns: repeat(2, 1fr); }
       .gallery-grid .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
       .gallery-grid .gallery-item:nth-child(5) { grid-column: span 2; }
-      .brand-logo .logo-img { height: 40px; max-width: 130px; }
-      .brand-logo .logo-text .main { font-size: 1rem; }
-      .brand-logo .logo-text .sub { font-size: 0.4rem; }
-      .hero-logo .hero-logo-img { height: 60px; max-width: 200px; }
-      .hero-logo .hero-logo-text .main { font-size: clamp(2rem, 5vw, 3.5rem); }
-      .hero-logo { gap: 16px; }
-      .hero-logo .hero-logo-text { padding-left: 14px; }
-      .footer-brand .footer-logo img { height: 38px; max-width: 120px; }
+      .brand-logo .logo-img { height: 45px; max-width: 160px; }
+      .hero-logo-area .hero-logo-img { height: 70px; max-width: 240px; }
+      .hero-logo-area .hero-brand-text { font-size: clamp(2rem, 5vw, 3.5rem); }
+      .footer-brand .footer-logo img { height: 40px; max-width: 130px; }
       .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
@@ -728,11 +692,9 @@
       .hero-content { padding-bottom: 4.2rem; }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
-      .hero-logo { flex-direction: column; align-items: flex-start; gap: 10px; }
-      .hero-logo .hero-logo-img { height: 50px; max-width: 160px; }
-      .hero-logo .hero-logo-text { border-left: none; padding-left: 0; }
-      .hero-logo .hero-logo-text .main { font-size: clamp(1.8rem, 8vw, 2.8rem); }
-      .hero-logo .hero-logo-text .sub { font-size: 0.5rem; }
+      .hero-logo-area .hero-logo-img { height: 55px; max-width: 180px; }
+      .hero-logo-area .hero-brand-text { font-size: clamp(1.8rem, 8vw, 2.8rem); }
+      .hero-logo-area .hero-tagline { font-size: 0.5rem; }
       .hero-copy { font-size: 0.9rem; }
       .trust-badges { gap: 0.8rem 1.2rem; }
       .trust-badges span { font-size: 0.55rem; }
@@ -743,11 +705,8 @@
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .brand-logo .logo-img { height: 35px; max-width: 110px; }
-      .brand-logo .logo-text .main { font-size: 0.85rem; }
-      .brand-logo .logo-text .sub { display: none; }
-      .brand-logo .logo-text { padding-left: 8px; border-left-width: 1px; }
-      .footer-brand .footer-logo img { height: 32px; max-width: 100px; }
+      .brand-logo .logo-img { height: 38px; max-width: 130px; }
+      .footer-brand .footer-logo img { height: 35px; max-width: 110px; }
       .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
       .banner-image { height: 220px; }
       .collection-preview .preview-img { height: 220px; }
@@ -772,11 +731,7 @@
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-2 lg:px-10">
         <a class="brand-logo" href="index.html">
-          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <div class="logo-text">
-            <span class="main">YERAS <span>TIBEB</span></span>
-            <span class="sub">Wear the story</span>
-          </div>
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none';">
         </a>
         <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
@@ -804,7 +759,7 @@
   </header>
 
   <main>
-    <!-- HERO SECTION - WITH LOGO AS HEADLINE -->
+    <!-- HERO SECTION -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
@@ -813,13 +768,11 @@
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           
-          <!-- HERO LOGO - YERAS TIBEB -->
-          <div class="hero-logo">
+          <!-- HERO LOGO AREA -->
+          <div class="hero-logo-area">
             <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
-            <div class="hero-logo-text">
-              <span class="main">YERAS<br><span>TIBEB</span></span>
-              <span class="sub">Wear the story</span>
-            </div>
+            <div class="hero-brand-text">YERAS <span>TIBEB</span></div>
+            <div class="hero-tagline">Wear the story</div>
           </div>
           
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
