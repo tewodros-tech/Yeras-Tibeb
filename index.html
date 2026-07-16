@@ -108,13 +108,13 @@
       position: relative;
       display: grid;
       place-items: center;
-      width: 56px;        /* even larger */
-      height: 56px;
+      width: 60px;
+      height: 60px;
       transition: color 180ms ease, transform 180ms ease;
     }
     .icon-button svg {
-      width: 34px;        /* larger */
-      height: 34px;
+      width: 38px;
+      height: 38px;
     }
     .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
     .cart-count {
@@ -123,9 +123,9 @@
       right: -4px;
       display: grid;
       place-items: center;
-      min-width: 22px;
-      height: 22px;
-      padding: 0 5px;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 6px;
       border-radius: 999px;
       background: var(--coral);
       color: white;
@@ -213,19 +213,23 @@
       align-items: flex-start;
       animation: riseIn 900ms 100ms both;
     }
-    /* BIG LOGO IMAGE — removed the brand text, only the icon */
+    /* MEGA MASSIVE LOGO — EXTREMELY LARGE */
     .hero-logo-area .hero-logo-img {
-      height: 110px;      /* was 55px — doubled */
+      height: 280px;      /* was 180px — now MASSIVE */
       width: auto;
-      max-width: 340px;
+      max-width: 600px;
       object-fit: contain;
-      filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
-      border-radius: 12px;
-      background: rgba(255,255,255,0.06);
-      padding: 8px 14px;
-      margin-bottom: 0.3rem;
+      filter: drop-shadow(0 12px 60px rgba(0,0,0,0.5));
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      padding: 16px 28px;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
     }
-    /* hide the brand text completely */
+    .hero-logo-area .hero-logo-img:hover {
+      transform: scale(1.04);
+    }
+    /* hide brand text and tagline */
     .hero-brand-text, .hero-tagline {
       display: none;
     }
@@ -412,7 +416,7 @@
       box-shadow: 0 12px 48px rgba(0,0,0,0.2);
     }
     .feature-card .icon {
-      font-size: 4.2rem;  /* even larger */
+      font-size: 4.8rem;
       color: var(--coral);
       margin-bottom: 1rem;
       display: block;
@@ -464,7 +468,7 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
     .stat-icon { 
-      font-size: 4.2rem;   /* larger */
+      font-size: 4.6rem;
       color: var(--coral); 
       margin-bottom: 0.5rem; 
       display: block; 
@@ -538,11 +542,11 @@
       margin-bottom: 0.8rem;
     }
     .footer-brand .footer-logo img {
-      height: 60px;       /* larger in footer */
+      height: 70px;
       width: auto;
-      max-width: 180px;
+      max-width: 200px;
       object-fit: contain;
-      border-radius: 6px;
+      border-radius: 8px;
     }
     .footer-brand .footer-logo .ft-text {
       font-family: 'Playfair Display', serif;
@@ -610,8 +614,8 @@
       .mobile-toggle { display: grid !important; }
       .header-social { display: none !important; }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); }
-      .hero-logo-area .hero-logo-img { height: 80px; max-width: 220px; }
-      .footer-brand .footer-logo img { height: 50px; max-width: 150px; }
+      .hero-logo-area .hero-logo-img { height: 200px; max-width: 400px; }
+      .footer-brand .footer-logo img { height: 55px; max-width: 160px; }
       .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
@@ -625,21 +629,21 @@
       .hero-content { padding-bottom: 4.2rem; }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
-      .hero-logo-area .hero-logo-img { height: 70px; max-width: 190px; padding: 6px 10px; }
+      .hero-logo-area .hero-logo-img { height: 160px; max-width: 320px; padding: 12px 20px; }
       .hero-copy { font-size: 0.85rem; }
       .trust-badges { gap: 0.6rem 1rem; }
       .trust-badges span { font-size: 0.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .stat-card { padding: 1.2rem; }
-      .stat-icon { font-size: 3.8rem; }
+      .stat-icon { font-size: 4.0rem; }
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
-      .feature-card .icon { font-size: 3.6rem; }
+      .feature-card .icon { font-size: 4.0rem; }
       .feature-card h3 { font-size: 1.1rem; }
       .feature-card p { font-size: 0.8rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .footer-brand .footer-logo img { height: 45px; max-width: 130px; }
+      .footer-brand .footer-logo img { height: 50px; max-width: 140px; }
       .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
       .banner-image { height: 220px; }
       .collection-preview .preview-img { height: 220px; }
@@ -651,8 +655,8 @@
       .slideshow-btn.prev { left: 8px; }
       .slideshow-btn.next { right: 8px; }
       .features-section .features-overlay { padding: 1rem; }
-      .icon-button { width: 48px; height: 48px; }
-      .icon-button svg { width: 28px; height: 28px; }
+      .icon-button { width: 52px; height: 52px; }
+      .icon-button svg { width: 32px; height: 32px; }
     }
   </style>
 </head>
@@ -676,11 +680,11 @@
             <span class="divider"></span>
           </div>
           <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
           <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
-            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
@@ -709,7 +713,7 @@
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           <div class="hero-logo-area">
-            <!-- ONLY THE LOGO IMAGE, NO TEXT -->
+            <!-- MEGA MASSIVE LOGO — EXTREMELY LARGE -->
             <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
             <!-- brand text and tagline are hidden via CSS -->
           </div>
