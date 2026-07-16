@@ -108,9 +108,13 @@
       position: relative;
       display: grid;
       place-items: center;
-      width: 36px;
-      height: 36px;
+      width: 48px;        /* was 36px */
+      height: 48px;       /* was 36px */
       transition: color 180ms ease, transform 180ms ease;
+    }
+    .icon-button svg {
+      width: 28px;        /* was 18px */
+      height: 28px;       /* was 18px */
     }
     .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
     .cart-count {
@@ -119,13 +123,13 @@
       right: -4px;
       display: grid;
       place-items: center;
-      min-width: 16px;
-      height: 16px;
-      padding: 0 3px;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 4px;
       border-radius: 999px;
       background: var(--coral);
       color: white;
-      font-size: 0.58rem;
+      font-size: 0.65rem; /* slightly larger */
       font-weight: 800;
     }
 
@@ -420,7 +424,7 @@
       box-shadow: 0 12px 48px rgba(0,0,0,0.2);
     }
     .feature-card .icon {
-      font-size: 2.8rem;
+      font-size: 3.6rem;  /* was 2.8rem — larger */
       color: var(--coral);
       margin-bottom: 1rem;
       display: block;
@@ -471,7 +475,12 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .stat-icon { font-size: 2.5rem; color: var(--coral); margin-bottom: 0.5rem; display: block; }
+    .stat-icon { 
+      font-size: 3.8rem;   /* was 2.5rem — larger */
+      color: var(--coral); 
+      margin-bottom: 0.5rem; 
+      display: block; 
+    }
     .stat-label { font-size: 1rem; font-weight: 700; color: var(--ink); letter-spacing: 0.04em; }
     .stat-sub { font-size: 0.75rem; color: rgba(30,24,24,0.5); margin-top: 0.2rem; }
 
@@ -638,9 +647,10 @@
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .stat-card { padding: 1.2rem; }
-      .stat-icon { font-size: 2rem; }
+      .stat-icon { font-size: 3.2rem; }  /* larger on mobile */
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
+      .feature-card .icon { font-size: 3.0rem; } /* larger on mobile */
       .feature-card h3 { font-size: 1.1rem; }
       .feature-card p { font-size: 0.8rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
@@ -679,11 +689,11 @@
             <span class="divider"></span>
           </div>
           <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
           <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
