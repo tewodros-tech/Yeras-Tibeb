@@ -220,7 +220,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url('54.jpg');  /* KEPT ORIGINAL COVER PHOTO */
+      background-image: url('54.jpg');
       background-size: cover;
       background-position: center center;
       transform: scale(1.02);
@@ -806,13 +806,15 @@
       </div>
     </section>
 
-    <!-- SLIDESHOW -->
+    <!-- SLIDESHOW — NO DUPLICATE IMAGES -->
     <section style="background: var(--sand); padding-top: 2rem;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="slideshow-container reveal" id="slideshow">
           <div class="slides" id="slides">
-            <div class="slide"><img src="54.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Handwoven <em>with love</em></h2><p>Every piece tells a story of Ethiopian heritage</p></div></div></div>
-            <div class="slide"><img src="50.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
+            <!-- Slide 1: 51.jpg — different from hero 54.jpg -->
+            <div class="slide"><img src="51.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
+            <!-- Slide 2: 50.jpg — the image you requested -->
+            <div class="slide"><img src="50.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Handwoven <em>with love</em></h2><p>Every piece tells a story of Ethiopian heritage</p></div></div></div>
             <div class="slide"><img src="52.jpg" alt="YERAS TIBEB Fashion" /><div class="slide-overlay"><div><h2>Wear the <em>story</em></h2><p>Each thread carries a piece of Ethiopia</p></div></div></div>
             <div class="slide"><img src="55.jpg" alt="Ethiopian Weaving" /><div class="slide-overlay"><div><h2>Preserving <em>heritage</em></h2><p>Supporting master weavers across Ethiopia</p></div></div></div>
             <div class="slide"><img src="57.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Modern <em>Ethiopian</em></h2><p>Contemporary fashion rooted in tradition</p></div></div></div>
