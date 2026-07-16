@@ -82,12 +82,12 @@
     .header-social a {
       color: rgba(255,255,255,0.5);
       transition: all 0.3s ease;
-      font-size: 1rem;
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 30px;
-      height: 30px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
@@ -108,13 +108,13 @@
       position: relative;
       display: grid;
       place-items: center;
-      width: 48px;        /* was 36px */
-      height: 48px;       /* was 36px */
+      width: 56px;        /* even larger */
+      height: 56px;
       transition: color 180ms ease, transform 180ms ease;
     }
     .icon-button svg {
-      width: 28px;        /* was 18px */
-      height: 28px;       /* was 18px */
+      width: 34px;        /* larger */
+      height: 34px;
     }
     .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
     .cart-count {
@@ -123,13 +123,13 @@
       right: -4px;
       display: grid;
       place-items: center;
-      min-width: 20px;
-      height: 20px;
-      padding: 0 4px;
+      min-width: 22px;
+      height: 22px;
+      padding: 0 5px;
       border-radius: 999px;
       background: var(--coral);
       color: white;
-      font-size: 0.65rem; /* slightly larger */
+      font-size: 0.7rem;
       font-weight: 800;
     }
 
@@ -213,33 +213,21 @@
       align-items: flex-start;
       animation: riseIn 900ms 100ms both;
     }
+    /* BIG LOGO IMAGE — removed the brand text, only the icon */
     .hero-logo-area .hero-logo-img {
-      height: 55px;
+      height: 110px;      /* was 55px — doubled */
       width: auto;
-      max-width: 180px;
+      max-width: 340px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 15px rgba(0,0,0,0.2));
-      border-radius: 8px;
-      background: rgba(255,255,255,0.05);
-      padding: 4px 8px;
+      filter: drop-shadow(0 4px 30px rgba(0,0,0,0.3));
+      border-radius: 12px;
+      background: rgba(255,255,255,0.06);
+      padding: 8px 14px;
       margin-bottom: 0.3rem;
     }
-    .hero-logo-area .hero-brand-text {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 4vw, 3.2rem);
-      font-weight: 700;
-      color: white;
-      letter-spacing: 0.04em;
-      line-height: 1.05;
-    }
-    .hero-logo-area .hero-brand-text span { color: var(--gold); }
-    .hero-logo-area .hero-tagline {
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.3);
-      margin-top: 2px;
+    /* hide the brand text completely */
+    .hero-brand-text, .hero-tagline {
+      display: none;
     }
     
     .hero-kicker { color: var(--gold); animation: riseIn 800ms 80ms both; }
@@ -424,7 +412,7 @@
       box-shadow: 0 12px 48px rgba(0,0,0,0.2);
     }
     .feature-card .icon {
-      font-size: 3.6rem;  /* was 2.8rem — larger */
+      font-size: 4.2rem;  /* even larger */
       color: var(--coral);
       margin-bottom: 1rem;
       display: block;
@@ -476,7 +464,7 @@
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
     .stat-icon { 
-      font-size: 3.8rem;   /* was 2.5rem — larger */
+      font-size: 4.2rem;   /* larger */
       color: var(--coral); 
       margin-bottom: 0.5rem; 
       display: block; 
@@ -496,7 +484,7 @@
       transform: translateY(-4px);
       box-shadow: 0 8px 30px rgba(0,0,0,0.08);
     }
-    .testimonial-card .quote-icon { color: var(--coral); font-size: 2rem; opacity: 0.3; margin-bottom: 0.5rem; }
+    .testimonial-card .quote-icon { color: var(--coral); font-size: 2.8rem; opacity: 0.3; margin-bottom: 0.5rem; }
     .testimonial-card .quote-text {
       font-family: 'Playfair Display', serif;
       font-size: 1.05rem;
@@ -550,9 +538,9 @@
       margin-bottom: 0.8rem;
     }
     .footer-brand .footer-logo img {
-      height: 50px;
+      height: 60px;       /* larger in footer */
       width: auto;
-      max-width: 160px;
+      max-width: 180px;
       object-fit: contain;
       border-radius: 6px;
     }
@@ -622,9 +610,8 @@
       .mobile-toggle { display: grid !important; }
       .header-social { display: none !important; }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); }
-      .hero-logo-area .hero-logo-img { height: 45px; max-width: 150px; }
-      .hero-logo-area .hero-brand-text { font-size: clamp(1.5rem, 4vw, 2.5rem); }
-      .footer-brand .footer-logo img { height: 40px; max-width: 130px; }
+      .hero-logo-area .hero-logo-img { height: 80px; max-width: 220px; }
+      .footer-brand .footer-logo img { height: 50px; max-width: 150px; }
       .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
@@ -638,23 +625,21 @@
       .hero-content { padding-bottom: 4.2rem; }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
-      .hero-logo-area .hero-logo-img { height: 38px; max-width: 130px; padding: 3px 6px; }
-      .hero-logo-area .hero-brand-text { font-size: clamp(1.4rem, 7vw, 2.2rem); }
-      .hero-logo-area .hero-tagline { font-size: 0.5rem; }
+      .hero-logo-area .hero-logo-img { height: 70px; max-width: 190px; padding: 6px 10px; }
       .hero-copy { font-size: 0.85rem; }
       .trust-badges { gap: 0.6rem 1rem; }
       .trust-badges span { font-size: 0.5rem; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .stat-card { padding: 1.2rem; }
-      .stat-icon { font-size: 3.2rem; }  /* larger on mobile */
+      .stat-icon { font-size: 3.8rem; }
       .stat-label { font-size: 0.85rem; }
       .feature-card { padding: 1.5rem; }
-      .feature-card .icon { font-size: 3.0rem; } /* larger on mobile */
+      .feature-card .icon { font-size: 3.6rem; }
       .feature-card h3 { font-size: 1.1rem; }
       .feature-card p { font-size: 0.8rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
-      .footer-brand .footer-logo img { height: 35px; max-width: 110px; }
+      .footer-brand .footer-logo img { height: 45px; max-width: 130px; }
       .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
       .banner-image { height: 220px; }
       .collection-preview .preview-img { height: 220px; }
@@ -666,6 +651,8 @@
       .slideshow-btn.prev { left: 8px; }
       .slideshow-btn.next { right: 8px; }
       .features-section .features-overlay { padding: 1rem; }
+      .icon-button { width: 48px; height: 48px; }
+      .icon-button svg { width: 28px; height: 28px; }
     }
   </style>
 </head>
@@ -689,11 +676,11 @@
             <span class="divider"></span>
           </div>
           <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
           <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
@@ -722,9 +709,9 @@
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           <div class="hero-logo-area">
+            <!-- ONLY THE LOGO IMAGE, NO TEXT -->
             <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
-            <div class="hero-brand-text">YERAS <span>TIBEB</span></div>
-            <div class="hero-tagline">Wear the story</div>
+            <!-- brand text and tagline are hidden via CSS -->
           </div>
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
           <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
