@@ -74,34 +74,37 @@
     }
     .nav-link:hover::after { right: 0; }
     
+    /* SOCIAL ICONS — BIGGER & MORE VISIBLE */
     .header-social {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 14px;
     }
     .header-social a {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.7);
       transition: all 0.3s ease;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      text-decoration: none;
     }
     .header-social a:hover {
       color: var(--gold);
-      transform: translateY(-2px) scale(1.05);
-      background: rgba(255,255,255,0.12);
+      transform: translateY(-3px) scale(1.08);
+      background: rgba(255,255,255,0.15);
       border-color: var(--gold);
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.25);
     }
     .header-social .divider {
       width: 1px;
-      height: 24px;
-      background: rgba(255,255,255,0.12);
+      height: 32px;
+      background: rgba(255,255,255,0.15);
     }
     
     .icon-button {
@@ -217,7 +220,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background-image: url('50.jpg');  /* REPLACED with 50.jpg */
+      background-image: url('54.jpg');  /* KEPT ORIGINAL COVER PHOTO */
       background-size: cover;
       background-position: center center;
       transform: scale(1.02);
@@ -243,7 +246,6 @@
       align-items: flex-start;
       animation: riseIn 900ms 100ms both;
     }
-    /* MEGA MASSIVE LOGO */
     .hero-logo-area .hero-logo-img {
       height: 280px;
       width: auto;
@@ -392,7 +394,7 @@
     }
     .slideshow-dots .dot.active { background: var(--gold); width: 30px; border-radius: 5px; }
 
-    /* FEATURE CARDS — now standalone section below banner */
+    /* FEATURE CARDS */
     .feature-card-standalone {
       background: white;
       padding: 2.5rem 2rem;
@@ -557,12 +559,66 @@
     .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
     .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
     .footer-links a:hover { color: white; }
+    
+    /* FOOTER SOCIAL — BIGGER & VISIBLE */
+    .footer-social {
+      display: flex;
+      gap: 16px;
+      margin-top: 1.2rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.5);
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      color: var(--gold);
+      background: rgba(255,255,255,0.12);
+      border-color: var(--gold);
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 4px 24px rgba(201, 168, 76, 0.2);
+    }
+    
     .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.12); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
 
     .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.5rem; background: rgba(35,18,22,0.98); border-bottom: 1px solid rgba(248,245,237,0.1); backdrop-filter: blur(8px); }
     .mobile-menu.is-open { display: grid; gap: 1rem; }
     .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; }
     .mobile-menu a:hover { color: var(--gold); }
+    /* mobile social in menu */
+    .mobile-social {
+      display: flex;
+      gap: 16px;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-social a {
+      color: rgba(255,255,255,0.5);
+      font-size: 1.6rem;
+      transition: color 0.3s ease, transform 0.3s ease;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .mobile-social a:hover {
+      color: var(--gold);
+      transform: scale(1.1);
+      background: rgba(255,255,255,0.1);
+    }
 
     .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; border-radius: 8px; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
@@ -607,7 +663,7 @@
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
-      .header-social { display: none !important; }
+      .header-social a { width: 40px; height: 40px; font-size: 1.2rem; }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); }
       .hero-logo-area .hero-logo-img { height: 200px; max-width: 400px; }
       .footer-brand .footer-logo img { height: 55px; max-width: 160px; }
@@ -630,6 +686,9 @@
       .hero-copy { font-size: 0.85rem; }
       .trust-badges { gap: 0.6rem 1rem; }
       .trust-badges span { font-size: 0.5rem; }
+      
+      .header-social { display: none !important; }
+      
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .stat-card { padding: 1.2rem; }
@@ -656,6 +715,8 @@
       .top-icon-badge { padding: 0.4rem 0.9rem 0.4rem 0.7rem; }
       .top-icon-badge .big-icon { font-size: 1.5rem; }
       .top-icon-badge .badge-text { font-size: 0.5rem; }
+      
+      .footer-social a { width: 52px; height: 52px; font-size: 1.6rem; }
     }
   </style>
 </head>
@@ -692,11 +753,11 @@
         <a href="shop.html"><i class="fas fa-shopping-bag mr-3"></i>Shop</a>
         <a href="about.html"><i class="fas fa-info-circle mr-3"></i>About</a>
         <a href="contact.html"><i class="fas fa-envelope mr-3"></i>Contact</a>
-        <div class="border-t border-white/10 pt-3 mt-2 flex gap-4">
-          <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" class="text-white/60 hover:text-[var(--gold)] text-lg"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://t.me/+251910103956" target="_blank" class="text-white/60 hover:text-[var(--gold)] text-lg"><i class="fab fa-telegram-plane"></i></a>
-          <a href="https://pin.it/4uNPbwy" target="_blank" class="text-white/60 hover:text-[var(--gold)] text-lg"><i class="fab fa-pinterest-p"></i></a>
-          <a href="#" target="_blank" class="text-white/60 hover:text-[var(--gold)] text-lg"><i class="fab fa-instagram"></i></a>
+        <div class="mobile-social">
+          <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://t.me/+251910103956" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+          <a href="https://pin.it/4uNPbwy" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </nav>
     </div>
@@ -707,7 +768,6 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-          <!-- EXTRA BIG ICON ON TOP -->
           <div class="top-icon-badge">
             <span class="big-icon"><i class="fas fa-crown"></i></span>
             <span class="badge-text"><strong>YERAS TIBEB</strong> · Ethiopian heritage</span>
@@ -752,7 +812,7 @@
         <div class="slideshow-container reveal" id="slideshow">
           <div class="slides" id="slides">
             <div class="slide"><img src="54.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Handwoven <em>with love</em></h2><p>Every piece tells a story of Ethiopian heritage</p></div></div></div>
-            <div class="slide"><img src="51.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
+            <div class="slide"><img src="50.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
             <div class="slide"><img src="52.jpg" alt="YERAS TIBEB Fashion" /><div class="slide-overlay"><div><h2>Wear the <em>story</em></h2><p>Each thread carries a piece of Ethiopia</p></div></div></div>
             <div class="slide"><img src="55.jpg" alt="Ethiopian Weaving" /><div class="slide-overlay"><div><h2>Preserving <em>heritage</em></h2><p>Supporting master weavers across Ethiopia</p></div></div></div>
             <div class="slide"><img src="57.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Modern <em>Ethiopian</em></h2><p>Contemporary fashion rooted in tradition</p></div></div></div>
@@ -769,7 +829,7 @@
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10"><div class="reveal"><img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" /></div></div>
     </section>
 
-    <!-- FEATURE CARDS — directly below the banner image -->
+    <!-- FEATURE CARDS -->
     <section class="section" style="background: var(--sand); padding-top: 3rem; padding-bottom: 4rem;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
@@ -922,11 +982,11 @@
         <div class="footer-brand">
           <div class="footer-logo"><img src="1.jpg" alt="YERAS TIBEB" onerror="this.style.display='none';" /><span class="ft-text">YERAS <span>TIBEB</span></span></div>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
-          <div class="flex gap-3 mt-4">
-            <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://t.me/+251910103956" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-telegram-plane"></i></a>
-            <a href="https://pin.it/4uNPbwy" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-instagram"></i></a>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=100088839946852&mibextid=LQQJ4d" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+251910103956" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://pin.it/4uNPbwy" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div><p class="footer-heading">Explore</p><div class="footer-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="about.html">About</a><a href="contact.html">Contact</a></div></div>
