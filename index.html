@@ -133,6 +133,36 @@
       font-weight: 800;
     }
 
+    /* BIG EXTRA ICON ON TOP */
+    .top-icon-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.8rem;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      padding: 0.5rem 1.2rem 0.5rem 1rem;
+      border-radius: 60px;
+      border: 1px solid rgba(255,255,255,0.12);
+      margin-bottom: 1.5rem;
+      animation: riseIn 800ms 50ms both;
+    }
+    .top-icon-badge .big-icon {
+      font-size: 2.4rem;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .top-icon-badge .badge-text {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+    .top-icon-badge .badge-text strong {
+      color: white;
+      font-weight: 800;
+    }
+
     .button-primary {
       display: inline-flex;
       align-items: center;
@@ -213,9 +243,9 @@
       align-items: flex-start;
       animation: riseIn 900ms 100ms both;
     }
-    /* MEGA MASSIVE LOGO — EXTREMELY LARGE */
+    /* MEGA MASSIVE LOGO */
     .hero-logo-area .hero-logo-img {
-      height: 280px;      /* was 180px — now MASSIVE */
+      height: 280px;
       width: auto;
       max-width: 600px;
       object-fit: contain;
@@ -229,12 +259,10 @@
     .hero-logo-area .hero-logo-img:hover {
       transform: scale(1.04);
     }
-    /* hide brand text and tagline */
     .hero-brand-text, .hero-tagline {
       display: none;
     }
     
-    .hero-kicker { color: var(--gold); animation: riseIn 800ms 80ms both; }
     .hero-copy { 
       max-width: 480px; 
       color: rgba(255,255,255,0.8); 
@@ -364,75 +392,42 @@
     }
     .slideshow-dots .dot.active { background: var(--gold); width: 30px; border-radius: 5px; }
 
-    /* FEATURE CARDS WITH BACKGROUND IMAGE */
-    .features-section {
-      position: relative;
-      overflow: hidden;
-      padding: clamp(4rem, 10vw, 8rem) 0;
-    }
-    .features-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: url('photo_2026-07-13_14-53-29.jpg');
-      background-size: cover;
-      background-position: center center;
-      filter: brightness(0.7);
-      transform: scale(1.02);
-    }
-    .features-section .features-overlay {
-      position: relative;
-      z-index: 1;
-      background: rgba(20, 12, 14, 0.4);
-      backdrop-filter: blur(2px);
-      padding: 2rem;
+    /* FEATURE CARDS — now standalone section below banner */
+    .feature-card-standalone {
+      background: white;
+      padding: 2.5rem 2rem;
       border-radius: 16px;
-    }
-    .feature-card {
-      background: rgba(255,255,255,0.95);
-      padding: 2.2rem 1.8rem;
-      border-radius: 12px;
       text-align: center;
       transition: all 0.4s cubic-bezier(.2,.8,.2,1);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
-      backdrop-filter: blur(4px);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.03);
     }
-    .feature-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--coral), var(--gold));
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-    .feature-card:hover::before { transform: scaleX(1); }
-    .feature-card:hover {
+    .feature-card-standalone:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.2);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
     }
-    .feature-card .icon {
-      font-size: 4.8rem;
+    .feature-card-standalone .icon {
+      font-size: 4.2rem;
       color: var(--coral);
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       display: block;
     }
-    .feature-card h3 {
+    .feature-card-standalone h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       margin-bottom: 0.5rem;
+      color: var(--ink);
     }
-    .feature-card p {
+    .feature-card-standalone p {
       color: rgba(30,24,24,0.7);
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 320px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    /* COLLECTION PREVIEW - NO PRICING */
+    /* COLLECTION PREVIEW */
     .collection-preview {
       background: white;
       border-radius: 12px;
@@ -621,6 +616,8 @@
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
       .final-banner-img { height: 220px; }
+      .top-icon-badge .big-icon { font-size: 1.8rem; }
+      .top-icon-badge .badge-text { font-size: 0.6rem; }
     }
     @media (max-width: 640px) {
       .hero { min-height: 760px; }
@@ -638,10 +635,10 @@
       .stat-card { padding: 1.2rem; }
       .stat-icon { font-size: 4.0rem; }
       .stat-label { font-size: 0.85rem; }
-      .feature-card { padding: 1.5rem; }
-      .feature-card .icon { font-size: 4.0rem; }
-      .feature-card h3 { font-size: 1.1rem; }
-      .feature-card p { font-size: 0.8rem; }
+      .feature-card-standalone { padding: 1.8rem 1.2rem; }
+      .feature-card-standalone .icon { font-size: 3.4rem; }
+      .feature-card-standalone h3 { font-size: 1.2rem; }
+      .feature-card-standalone p { font-size: 0.85rem; }
       .instagram-grid { grid-template-columns: repeat(2, 1fr); gap: 4px; }
       .footer-brand .footer-logo img { height: 50px; max-width: 140px; }
       .footer-brand .footer-logo .ft-text { font-size: 0.85rem; padding-left: 8px; }
@@ -654,9 +651,11 @@
       .slideshow-btn { width: 32px; height: 32px; font-size: 0.8rem; }
       .slideshow-btn.prev { left: 8px; }
       .slideshow-btn.next { right: 8px; }
-      .features-section .features-overlay { padding: 1rem; }
       .icon-button { width: 52px; height: 52px; }
       .icon-button svg { width: 32px; height: 32px; }
+      .top-icon-badge { padding: 0.4rem 0.9rem 0.4rem 0.7rem; }
+      .top-icon-badge .big-icon { font-size: 1.5rem; }
+      .top-icon-badge .badge-text { font-size: 0.5rem; }
     }
   </style>
 </head>
@@ -708,14 +707,17 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+          <!-- EXTRA BIG ICON ON TOP -->
+          <div class="top-icon-badge">
+            <span class="big-icon"><i class="fas fa-crown"></i></span>
+            <span class="badge-text"><strong>YERAS TIBEB</strong> · Ethiopian heritage</span>
+          </div>
           <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
             <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           <div class="hero-logo-area">
-            <!-- MEGA MASSIVE LOGO — EXTREMELY LARGE -->
             <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
-            <!-- brand text and tagline are hidden via CSS -->
           </div>
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
           <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
@@ -762,42 +764,39 @@
       </div>
     </section>
 
-    <!-- FEATURES SECTION - WITH BACKGROUND IMAGE -->
-    <section class="features-section">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="features-overlay">
-          <div class="text-center mb-12 reveal">
-            <p class="eyebrow text-[var(--gold)]"><i class="fas fa-heart mr-1"></i> Why Yeras Tibeb</p>
-            <h2 class="font-display text-4xl md:text-5xl text-white mt-2">Made with <em style="color:var(--gold);">intention.</em></h2>
-            <p class="mt-3 text-white/70 max-w-lg mx-auto">Every piece is a collaboration between tradition and modernity.</p>
-          </div>
-          <div class="grid gap-8 md:grid-cols-3">
-            <div class="feature-card reveal">
-              <span class="icon"><i class="fas fa-hands"></i></span>
-              <h3>Handwoven with Care</h3>
-              <p>Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p>
-            </div>
-            <div class="feature-card reveal">
-              <span class="icon"><i class="fas fa-leaf"></i></span>
-              <h3>Sustainable Materials</h3>
-              <p>We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p>
-            </div>
-            <div class="feature-card reveal">
-              <span class="icon"><i class="fas fa-heart"></i></span>
-              <h3>Ethical Fashion</h3>
-              <p>Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
     <!-- FULL WIDTH BANNER -->
     <section class="section" style="background: var(--sand); padding: 0;">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10"><div class="reveal"><img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" /></div></div>
     </section>
 
-    <!-- COLLECTION PREVIEW - NO PRICING -->
+    <!-- FEATURE CARDS — directly below the banner image -->
+    <section class="section" style="background: var(--sand); padding-top: 3rem; padding-bottom: 4rem;">
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="text-center mb-12 reveal">
+          <p class="eyebrow text-[var(--coral)]"><i class="fas fa-heart mr-1"></i> Made with intention</p>
+          <h2 class="font-display text-3xl md:text-4xl mt-2">Every piece is a collaboration <br/>between <em style="color:var(--coral);">tradition</em> and <em style="color:var(--coral);">modernity</em>.</h2>
+        </div>
+        <div class="grid gap-8 md:grid-cols-3">
+          <div class="feature-card-standalone reveal">
+            <span class="icon"><i class="fas fa-hands"></i></span>
+            <h3>Handwoven with Care</h3>
+            <p>Every piece is crafted by skilled artisans using traditional Ethiopian weaving techniques passed down through generations.</p>
+          </div>
+          <div class="feature-card-standalone reveal">
+            <span class="icon"><i class="fas fa-leaf"></i></span>
+            <h3>Sustainable Materials</h3>
+            <p>We use organic cotton, hand-spun wool, and natural dyes that honor the earth and preserve ancient techniques.</p>
+          </div>
+          <div class="feature-card-standalone reveal">
+            <span class="icon"><i class="fas fa-heart"></i></span>
+            <h3>Ethical Fashion</h3>
+            <p>Fair wages, safe working conditions, and a deep commitment to preserving Ethiopian cultural heritage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COLLECTION PREVIEW -->
     <section class="section bg-white">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="text-center mb-12 reveal">
