@@ -175,7 +175,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO */
+    /* HERO — fixed background: cover + no animation */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -192,8 +192,10 @@
       background-image: url('50.jpg');
       background-size: cover;
       background-position: center center;
-      transform: scale(1.02);
-      animation: heroBreath 14s ease-out both;
+      background-repeat: no-repeat;
+      /* remove scale & animation to keep it perfectly fitted */
+      transform: none;
+      animation: none;
     }
     .hero::after {
       content: '';
@@ -623,7 +625,7 @@
     }
     .final-banner-img:hover { transform: scale(1.03); }
 
-    @keyframes heroBreath { from { transform: scale(1.08); } to { transform: scale(1.02); } }
+    /* only riseIn keyframe remains, heroBreath removed */
     @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 900px) {
@@ -722,7 +724,7 @@
   </header>
 
   <main>
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION — background now static & fitted -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
