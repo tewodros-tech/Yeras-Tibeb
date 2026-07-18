@@ -135,35 +135,6 @@
       font-weight: 800;
     }
 
-    .top-icon-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.8rem;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-      padding: 0.5rem 1.2rem 0.5rem 1rem;
-      border-radius: 60px;
-      border: 1px solid rgba(255,255,255,0.12);
-      margin-bottom: 1.5rem;
-      animation: riseIn 800ms 50ms both;
-    }
-    .top-icon-badge .big-icon {
-      font-size: 2.4rem;
-      color: var(--gold);
-      line-height: 1;
-    }
-    .top-icon-badge .badge-text {
-      font-size: 0.7rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.7);
-    }
-    .top-icon-badge .badge-text strong {
-      color: white;
-      font-weight: 800;
-    }
-
     .button-primary {
       display: inline-flex;
       align-items: center;
@@ -667,8 +638,6 @@
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
       .final-banner-img { height: 220px; }
-      .top-icon-badge .big-icon { font-size: 1.8rem; }
-      .top-icon-badge .badge-text { font-size: 0.6rem; }
     }
     @media (max-width: 640px) {
       .hero { min-height: 760px; }
@@ -705,9 +674,6 @@
       .slideshow-btn.next { right: 8px; }
       .icon-button { width: 52px; height: 52px; }
       .icon-button svg { width: 32px; height: 32px; }
-      .top-icon-badge { padding: 0.4rem 0.9rem 0.4rem 0.7rem; }
-      .top-icon-badge .big-icon { font-size: 1.5rem; }
-      .top-icon-badge .badge-text { font-size: 0.5rem; }
       .footer-social a { width: 52px; height: 52px; font-size: 1.6rem; }
     }
   </style>
@@ -760,10 +726,6 @@
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-          <div class="top-icon-badge">
-            <span class="big-icon"><i class="fas fa-crown"></i></span>
-            <span class="badge-text"><strong>YERAS TIBEB</strong> · Ethiopian heritage</span>
-          </div>
           <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
             <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
             <span>Ethiopian heritage · handwoven with love</span>
