@@ -175,7 +175,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO — background perfectly fitted, no crop, no animation */
+    /* HERO — using img tag so face is fully visible */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -183,19 +183,16 @@
       align-items: flex-end;
       overflow: hidden;
       color: var(--linen);
-      background: #352127;
+      background: #2a1a1e;
     }
-    .hero::before {
-      content: '';
+    .hero-bg-img {
       position: absolute;
       inset: 0;
-      background-image: url('50.jpg');
-      background-size: contain;
-      background-position: center center;
-      background-repeat: no-repeat;
-      background-color: #2a1a1e;
-      transform: none;
-      animation: none;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      z-index: 0;
     }
     .hero::after {
       content: '';
@@ -203,10 +200,11 @@
       inset: 0;
       background: linear-gradient(90deg, rgba(26,14,17,0.7) 0%, rgba(26,14,17,0.3) 50%, rgba(26,14,17,0.05) 80%),
                   linear-gradient(0deg, rgba(24,12,15,0.6) 0%, rgba(24,12,15,0.0) 60%);
+      z-index: 1;
     }
     .hero-content { 
       position: relative; 
-      z-index: 1; 
+      z-index: 2; 
       width: 100%; 
       padding-bottom: clamp(4.5rem, 12vh, 8rem); 
     }
@@ -642,7 +640,7 @@
     }
     @media (max-width: 640px) {
       .hero { min-height: 760px; }
-      .hero::before { background-position: center center; background-size: contain; }
+      .hero-bg-img { object-position: center 25%; }
       .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.7), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.0) 65%); }
       .hero-content { padding-bottom: 4.2rem; }
       .hero-actions { display: grid; gap: 0.7rem; }
@@ -723,8 +721,9 @@
   </header>
 
   <main>
-    <!-- HERO SECTION — background now perfectly fitted, no crop -->
+    <!-- HERO SECTION — using img tag so face is fully visible -->
     <section class="hero" aria-labelledby="hero-title">
+      <img src="50.jpg" alt="Ethiopian heritage" class="hero-bg-img" />
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
           <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
