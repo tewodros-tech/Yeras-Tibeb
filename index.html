@@ -175,7 +175,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO — fixed background: cover + no animation */
+    /* HERO — background perfectly fitted, no crop, no animation */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -190,10 +190,10 @@
       position: absolute;
       inset: 0;
       background-image: url('50.jpg');
-      background-size: cover;
+      background-size: contain;
       background-position: center center;
       background-repeat: no-repeat;
-      /* remove scale & animation to keep it perfectly fitted */
+      background-color: #2a1a1e;
       transform: none;
       animation: none;
     }
@@ -201,8 +201,8 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(26,14,17,0.6) 0%, rgba(26,14,17,0.3) 50%, rgba(26,14,17,0.1) 80%),
-                  linear-gradient(0deg, rgba(24,12,15,0.6) 0%, rgba(24,12,15,0.05) 55%);
+      background: linear-gradient(90deg, rgba(26,14,17,0.7) 0%, rgba(26,14,17,0.3) 50%, rgba(26,14,17,0.05) 80%),
+                  linear-gradient(0deg, rgba(24,12,15,0.6) 0%, rgba(24,12,15,0.0) 60%);
     }
     .hero-content { 
       position: relative; 
@@ -238,12 +238,12 @@
     
     .hero-copy { 
       max-width: 480px; 
-      color: rgba(255,255,255,0.8); 
+      color: rgba(255,255,255,0.85); 
       line-height: 1.7; 
       font-size: 1rem; 
       animation: riseIn 800ms 290ms both; 
       margin-top: 0.3rem;
-      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
     }
     .hero-actions { animation: riseIn 800ms 390ms both; }
     .hero-badge {
@@ -625,7 +625,6 @@
     }
     .final-banner-img:hover { transform: scale(1.03); }
 
-    /* only riseIn keyframe remains, heroBreath removed */
     @keyframes riseIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
     @media (max-width: 900px) {
@@ -643,8 +642,8 @@
     }
     @media (max-width: 640px) {
       .hero { min-height: 760px; }
-      .hero::before { background-position: 57% center; }
-      .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.6), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.05) 65%); }
+      .hero::before { background-position: center center; background-size: contain; }
+      .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.7), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.0) 65%); }
       .hero-content { padding-bottom: 4.2rem; }
       .hero-actions { display: grid; gap: 0.7rem; }
       .hero-actions a { width: fit-content; }
@@ -724,7 +723,7 @@
   </header>
 
   <main>
-    <!-- HERO SECTION — background now static & fitted -->
+    <!-- HERO SECTION — background now perfectly fitted, no crop -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
