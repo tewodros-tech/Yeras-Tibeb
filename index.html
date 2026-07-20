@@ -184,6 +184,7 @@
       overflow: hidden;
       color: var(--linen);
       background: #2c1a1f;
+      cursor: pointer;
     }
     .hero-bg-wrapper {
       position: absolute;
@@ -194,12 +195,25 @@
       justify-content: center;
       overflow: hidden;
       background: #2c1a1f;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .hero-bg-wrapper img {
       width: 100%;
       height: 100%;
       object-fit: contain;
       object-position: center center;
+      transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    /* Expanded state - full image visible */
+    .hero.bg-expanded .hero-bg-wrapper {
+      background: #0a0507;
+    }
+    .hero.bg-expanded .hero-bg-wrapper img {
+      object-fit: contain;
+      transform: scale(1);
+    }
+    .hero.bg-expanded::after {
+      opacity: 0.3;
     }
     .hero::after {
       content: '';
@@ -208,12 +222,20 @@
       background: linear-gradient(90deg, rgba(26,14,17,0.65) 0%, rgba(26,14,17,0.3) 50%, rgba(26,14,17,0.1) 80%),
                   linear-gradient(0deg, rgba(24,12,15,0.7) 0%, rgba(24,12,15,0.05) 55%);
       z-index: 1;
+      transition: opacity 0.8s ease;
     }
     .hero-content { 
       position: relative; 
       z-index: 2; 
       width: 100%; 
       padding-bottom: clamp(4.5rem, 12vh, 8rem); 
+      pointer-events: none;
+    }
+    .hero-content .hero-logo-area,
+    .hero-content .hero-actions,
+    .hero-content .trust-badges,
+    .hero-content .hero-badge {
+      pointer-events: auto;
     }
     
     .hero-logo-area {
@@ -288,6 +310,29 @@
       gap: 0.5rem;
     }
     .trust-badges span i { color: var(--gold); font-size: 0.7rem; }
+
+    /* Click hint */
+    .click-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      color: rgba(255,255,255,0.3);
+      font-size: 0.6rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      animation: pulse 2s ease-in-out infinite;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .hero.bg-expanded .click-hint {
+      opacity: 0;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.3; transform: translateX(-50%) translateY(0); }
+      50% { opacity: 0.7; transform: translateX(-50%) translateY(-4px); }
+    }
 
     /* SLIDESHOW */
     .slideshow-container {
@@ -689,6 +734,7 @@
       .icon-button { width: 52px; height: 52px; }
       .icon-button svg { width: 32px; height: 32px; }
       .footer-social a { width: 52px; height: 52px; font-size: 1.6rem; }
+      .click-hint { font-size: 0.5rem; bottom: 20px; }
     }
   </style>
 </head>
@@ -737,10 +783,11 @@
 
   <main>
     <!-- HERO SECTION -->
-    <section class="hero" aria-labelledby="hero-title">
+    <section class="hero" id="heroSection" aria-labelledby="hero-title">
       <div class="hero-bg-wrapper">
         <img src="50.jpg" alt="Ethiopian heritage" />
       </div>
+      <div class="click-hint"><i class="fas fa-mouse-pointer mr-2"></i> Click to view full image</div>
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
           <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
@@ -1019,6 +1066,14 @@
     document.querySelectorAll('.reveal').forEach((el, i) => {
       el.style.transitionDelay = `${Math.min(i * 60, 400)}ms`;
       revealObserver.observe(el);
+    });
+
+    // HERO CLICK TO EXPAND
+    const heroSection = document.getElementById('heroSection');
+    heroSection.addEventListener('click', function(e) {
+      // Don't toggle if clicking on buttons or links
+      if (e.target.closest('a') || e.target.closest('button')) return;
+      this.classList.toggle('bg-expanded');
     });
 
     // SLIDESHOW
