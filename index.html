@@ -222,19 +222,29 @@
       animation: riseIn 900ms 100ms both;
     }
     .hero-logo-area .hero-logo-img {
-      height: 280px;
-      width: auto;
-      max-width: 600px;
-      object-fit: contain;
-      filter: drop-shadow(0 12px 60px rgba(0,0,0,0.5));
-      border-radius: 20px;
-      background: rgba(255,255,255,0.08);
-      padding: 16px 28px;
-      margin-bottom: 0.8rem;
-      transition: transform 0.3s ease;
+      display: none;
     }
-    .hero-logo-area .hero-logo-img:hover {
-      transform: scale(1.04);
+    .hero-brand-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 600;
+      line-height: 1;
+      color: white;
+      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
+      letter-spacing: -0.02em;
+    }
+    .hero-brand-text .highlight {
+      color: var(--gold);
+    }
+    .hero-tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
+      font-weight: 500;
+      font-style: italic;
+      color: var(--gold);
+      text-shadow: 0 2px 30px rgba(0,0,0,0.3);
+      margin-top: -0.2rem;
+      letter-spacing: 0.04em;
     }
     
     .hero-copy { 
@@ -243,10 +253,21 @@
       line-height: 1.7; 
       font-size: 1rem; 
       animation: riseIn 800ms 290ms both; 
-      margin-top: 0.3rem;
+      margin-top: 0.8rem;
       text-shadow: 0 2px 20px rgba(0,0,0,0.3);
     }
-    .hero-actions { animation: riseIn 800ms 390ms both; }
+    .hero-actions { 
+      animation: riseIn 800ms 390ms both; 
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+    }
+    .hero-actions .button-primary,
+    .hero-actions .button-secondary {
+      min-width: 200px;
+    }
     .hero-badge {
       display: inline-flex;
       align-items: center;
@@ -258,6 +279,7 @@
       font-size: 0.6rem;
       letter-spacing: 0.08em;
       border: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 0.5rem;
     }
 
     .trust-badges {
@@ -633,7 +655,6 @@
       .mobile-toggle { display: grid !important; }
       .header-social a { width: 40px; height: 40px; font-size: 1.2rem; }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); }
-      .hero-logo-area .hero-logo-img { height: 200px; max-width: 400px; }
       .footer-brand .footer-logo img { height: 55px; max-width: 160px; }
       .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
       .banner-image { height: 350px; }
@@ -646,9 +667,11 @@
       .hero-bg-wrapper img { object-position: center 10%; }
       .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.6), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.05) 65%); }
       .hero-content { padding-bottom: 4.2rem; }
-      .hero-actions { display: grid; gap: 0.7rem; }
-      .hero-actions a { width: fit-content; }
-      .hero-logo-area .hero-logo-img { height: 160px; max-width: 320px; padding: 12px 20px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; }
+      .hero-actions .button-primary,
+      .hero-actions .button-secondary { width: 100%; min-width: unset; }
+      .hero-brand-text { font-size: 2.8rem; }
+      .hero-tagline { font-size: 1.1rem; }
       .hero-copy { font-size: 0.85rem; }
       .trust-badges { gap: 0.6rem 1rem; }
       .trust-badges span { font-size: 0.5rem; }
@@ -736,10 +759,14 @@
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           <div class="hero-logo-area">
-            <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
+            <h1 class="hero-brand-text">
+              YERAS<br />
+              <span class="highlight">TIBEB</span>
+            </h1>
+            <p class="hero-tagline">MAKE IT ETHIOPIA</p>
           </div>
           <p class="hero-copy">Modern Ethiopian clothing, handwoven with memory. Pieces that carry where you come from into everything still to come.</p>
-          <div class="hero-actions mt-7 flex flex-wrap items-center gap-3">
+          <div class="hero-actions">
             <a class="button-primary" href="shop.html"><i class="fas fa-shopping-bag"></i> Explore the collection <span aria-hidden="true">&#8594;</span></a>
             <a class="button-secondary" href="about.html"><i class="fas fa-users"></i> Meet the makers</a>
           </div>
