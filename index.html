@@ -175,7 +175,7 @@
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
 
-    /* HERO - properly fitted background with contain */
+    /* HERO */
     .hero {
       position: relative;
       min-height: 100vh;
@@ -198,57 +198,62 @@
     .hero-bg-wrapper img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;
       object-position: center center;
     }
     .hero::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(26,14,17,0.65) 0%, rgba(26,14,17,0.3) 50%, rgba(26,14,17,0.1) 80%),
-                  linear-gradient(0deg, rgba(24,12,15,0.7) 0%, rgba(24,12,15,0.05) 55%);
+      background: linear-gradient(90deg, rgba(26,14,17,0.7) 0%, rgba(26,14,17,0.4) 50%, rgba(26,14,17,0.15) 80%),
+                  linear-gradient(0deg, rgba(24,12,15,0.75) 0%, rgba(24,12,15,0.1) 60%);
       z-index: 1;
     }
     .hero-content { 
       position: relative; 
       z-index: 2; 
       width: 100%; 
-      padding-bottom: clamp(4.5rem, 12vh, 8rem); 
+      padding-bottom: clamp(3rem, 8vh, 6rem); 
+      padding-top: clamp(5rem, 15vh, 8rem);
     }
     
     .hero-logo-area {
       display: flex;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       animation: riseIn 900ms 100ms both;
     }
     .hero-logo-area .hero-logo-img {
-      height: 280px;
+      height: clamp(120px, 25vw, 280px);
       width: auto;
-      max-width: 600px;
+      max-width: min(80%, 600px);
       object-fit: contain;
-      filter: drop-shadow(0 12px 60px rgba(0,0,0,0.5));
-      border-radius: 20px;
-      background: rgba(255,255,255,0.08);
-      padding: 16px 28px;
-      margin-bottom: 0.8rem;
+      filter: drop-shadow(0 8px 40px rgba(0,0,0,0.5));
+      border-radius: 16px;
+      background: rgba(255,255,255,0.06);
+      padding: clamp(12px, 2vw, 28px) clamp(20px, 4vw, 48px);
       transition: transform 0.3s ease;
+      margin: 0 auto;
     }
     .hero-logo-area .hero-logo-img:hover {
-      transform: scale(1.04);
+      transform: scale(1.03);
     }
     
     .hero-actions { 
       animation: riseIn 800ms 390ms both; 
-      margin-top: 0.5rem;
+      margin-top: clamp(1rem, 3vh, 2rem);
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 1rem;
+      justify-content: center;
+      gap: clamp(0.8rem, 2vw, 1.5rem);
     }
     .hero-actions .button-primary,
     .hero-actions .button-secondary {
-      min-width: 200px;
+      min-width: clamp(160px, 30vw, 220px);
+      font-size: clamp(0.6rem, 1.2vw, 0.72rem);
+      padding: clamp(0.6rem, 1.2vw, 0.85rem) clamp(1rem, 2vw, 1.5rem);
+      min-height: clamp(42px, 6vh, 50px);
     }
     .hero-badge {
       display: inline-flex;
@@ -258,27 +263,29 @@
       backdrop-filter: blur(8px);
       padding: 0.3rem 0.8rem;
       border-radius: 50px;
-      font-size: 0.6rem;
+      font-size: clamp(0.5rem, 0.9vw, 0.6rem);
       letter-spacing: 0.08em;
       border: 1px solid rgba(255,255,255,0.08);
-      margin-bottom: 0.5rem;
+      margin-bottom: clamp(0.8rem, 2vh, 1.5rem);
+      margin: 0 auto clamp(0.8rem, 2vh, 1.5rem) auto;
     }
 
     .trust-badges {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem 1.8rem;
-      margin-top: 1.8rem;
+      justify-content: center;
+      gap: clamp(0.6rem, 1.5vw, 1.8rem);
+      margin-top: clamp(1.2rem, 3vh, 2rem);
       animation: riseIn 800ms 450ms both;
     }
     .trust-badges span {
-      font-size: 0.65rem;
+      font-size: clamp(0.45rem, 0.8vw, 0.65rem);
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: rgba(255,255,255,0.5);
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.4rem;
     }
     .trust-badges span i { color: var(--gold); font-size: 0.7rem; }
 
@@ -643,18 +650,56 @@
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
       .final-banner-img { height: 220px; }
-    }
-    @media (max-width: 640px) {
-      .hero { min-height: 760px; }
-      .hero-bg-wrapper img { object-position: center center; }
-      .hero::after { background: linear-gradient(90deg, rgba(26,14,17,0.6), rgba(26,14,17,0.2)), linear-gradient(0deg, rgba(24,12,15,0.7), rgba(24,12,15,0.05) 65%); }
-      .hero-content { padding-bottom: 4.2rem; }
-      .hero-actions { flex-direction: column; align-items: flex-start; }
       .hero-actions .button-primary,
-      .hero-actions .button-secondary { width: 100%; min-width: unset; }
-      .hero-logo-area .hero-logo-img { height: 160px; max-width: 320px; padding: 12px 20px; }
-      .trust-badges { gap: 0.6rem 1rem; }
-      .trust-badges span { font-size: 0.5rem; }
+      .hero-actions .button-secondary { min-width: 180px; }
+    }
+
+    @media (max-width: 640px) {
+      .hero { min-height: 100vh; }
+      .hero-bg-wrapper img { object-fit: cover; object-position: center 20%; }
+      .hero::after { 
+        background: linear-gradient(180deg, rgba(26,14,17,0.5) 0%, rgba(26,14,17,0.3) 40%, rgba(26,14,17,0.1) 70%),
+                    linear-gradient(0deg, rgba(24,12,15,0.8) 0%, rgba(24,12,15,0.1) 50%); 
+      }
+      .hero-content { 
+        padding-bottom: 2.5rem; 
+        padding-top: 5rem;
+      }
+      .hero-logo-area .hero-logo-img { 
+        height: 130px; 
+        max-width: 90%; 
+        padding: 10px 16px;
+        border-radius: 12px;
+      }
+      .hero-actions { 
+        flex-direction: column; 
+        align-items: center; 
+        width: 100%;
+        gap: 0.7rem;
+      }
+      .hero-actions .button-primary,
+      .hero-actions .button-secondary { 
+        width: 100%; 
+        min-width: unset; 
+        max-width: 320px;
+        font-size: 0.65rem;
+        padding: 0.7rem 1.2rem;
+        min-height: 44px;
+      }
+      .hero-badge {
+        font-size: 0.5rem;
+        padding: 0.2rem 0.6rem;
+      }
+      .trust-badges { 
+        gap: 0.5rem 1rem; 
+        justify-content: center;
+        margin-top: 1.2rem;
+      }
+      .trust-badges span { 
+        font-size: 0.45rem; 
+        gap: 0.3rem;
+      }
+      .trust-badges span i { font-size: 0.5rem; }
       .header-social { display: none !important; }
       .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
@@ -680,6 +725,19 @@
       .icon-button { width: 52px; height: 52px; }
       .icon-button svg { width: 32px; height: 32px; }
       .footer-social a { width: 52px; height: 52px; font-size: 1.6rem; }
+    }
+
+    @media (max-width: 400px) {
+      .hero-logo-area .hero-logo-img { 
+        height: 100px; 
+        padding: 8px 12px;
+      }
+      .hero-actions .button-primary,
+      .hero-actions .button-secondary { 
+        font-size: 0.6rem;
+        padding: 0.6rem 1rem;
+        min-height: 40px;
+      }
     }
   </style>
 </head>
@@ -734,7 +792,7 @@
       </div>
       <div class="hero-content">
         <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-          <div class="flex flex-wrap items-center gap-3 mb-4 hero-badge">
+          <div class="flex flex-wrap items-center justify-center gap-3 mb-4 hero-badge">
             <span><i class="fas fa-flag text-[var(--gold)]"></i></span>
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
