@@ -222,32 +222,25 @@
       align-items: flex-start;
       animation: riseIn 900ms 100ms both;
     }
-    .hero-brand-text {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 6rem);
-      font-weight: 600;
-      line-height: 1;
-      color: white;
-      text-shadow: 0 4px 40px rgba(0,0,0,0.4);
-      letter-spacing: -0.02em;
+    .hero-logo-area .hero-logo-img {
+      height: 280px;
+      width: auto;
+      max-width: 600px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 60px rgba(0,0,0,0.5));
+      border-radius: 20px;
+      background: rgba(255,255,255,0.08);
+      padding: 16px 28px;
+      margin-bottom: 0.8rem;
+      transition: transform 0.3s ease;
     }
-    .hero-brand-text .highlight {
-      color: var(--gold);
-    }
-    .hero-tagline {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.2rem, 2.5vw, 2.2rem);
-      font-weight: 500;
-      font-style: italic;
-      color: var(--gold);
-      text-shadow: 0 2px 30px rgba(0,0,0,0.3);
-      margin-top: -0.2rem;
-      letter-spacing: 0.04em;
+    .hero-logo-area .hero-logo-img:hover {
+      transform: scale(1.04);
     }
     
     .hero-actions { 
       animation: riseIn 800ms 390ms both; 
-      margin-top: 1.5rem;
+      margin-top: 0.5rem;
       display: flex;
       flex-wrap: wrap;
       align-items: center;
@@ -659,8 +652,7 @@
       .hero-actions { flex-direction: column; align-items: flex-start; }
       .hero-actions .button-primary,
       .hero-actions .button-secondary { width: 100%; min-width: unset; }
-      .hero-brand-text { font-size: 2.8rem; }
-      .hero-tagline { font-size: 1.1rem; }
+      .hero-logo-area .hero-logo-img { height: 160px; max-width: 320px; padding: 12px 20px; }
       .trust-badges { gap: 0.6rem 1rem; }
       .trust-badges span { font-size: 0.5rem; }
       .header-social { display: none !important; }
@@ -747,11 +739,7 @@
             <span>Ethiopian heritage · handwoven with love</span>
           </div>
           <div class="hero-logo-area">
-            <h1 class="hero-brand-text">
-              YERAS<br />
-              <span class="highlight">TIBEB</span>
-            </h1>
-            <p class="hero-tagline">MAKE IT ETHIOPIA</p>
+            <img src="1.jpg" alt="YERAS TIBEB" class="hero-logo-img" onerror="this.style.display='none';">
           </div>
           <div class="hero-actions">
             <a class="button-primary" href="shop.html"><i class="fas fa-shopping-bag"></i> Explore the collection <span aria-hidden="true">&#8594;</span></a>
