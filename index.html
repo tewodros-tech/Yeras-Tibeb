@@ -659,9 +659,10 @@
     .banner-image {
       width: 100%;
       height: 500px;
-      object-fit: cover;
+      object-fit: contain;
       object-position: center center;
       border-radius: 12px;
+      background: var(--sand);
     }
     .gallery-row-img {
       width: 100%;
@@ -834,7 +835,6 @@
           <div class="slides" id="slides">
             <div class="slide"><img src="51.jpg" alt="Ethiopian Textiles" /><div class="slide-overlay"><div><h2>Timeless <em>craftsmanship</em></h2><p>Ancient techniques meet modern silhouettes</p></div></div></div>
             <div class="slide"><img src="52.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Handwoven <em>with love</em></h2><p>Every piece tells a story of Ethiopian heritage</p></div></div></div>
-            <!-- 53.jpg removed -->
             <div class="slide"><img src="54.jpg" alt="Ethiopian Weaving" /><div class="slide-overlay"><div><h2>Preserving <em>heritage</em></h2><p>Supporting master weavers across Ethiopia</p></div></div></div>
             <div class="slide"><img src="55.jpg" alt="YERAS TIBEB Collection" /><div class="slide-overlay"><div><h2>Modern <em>Ethiopian</em></h2><p>Contemporary fashion rooted in tradition</p></div></div></div>
           </div>
@@ -847,7 +847,11 @@
 
     <!-- FULL WIDTH BANNER -->
     <section class="section" style="background: var(--sand); padding: 0;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10"><div class="reveal"><img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" /></div></div>
+      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+        <div class="reveal banner-wrapper">
+          <img src="64.jpg" alt="Ethiopian textile showcase" class="banner-image" loading="lazy" />
+        </div>
+      </div>
     </section>
 
     <!-- FEATURE CARDS -->
@@ -964,7 +968,6 @@
           <img src="80.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
           <img src="51.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
           <img src="52.jpg" alt="Instagram feed" class="insta-img" loading="lazy" />
-          <!-- 53.jpg removed -->
         </div>
         <div class="text-center mt-6 reveal"><a href="#" class="inline-flex items-center gap-2 text-[var(--coral)] font-bold hover:gap-3 transition-all text-sm uppercase tracking-[0.1em]"><i class="fab fa-instagram"></i> Follow @yerastibeb</a></div>
       </div>
@@ -1071,7 +1074,6 @@
     // HERO CLICK TO EXPAND
     const heroSection = document.getElementById('heroSection');
     heroSection.addEventListener('click', function(e) {
-      // Don't toggle if clicking on buttons or links
       if (e.target.closest('a') || e.target.closest('button')) return;
       this.classList.toggle('bg-expanded');
     });
