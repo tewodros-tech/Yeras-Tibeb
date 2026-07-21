@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
   <title>YERAS TIBEB · Shop</title>
   <meta name="description" content="Shop modern Ethiopian clothing at YERAS TIBEB — handwoven with love." />
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
@@ -19,18 +19,24 @@
       --clay: #b86d4e;
       --sand: #f1ebdd;
       --linen: #f8f5ed;
-      --line: rgba(30, 24, 24, 0.18);
+      --line: rgba(30, 24, 24, 0.12);
       --gold: #c9a84c;
+      --shadow-sm: 0 4px 20px rgba(0,0,0,0.04);
+      --shadow-md: 0 8px 40px rgba(0,0,0,0.08);
+      --shadow-lg: 0 20px 60px rgba(0,0,0,0.12);
     }
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-tap-highlight-color: transparent; }
     body {
       background: var(--sand);
       color: var(--ink);
       font-family: 'Manrope', sans-serif;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
     .font-display { font-family: 'Playfair Display', serif; }
-    .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
+    .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.6rem; font-weight: 700; }
 
     /* HEADER */
     .site-header {
@@ -40,106 +46,171 @@
       left: 0;
       right: 0;
       color: var(--linen);
-      background: rgba(20, 12, 14, 0.3);
-      backdrop-filter: blur(4px);
-      transition: background 0.3s ease;
+      background: rgba(20, 12, 14, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+      border-bottom: 1px solid rgba(248,245,237,0.04);
     }
-    .site-header.scrolled { background: rgba(20, 12, 14, 0.92); backdrop-filter: blur(12px); }
+    .site-header.scrolled { 
+      background: rgba(20, 12, 14, 0.94); 
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom-color: rgba(248,245,237,0.08);
+    }
     .announcement {
-      border-bottom: 1px solid rgba(248, 245, 237, 0.12);
-      background: rgba(20, 12, 14, 0.4);
-      min-height: 32px;
-      font-size: 0.6rem;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-    .nav-shell { border-bottom: 1px solid rgba(248, 245, 237, 0.12); }
-    .nav-link {
-      position: relative;
-      opacity: 0.8;
-      transition: opacity 180ms ease;
-      font-size: 0.68rem;
-      font-weight: 700;
+      border-bottom: 1px solid rgba(248,245,237,0.06);
+      background: rgba(20, 12, 14, 0.3);
+      min-height: 28px;
+      font-size: 0.5rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
     }
-    .nav-link:hover { opacity: 1; }
+    @media (max-width: 480px) {
+      .announcement { font-size: 0.4rem; min-height: 24px; letter-spacing: 0.08em; }
+    }
+    .nav-shell { border-bottom: 1px solid rgba(248,245,237,0.04); padding: 4px 0; }
+    
+    .logo-img {
+      height: 48px;
+      width: auto;
+      max-width: 160px;
+      border-radius: 10px;
+      object-fit: contain;
+      filter: brightness(1.05) contrast(1.05);
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+      border: 2px solid rgba(255,255,255,0.08);
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
+      background: rgba(255,255,255,0.05);
+      padding: 3px;
+    }
+    .logo-img:hover {
+      transform: scale(1.04);
+      border-color: var(--gold);
+      box-shadow: 0 4px 30px rgba(201,168,76,0.2);
+    }
+    @media (max-width: 640px) {
+      .logo-img { height: 38px; max-width: 120px; padding: 2px; }
+    }
+
+    .nav-link {
+      position: relative;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      padding: 4px 0;
+    }
+    .nav-link:hover { opacity: 1; color: white; }
     .nav-link::after {
       content: '';
       position: absolute;
       left: 0;
       right: 100%;
-      bottom: -0.55rem;
+      bottom: -0.2rem;
       height: 2px;
       background: var(--gold);
-      transition: right 220ms ease;
+      transition: right 300ms cubic-bezier(.2,.8,.2,1);
     }
     .nav-link:hover::after { right: 0; }
-    
-    .logo-img {
-      height: 60px;
-      width: auto;
-      max-width: 200px;
-      border-radius: 10px;
-      object-fit: contain;
-      filter: brightness(1.05) contrast(1.05);
-      box-shadow: 0 2px 16px rgba(0,0,0,0.2);
-      border: 2px solid rgba(255,255,255,0.2);
-      transition: all 0.3s ease;
-      background: rgba(255,255,255,0.08);
-      padding: 4px;
-    }
-    .logo-img:hover {
-      transform: scale(1.05);
-      border-color: var(--gold);
-      box-shadow: 0 4px 25px rgba(201,168,76,0.3);
-    }
-    
+    .nav-link.active { opacity: 1; }
+    .nav-link.active::after { right: 0; }
+
     .icon-button {
       position: relative;
       display: grid;
       place-items: center;
-      width: 36px;
-      height: 36px;
-      transition: color 180ms ease, transform 180ms ease;
+      width: 40px;
+      height: 40px;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 50%;
+      color: rgba(255,255,255,0.7);
+      cursor: pointer;
     }
-    .icon-button:hover { color: var(--gold); transform: translateY(-1px); }
+    .icon-button:hover { 
+      color: var(--gold); 
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(201,168,76,0.15);
+      transform: scale(1.05);
+    }
+    .icon-button:active { transform: scale(0.93); }
+    .icon-button svg { width: 20px; height: 20px; }
+    @media (max-width: 640px) {
+      .icon-button { width: 36px; height: 36px; }
+      .icon-button svg { width: 17px; height: 17px; }
+    }
     .cart-count {
       position: absolute;
       top: -2px;
-      right: -4px;
+      right: -2px;
       display: grid;
       place-items: center;
-      min-width: 16px;
-      height: 16px;
-      padding: 0 3px;
+      min-width: 18px;
+      height: 18px;
+      padding: 0 4px;
       border-radius: 999px;
       background: var(--coral);
       color: white;
-      font-size: 0.58rem;
+      font-size: 0.5rem;
       font-weight: 800;
+      box-shadow: 0 2px 12px rgba(211,83,67,0.4);
+      animation: cartPop 0.4s cubic-bezier(.2,.8,.2,1);
+    }
+    @keyframes cartPop {
+      0% { transform: scale(0); }
+      60% { transform: scale(1.25); }
+      100% { transform: scale(1); }
     }
 
     .button-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.7rem;
-      min-height: 50px;
-      padding: 0.85rem 1.5rem;
+      gap: 0.6rem;
+      min-height: 46px;
+      padding: 0.7rem 1.8rem;
       border: none;
-      font-size: 0.72rem;
+      font-size: 0.65rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: all 250ms ease;
+      transition: all 0.35s cubic-bezier(.2,.8,.2,1);
       background: var(--coral);
       color: white;
-      border-radius: 4px;
+      border-radius: 8px;
       cursor: pointer;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
     }
-    .button-primary:hover { background: #e06654; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(211,83,67,0.35); }
-    .section { padding: clamp(4rem, 10vw, 8rem) 0; }
+    .button-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .button-primary:hover { 
+      background: #e06654; 
+      transform: translateY(-3px); 
+      box-shadow: 0 12px 40px rgba(211,83,67,0.3);
+    }
+    .button-primary:hover::before { opacity: 1; }
+    .button-primary:active { transform: scale(0.96); }
+    @media (max-width: 640px) {
+      .button-primary { min-height: 40px; padding: 0.6rem 1.2rem; font-size: 0.58rem; }
+    }
+
+    .section { padding: clamp(2.5rem, 6vw, 6rem) 0; }
 
     /* SLIDESHOW */
     .slideshow-container {
@@ -148,6 +219,10 @@
       border-radius: 16px;
       aspect-ratio: 16/9;
       background: var(--wine-deep);
+      box-shadow: var(--shadow-md);
+    }
+    @media (max-width: 640px) {
+      .slideshow-container { border-radius: 12px; aspect-ratio: 4/3; }
     }
     .slideshow-container .slides {
       display: flex;
@@ -158,6 +233,7 @@
       min-width: 100%;
       height: 100%;
       position: relative;
+      flex-shrink: 0;
     }
     .slideshow-container .slide img {
       width: 100%;
@@ -168,92 +244,117 @@
     .slideshow-container .slide .slide-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(90deg, rgba(26,14,17,0.6) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(26,14,17,0.7) 0%, rgba(26,14,17,0.1) 60%, transparent 80%);
       display: flex;
       align-items: center;
-      padding: 3rem;
+      padding: 2rem 2.5rem;
+    }
+    @media (max-width: 640px) {
+      .slideshow-container .slide .slide-overlay { padding: 1.2rem 1.5rem; }
     }
     .slideshow-container .slide .slide-overlay h2 {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 4vw, 4rem);
+      font-size: clamp(1.4rem, 3.5vw, 3.5rem);
       color: white;
       max-width: 500px;
       line-height: 1.1;
+      text-shadow: 0 2px 30px rgba(0,0,0,0.3);
     }
-    .slideshow-container .slide .slide-overlay h2 em {
-      color: var(--gold);
-      font-weight: 400;
-    }
+    .slideshow-container .slide .slide-overlay h2 em { color: var(--gold); font-weight: 400; }
     .slideshow-container .slide .slide-overlay p {
       color: rgba(255,255,255,0.7);
-      margin-top: 0.5rem;
-      font-size: 1rem;
+      margin-top: 0.3rem;
+      font-size: clamp(0.75rem, 1vw, 1rem);
+      text-shadow: 0 1px 20px rgba(0,0,0,0.2);
     }
     .slideshow-btn {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.15);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
       color: white;
-      font-size: 1.2rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
       z-index: 10;
       display: grid;
       place-items: center;
     }
     .slideshow-btn:hover {
-      background: rgba(255,255,255,0.3);
-      transform: translateY(-50%) scale(1.05);
+      background: rgba(255,255,255,0.18);
+      transform: translateY(-50%) scale(1.08);
+      border-color: rgba(255,255,255,0.15);
     }
-    .slideshow-btn.prev { left: 20px; }
-    .slideshow-btn.next { right: 20px; }
+    .slideshow-btn:active { transform: translateY(-50%) scale(0.93); }
+    .slideshow-btn.prev { left: 12px; }
+    .slideshow-btn.next { right: 12px; }
+    @media (max-width: 640px) {
+      .slideshow-btn { width: 32px; height: 32px; font-size: 0.7rem; }
+      .slideshow-btn.prev { left: 8px; }
+      .slideshow-btn.next { right: 8px; }
+    }
     .slideshow-dots {
       position: absolute;
-      bottom: 20px;
+      bottom: 14px;
       left: 50%;
       transform: translateX(-50%);
       display: flex;
-      gap: 10px;
+      gap: 8px;
       z-index: 10;
     }
     .slideshow-dots .dot {
-      width: 10px;
-      height: 10px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.2);
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
     }
-    .slideshow-dots .dot.active {
-      background: var(--gold);
-      width: 30px;
-      border-radius: 5px;
+    .slideshow-dots .dot.active { 
+      background: var(--gold); 
+      width: 24px; 
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(201,168,76,0.25);
     }
 
-    /* Product Grid - Pure Image Gallery */
+    /* Product Grid */
     .product-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      gap: 18px;
     }
+    @media (max-width: 1024px) {
+      .product-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    }
+    @media (max-width: 768px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+    }
+    @media (max-width: 480px) {
+      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    }
+
     .product-card {
       background: white;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      transition: all 0.4s ease;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-      cursor: pointer;
+      transition: all 0.5s cubic-bezier(.2,.8,.2,1);
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0,0,0,0.02);
       position: relative;
+      cursor: pointer;
     }
     .product-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 12px 48px rgba(0,0,0,0.10);
+      box-shadow: var(--shadow-lg);
+    }
+    @media (hover: none) {
+      .product-card:hover { transform: none; }
     }
     .product-card .image-wrap {
       position: relative;
@@ -266,291 +367,611 @@
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      transition: transform 0.6s ease;
+      transition: transform 0.7s cubic-bezier(.2,.8,.2,1);
     }
-    .product-card:hover .image-wrap img {
-      transform: scale(1.05);
+    .product-card:hover .image-wrap img { transform: scale(1.06); }
+    @media (hover: none) {
+      .product-card:hover .image-wrap img { transform: none; }
     }
     .product-card .product-name {
-      padding: 1rem 1.2rem 1.2rem;
+      padding: 0.8rem 0.8rem 1rem;
       text-align: center;
     }
     .product-card .product-name h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 1.1rem;
+      font-size: clamp(0.85rem, 1.2vw, 1.1rem);
       color: var(--ink);
+      line-height: 1.3;
+    }
+    @media (max-width: 480px) {
+      .product-card .product-name { padding: 0.6rem 0.5rem 0.8rem; }
+      .product-card .product-name h3 { font-size: 0.75rem; }
     }
     .product-card .wishlist-btn {
       position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.9);
+      background: rgba(255,255,255,0.92);
       border: none;
       display: grid;
       place-items: center;
       color: var(--ink);
-      font-size: 1rem;
-      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
       cursor: pointer;
       backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
       z-index: 5;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
     .product-card .wishlist-btn:hover {
       background: var(--wine);
       color: white;
-      transform: scale(1.1);
+      transform: scale(1.08);
     }
+    .product-card .wishlist-btn:active { transform: scale(0.9); }
     .product-card .wishlist-btn.liked {
       background: var(--wine);
       color: white;
+      box-shadow: 0 2px 20px rgba(108,39,50,0.2);
+    }
+    @media (max-width: 480px) {
+      .product-card .wishlist-btn { width: 28px; height: 28px; font-size: 0.7rem; top: 6px; right: 6px; }
     }
     .product-card .quick-view {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, transparent 100%);
-      padding: 2rem 1rem 1.2rem;
+      background: linear-gradient(0deg, rgba(0,0,0,0.75) 0%, transparent 100%);
+      padding: 2rem 0.8rem 1rem;
       transform: translateY(100%);
-      transition: transform 0.4s ease;
+      transition: transform 0.4s cubic-bezier(.2,.8,.2,1);
       display: flex;
       justify-content: center;
-      gap: 0.8rem;
+      gap: 0.6rem;
     }
-    .product-card:hover .quick-view {
-      transform: translateY(0);
+    .product-card:hover .quick-view { transform: translateY(0); }
+    @media (hover: none) {
+      .product-card .quick-view { 
+        transform: translateY(0); 
+        background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%);
+        padding: 1.5rem 0.6rem 0.8rem;
+      }
     }
     .product-card .quick-view .qv-btn {
-      background: white;
+      background: rgba(255,255,255,0.92);
       color: var(--wine);
       border: none;
-      padding: 0.5rem 1.2rem;
+      padding: 0.4rem 1rem;
       border-radius: 50px;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
+      backdrop-filter: blur(4px);
     }
     .product-card .quick-view .qv-btn:hover {
       background: var(--gold);
       color: var(--ink);
       transform: scale(1.05);
     }
+    .product-card .quick-view .qv-btn:active { transform: scale(0.93); }
+    @media (max-width: 480px) {
+      .product-card .quick-view { padding: 1.2rem 0.4rem 0.6rem; gap: 0.4rem; }
+      .product-card .quick-view .qv-btn { font-size: 0.5rem; padding: 0.3rem 0.7rem; }
+    }
 
     /* Filter Buttons */
+    .filter-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.4rem 1rem;
+    }
     .filter-btn {
-      padding: 0.6rem 0;
-      color: rgba(30,24,24,0.5);
+      padding: 0.4rem 0;
+      color: rgba(30,24,24,0.4);
       border-bottom: 2px solid transparent;
-      font-size: 0.7rem;
+      font-size: 0.6rem;
       font-weight: 800;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(.2,.8,.2,1);
       background: none;
       border-top: none;
       border-left: none;
       border-right: none;
       cursor: pointer;
+      white-space: nowrap;
     }
     .filter-btn:hover { color: var(--wine); }
-    .filter-btn.active { color: var(--wine); border-color: var(--wine); }
+    .filter-btn.active { 
+      color: var(--wine); 
+      border-color: var(--wine);
+    }
+    .filter-btn:active { transform: scale(0.95); }
+    @media (max-width: 480px) {
+      .filter-btn { font-size: 0.5rem; padding: 0.3rem 0; }
+      .filter-wrapper { gap: 0.2rem 0.7rem; }
+    }
 
     /* Category Showcase */
     .category-showcase {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      gap: 14px;
+    }
+    @media (max-width: 768px) {
+      .category-showcase { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    }
+    @media (max-width: 480px) {
+      .category-showcase { gap: 8px; }
     }
     .category-card {
       position: relative;
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
       aspect-ratio: 4/5;
       cursor: pointer;
-      transition: all 0.4s ease;
+      transition: all 0.5s cubic-bezier(.2,.8,.2,1);
+      box-shadow: var(--shadow-sm);
     }
     .category-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      box-shadow: var(--shadow-lg);
     }
+    @media (hover: none) {
+      .category-card:hover { transform: none; }
+    }
+    .category-card:active { transform: scale(0.97); }
     .category-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: center center;
-      transition: transform 0.6s ease;
+      transition: transform 0.6s cubic-bezier(.2,.8,.2,1);
     }
-    .category-card:hover img {
-      transform: scale(1.05);
+    .category-card:hover img { transform: scale(1.06); }
+    @media (hover: none) {
+      .category-card:hover img { transform: none; }
     }
     .category-card .cat-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, transparent 60%);
+      background: linear-gradient(0deg, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.1) 50%, transparent 70%);
       display: flex;
       align-items: flex-end;
-      padding: 1.5rem;
+      padding: 1.2rem;
     }
     .category-card .cat-overlay h3 {
       font-family: 'Playfair Display', serif;
       color: white;
-      font-size: 1.5rem;
+      font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+      text-shadow: 0 2px 20px rgba(0,0,0,0.2);
     }
     .category-card .cat-overlay span {
       display: block;
       color: var(--gold);
-      font-size: 0.7rem;
+      font-size: 0.55rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+    }
+    @media (max-width: 480px) {
+      .category-card .cat-overlay { padding: 0.8rem; }
+      .category-card .cat-overlay h3 { font-size: 0.9rem; }
+      .category-card .cat-overlay span { font-size: 0.45rem; }
     }
 
+    .full-banner {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      object-position: center center;
+      border-radius: 16px;
+      transition: all 0.6s cubic-bezier(.2,.8,.2,1);
+      box-shadow: var(--shadow-sm);
+    }
+    .full-banner:hover { transform: scale(1.005); box-shadow: var(--shadow-md); }
+    @media (max-width: 768px) {
+      .full-banner { height: 220px; border-radius: 12px; }
+    }
+    @media (max-width: 480px) {
+      .full-banner { height: 160px; border-radius: 10px; }
+    }
+
+    /* FOOTER */
     .footer { background: var(--ink); color: var(--linen); }
-    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2rem; }
-    .footer-brand { max-width: 260px; }
+    .footer-grid { display: grid; grid-template-columns: 1.25fr 1fr 1fr; gap: 2.5rem; }
+    @media (max-width: 768px) {
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    .footer-brand { max-width: 280px; }
+    @media (max-width: 768px) {
+      .footer-brand { max-width: 100%; }
+    }
     .footer-brand .footer-logo {
-      height: 65px;
+      height: 55px;
       width: auto;
-      max-width: 220px;
+      max-width: 180px;
       border-radius: 10px;
       object-fit: contain;
-      border: 2px solid rgba(255,255,255,0.12);
-      padding: 4px;
-      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.06);
+      padding: 3px;
+      background: rgba(255,255,255,0.03);
       margin-bottom: 0.8rem;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(.2,.8,.2,1);
     }
     .footer-brand .footer-logo:hover {
       border-color: var(--gold);
-      transform: scale(1.02);
+      transform: scale(1.03);
     }
-    .footer-brand h2 { margin-top: 0.8rem; font-family: 'Playfair Display', serif; font-size: 2.2rem; }
-    .footer-brand p { margin-top: 0.8rem; color: rgba(248,245,237,0.58); font-size: 0.78rem; line-height: 1.65; }
-    .footer-heading { color: var(--gold); font-size: 0.66rem; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
-    .footer-links { display: grid; gap: 0.7rem; margin-top: 1rem; color: rgba(248,245,237,0.7); font-size: 0.78rem; }
-    .footer-links a:hover { color: white; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 1rem; margin-top: 5rem; padding-top: 1.2rem; border-top: 1px solid rgba(248,245,237,0.12); color: rgba(248,245,237,0.45); font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+    @media (max-width: 480px) {
+      .footer-brand .footer-logo { height: 42px; max-width: 140px; }
+    }
+    .footer-brand h2 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.8rem; 
+      margin-top: 0.5rem;
+    }
+    @media (max-width: 480px) {
+      .footer-brand h2 { font-size: 1.4rem; }
+    }
+    .footer-brand p { 
+      margin-top: 0.6rem; 
+      color: rgba(248,245,237,0.5); 
+      font-size: 0.78rem; 
+      line-height: 1.7; 
+    }
+    .footer-heading { 
+      color: var(--gold); 
+      font-size: 0.6rem; 
+      font-weight: 800; 
+      letter-spacing: 0.18em; 
+      text-transform: uppercase; 
+    }
+    .footer-links { 
+      display: grid; 
+      gap: 0.6rem; 
+      margin-top: 0.8rem; 
+      color: rgba(248,245,237,0.6); 
+      font-size: 0.78rem; 
+    }
+    .footer-links a { 
+      color: rgba(248,245,237,0.6); 
+      text-decoration: none; 
+      transition: all 0.3s ease;
+      padding: 2px 0;
+    }
+    .footer-links a:hover { color: white; transform: translateX(4px); }
+    
+    .footer-social {
+      display: flex;
+      gap: 10px;
+      margin-top: 1rem;
+    }
+    .footer-social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.35);
+      font-size: 1.1rem;
+      transition: all 0.35s cubic-bezier(.2,.8,.2,1);
+      text-decoration: none;
+    }
+    .footer-social a:hover {
+      color: var(--gold);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(201,168,76,0.1);
+      transform: translateY(-4px) scale(1.06);
+      box-shadow: 0 4px 24px rgba(201,168,76,0.06);
+    }
+    @media (max-width: 480px) {
+      .footer-social a { width: 36px; height: 36px; font-size: 1rem; }
+    }
+    
+    .footer-bottom { 
+      display: flex; 
+      justify-content: space-between; 
+      gap: 1rem; 
+      margin-top: 3.5rem; 
+      padding-top: 1.2rem; 
+      border-top: 1px solid rgba(248,245,237,0.04); 
+      color: rgba(248,245,237,0.25); 
+      font-size: 0.5rem; 
+      letter-spacing: 0.08em; 
+      text-transform: uppercase; 
+      flex-wrap: wrap;
+    }
+    @media (max-width: 480px) {
+      .footer-bottom { flex-direction: column; align-items: center; text-align: center; gap: 0.2rem; margin-top: 2.5rem; }
+    }
 
-    .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.5rem; background: rgba(35,18,22,0.98); border-bottom: 1px solid rgba(248,245,237,0.1); backdrop-filter: blur(8px); }
-    .mobile-menu.is-open { display: grid; gap: 1rem; }
-    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; }
-    .mobile-menu a:hover { color: var(--gold); }
+    /* Mobile Menu */
+    .mobile-menu { 
+      display: none; 
+      position: absolute; 
+      top: 100%; 
+      left: 0; 
+      right: 0; 
+      padding: 1.2rem 1.5rem 1.5rem; 
+      background: rgba(20,12,14,0.98); 
+      border-bottom: 1px solid rgba(248,245,237,0.04); 
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+    .mobile-menu.is-open { 
+      display: grid; 
+      gap: 0.6rem; 
+      animation: slideDown 0.4s cubic-bezier(.2,.8,.2,1); 
+    }
+    @keyframes slideDown {
+      0% { opacity: 0; transform: translateY(-10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .mobile-menu a { 
+      color: rgba(248,245,237,0.8); 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.3rem; 
+      transition: all 0.3s ease;
+      text-decoration: none;
+      padding: 4px 0;
+    }
+    .mobile-menu a:hover { color: var(--gold); transform: translateX(4px); }
+    .mobile-menu a i { width: 24px; }
+    @media (max-width: 480px) {
+      .mobile-menu a { font-size: 1.1rem; }
+    }
 
-    /* Drawer */
-    .drawer-backdrop { position: fixed; inset: 0; z-index: 40; visibility: hidden; background: rgba(20,12,14,0.55); opacity: 0; transition: opacity 280ms ease, visibility 280ms ease; }
+    /* Cart Drawer */
+    .drawer-backdrop { 
+      position: fixed; 
+      inset: 0; 
+      z-index: 45; 
+      visibility: hidden; 
+      background: rgba(20,12,14,0.6); 
+      opacity: 0; 
+      transition: opacity 300ms ease, visibility 300ms ease; 
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
     .drawer-backdrop.is-open { visibility: visible; opacity: 1; }
-    .cart-drawer { position: fixed; z-index: 50; top: 0; right: 0; bottom: 0; display: flex; width: min(430px, 100%); flex-direction: column; background: var(--linen); transform: translateX(100%); transition: transform 380ms cubic-bezier(.22,.8,.2,1); }
+    .cart-drawer { 
+      position: fixed; 
+      z-index: 50; 
+      top: 0; 
+      right: 0; 
+      bottom: 0; 
+      display: flex; 
+      width: min(420px, 100%); 
+      flex-direction: column; 
+      background: var(--linen); 
+      transform: translateX(100%); 
+      transition: transform 380ms cubic-bezier(.22,.8,.2,1);
+      box-shadow: var(--shadow-lg);
+    }
     .cart-drawer.is-open { transform: translateX(0); }
-    .drawer-header { display: flex; align-items: center; justify-content: space-between; padding: 1.5rem; border-bottom: 1px solid var(--line); }
-    .drawer-header h2 { font-family: 'Playfair Display', serif; font-size: 1.7rem; }
-    .close-button { display: grid; place-items: center; width: 36px; height: 36px; border: 1px solid var(--line); background: none; cursor: pointer; border-radius: 50%; }
+    .drawer-header { 
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 1.2rem 1.5rem; 
+      border-bottom: 1px solid var(--line); 
+      background: white;
+    }
+    .drawer-header h2 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.4rem; 
+    }
+    .close-button { 
+      display: grid; 
+      place-items: center; 
+      width: 34px; 
+      height: 34px; 
+      border: 1px solid var(--line); 
+      background: none; 
+      cursor: pointer; 
+      border-radius: 50%; 
+      transition: all 0.3s ease;
+    }
     .close-button:hover { border-color: var(--wine); color: var(--wine); }
-    .cart-items { flex: 1; overflow-y: auto; padding: 1.5rem; }
-    .empty-cart { display: grid; place-items: center; min-height: 50%; text-align: center; color: rgba(30,24,24,0.55); }
-    .empty-cart strong { display: block; color: var(--ink); font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 500; }
-    .cart-item { display: grid; grid-template-columns: 72px 1fr auto; gap: 0.8rem; align-items: start; padding-bottom: 1.2rem; margin-bottom: 1.2rem; border-bottom: 1px solid var(--line); }
-    .cart-item img { width: 72px; height: 88px; object-fit: cover; border-radius: 6px; }
-    .cart-item h3 { font-family: 'Playfair Display', serif; font-size: 1rem; }
-    .cart-item p { margin-top: 0.2rem; color: rgba(30,24,24,0.55); font-size: 0.68rem; }
-    .cart-item-price { color: var(--wine); font-size: 0.72rem; font-weight: 800; }
-    .qty-control { display: flex; align-items: center; gap: 0.6rem; margin-top: 0.7rem; font-size: 0.72rem; }
-    .qty-control button { display: grid; place-items: center; width: 24px; height: 24px; border: 1px solid var(--line); background: none; border-radius: 4px; cursor: pointer; }
+    .close-button:active { transform: scale(0.9); }
+    .cart-items { 
+      flex: 1; 
+      overflow-y: auto; 
+      padding: 1.2rem 1.5rem; 
+      -webkit-overflow-scrolling: touch;
+    }
+    .empty-cart { 
+      display: grid; 
+      place-items: center; 
+      min-height: 60%; 
+      text-align: center; 
+      color: rgba(30,24,24,0.45); 
+    }
+    .empty-cart strong { 
+      display: block; 
+      color: var(--ink); 
+      font-family: 'Playfair Display', serif; 
+      font-size: 1.4rem; 
+      font-weight: 500; 
+      margin-top: 0.5rem;
+    }
+    .empty-cart p { font-size: 0.78rem; }
+    .cart-item { 
+      display: grid; 
+      grid-template-columns: 64px 1fr auto; 
+      gap: 0.8rem; 
+      align-items: start; 
+      padding-bottom: 1rem; 
+      margin-bottom: 1rem; 
+      border-bottom: 1px solid var(--line); 
+    }
+    .cart-item img { 
+      width: 64px; 
+      height: 78px; 
+      object-fit: cover; 
+      border-radius: 8px; 
+    }
+    .cart-item h3 { 
+      font-family: 'Playfair Display', serif; 
+      font-size: 0.9rem; 
+    }
+    .cart-item p { 
+      margin-top: 0.1rem; 
+      color: rgba(30,24,24,0.45); 
+      font-size: 0.6rem; 
+      text-transform: capitalize;
+    }
+    .qty-control { 
+      display: flex; 
+      align-items: center; 
+      gap: 0.5rem; 
+      margin-top: 0.5rem; 
+      font-size: 0.7rem; 
+    }
+    .qty-control button { 
+      display: grid; 
+      place-items: center; 
+      width: 22px; 
+      height: 22px; 
+      border: 1px solid var(--line); 
+      background: none; 
+      border-radius: 4px; 
+      cursor: pointer; 
+      transition: all 0.3s ease;
+      font-size: 0.6rem;
+    }
     .qty-control button:hover { border-color: var(--wine); color: var(--wine); }
-    .remove-item { margin-top: 0.65rem; color: rgba(30,24,24,0.45); font-size: 0.6rem; letter-spacing: 0.06em; text-transform: uppercase; background: none; border: none; cursor: pointer; }
+    .qty-control button:active { transform: scale(0.9); }
+    .remove-item { 
+      margin-top: 0.5rem; 
+      color: rgba(30,24,24,0.4); 
+      font-size: 0.55rem; 
+      letter-spacing: 0.06em; 
+      text-transform: uppercase; 
+      background: none; 
+      border: none; 
+      cursor: pointer; 
+      transition: color 0.3s ease;
+    }
     .remove-item:hover { color: var(--coral); }
-    .drawer-footer { padding: 1.5rem; border-top: 1px solid var(--line); }
-    .subtotal { display: flex; justify-content: space-between; font-size: 0.78rem; }
-    .subtotal strong { color: var(--wine); font-size: 1rem; }
-    .checkout-button { width: 100%; margin-top: 1.1rem; }
-    .drawer-note { margin-top: 0.8rem; color: rgba(30,24,24,0.5); text-align: center; font-size: 0.63rem; }
+    .drawer-footer { 
+      padding: 1.2rem 1.5rem; 
+      border-top: 1px solid var(--line); 
+      background: white;
+    }
+    .subtotal { 
+      display: flex; 
+      justify-content: space-between; 
+      font-size: 0.78rem; 
+      font-weight: 600;
+    }
+    .subtotal strong { 
+      color: var(--wine); 
+      font-size: 1rem; 
+    }
+    .checkout-button { 
+      width: 100%; 
+      margin-top: 0.8rem; 
+    }
+    .drawer-note { 
+      margin-top: 0.6rem; 
+      color: rgba(30,24,24,0.4); 
+      text-align: center; 
+      font-size: 0.58rem; 
+    }
 
-    .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; border-radius: 8px; }
-    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+    .toast { 
+      position: fixed; 
+      z-index: 70; 
+      left: 50%; 
+      bottom: 1.5rem; 
+      padding: 0.7rem 1.2rem; 
+      background: var(--wine); 
+      color: white; 
+      box-shadow: var(--shadow-lg); 
+      opacity: 0; 
+      pointer-events: none; 
+      transform: translate(-50%, 1rem) scale(0.95); 
+      transition: all 0.35s cubic-bezier(.2,.8,.2,1); 
+      font-size: 0.65rem; 
+      letter-spacing: 0.04em; 
+      border-radius: 10px; 
+      max-width: 90%; 
+      text-align: center; 
+    }
+    .toast.is-visible { 
+      opacity: 1; 
+      transform: translate(-50%, 0) scale(1); 
+    }
 
     .reveal {
       opacity: 0;
       transform: translateY(30px);
-      transition: opacity 0.7s cubic-bezier(.2,.8,.2,1), transform 0.7s cubic-bezier(.2,.8,.2,1);
+      transition: all 0.8s cubic-bezier(.2,.8,.2,1);
     }
-    .reveal.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Full-width banner */
-    .full-banner {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      object-position: center center;
-      border-radius: 16px;
+    .reveal.is-visible { 
+      opacity: 1; 
+      transform: translateY(0); 
     }
 
-    @media (max-width: 1024px) {
-      .product-grid { grid-template-columns: repeat(3, 1fr); }
-      .category-showcase { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 900px) {
-      .desktop-nav { display: none; }
-      .mobile-toggle { display: grid !important; }
-      .logo-img { height: 48px; max-width: 160px; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-      .slideshow-container .slide .slide-overlay { padding: 1.5rem; }
-      .slideshow-container .slide .slide-overlay h2 { font-size: 1.5rem; }
-      .full-banner { height: 250px; }
-    }
-    @media (max-width: 640px) {
-      .announcement { font-size: 0.5rem; letter-spacing: 0.06em; }
-      .logo-img { height: 40px; max-width: 130px; padding: 3px; }
-      .footer-brand .footer-logo { height: 42px; max-width: 150px; }
-      .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-      .product-card .product-name { padding: 0.7rem 0.8rem 1rem; }
-      .product-card .product-name h3 { font-size: 0.85rem; }
-      .footer-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
-      .filter-btn { font-size: 0.55rem; padding: 0.3rem 0; }
-      .category-showcase { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .category-card .cat-overlay h3 { font-size: 1rem; }
-      .slideshow-container .slide .slide-overlay h2 { font-size: 1.2rem; }
-      .slideshow-btn { width: 32px; height: 32px; font-size: 0.8rem; }
-      .slideshow-btn.prev { left: 8px; }
-      .slideshow-btn.next { right: 8px; }
-      .full-banner { height: 180px; }
-      .product-card .quick-view .qv-btn { font-size: 0.55rem; padding: 0.3rem 0.8rem; }
+    .newsletter-form input::placeholder { color: rgba(255,255,255,0.25); }
+    .newsletter-form input:focus { outline: none; border-color: var(--gold); }
+    .newsletter-message { min-height: 1.2rem; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--sand); }
+    ::-webkit-scrollbar-thumb { background: var(--wine); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--coral); }
+
+    /* Touch-friendly adjustments */
+    @media (hover: none) {
+      .product-card .quick-view { transform: translateY(0); background: linear-gradient(0deg, rgba(0,0,0,0.5) 0%, transparent 100%); padding: 1.2rem 0.6rem 0.8rem; }
+      .product-card .quick-view .qv-btn { background: rgba(255,255,255,0.95); }
+      .slideshow-btn { opacity: 0.7; }
     }
   </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="announcement flex items-center justify-center px-4 py-2 text-center">
-      <i class="fas fa-truck mr-2"></i> Complimentary delivery on orders over $180 · Addis Ababa + worldwide
-      <span class="hidden sm:inline mx-3">|</span>
-      <span class="hidden sm:inline"><i class="fas fa-undo mr-1"></i> 30-day returns</span>
+    <div class="announcement flex items-center justify-center px-3 py-1.5 text-center">
+      <i class="fas fa-truck mr-1.5 text-[10px]"></i> 
+      <span class="hidden xs:inline">Complimentary delivery on orders over $180 · </span>
+      Addis Ababa + worldwide
+      <span class="hidden sm:inline mx-2">|</span>
+      <span class="hidden sm:inline"><i class="fas fa-undo mr-1 text-[10px]"></i> 30-day returns</span>
     </div>
     <div class="nav-shell">
-      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-3 lg:px-10">
-        <a class="flex items-center gap-3" href="index.html">
-          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-          <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block" style="display:none;">YERAS TIBEB</span>
+      <div class="mx-auto flex max-w-[1400px] items-center justify-between px-3 py-1.5 lg:px-10">
+        <a class="flex items-center gap-2" href="index.html">
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-img" loading="eager" onerror="this.style.display='none';">
         </a>
-        <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
+        <nav class="desktop-nav hidden md:flex items-center gap-6" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link" href="shop.html">Shop</a>
+          <a class="nav-link active" href="shop.html">Shop</a>
           <a class="nav-link" href="about.html">About</a>
           <a class="nav-link" href="contact.html">Contact</a>
         </nav>
-        <div class="flex items-center gap-1">
+        <div class="flex items-center gap-1.5">
           <button class="icon-button" id="cartButton" aria-label="Open shopping bag">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5.5 8.5h13l1 12h-15l1-12Z"/><path d="M9 9V6.5a3 3 0 0 1 6 0V9"/></svg>
             <span class="cart-count" id="cartCount">0</span>
           </button>
-          <button class="icon-button mobile-toggle hidden" id="menuButton" aria-label="Open menu">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+          <button class="icon-button md:hidden" id="menuButton" aria-label="Open menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
           </button>
         </div>
       </div>
@@ -565,23 +986,23 @@
 
   <main>
     <!-- SHOP HEADER -->
-    <section class="section" style="padding-top: 10rem; background: var(--sand);">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+    <section class="section" style="padding-top: 8rem; background: var(--sand);">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
         <div class="text-center reveal">
           <p class="eyebrow text-[var(--coral)]"><i class="fas fa-tshirt mr-1"></i> The Collection</p>
-          <h1 class="font-display text-5xl md:text-6xl mt-3">Made to be <em style="color:var(--coral);">remembered.</em></h1>
-          <p class="mt-4 text-black/60 max-w-2xl mx-auto text-lg">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
+          <h1 class="font-display text-4xl md:text-6xl mt-2">Made to be <em style="color:var(--coral);">remembered.</em></h1>
+          <p class="mt-3 text-black/50 max-w-2xl mx-auto text-sm md:text-base">Every Yeras Tibeb piece is a meeting of old-world technique and an easy, present-day silhouette.</p>
         </div>
       </div>
     </section>
 
     <!-- SLIDESHOW -->
     <section style="background: var(--sand); padding-bottom: 2rem;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
         <div class="slideshow-container reveal" id="slideshow">
           <div class="slides" id="slides">
             <div class="slide">
-              <img src="2.jpg" alt="YERAS TIBEB Collection" />
+              <img src="2.jpg" alt="YERAS TIBEB Collection" loading="lazy" />
               <div class="slide-overlay">
                 <div>
                   <h2>Handwoven <em>with love</em></h2>
@@ -590,7 +1011,7 @@
               </div>
             </div>
             <div class="slide">
-              <img src="A.jpg" alt="Ethiopian Textiles" />
+              <img src="A.jpg" alt="Ethiopian Textiles" loading="lazy" />
               <div class="slide-overlay">
                 <div>
                   <h2>Timeless <em>craftsmanship</em></h2>
@@ -599,7 +1020,7 @@
               </div>
             </div>
             <div class="slide">
-              <img src="M.jpg" alt="YERAS TIBEB Fashion" />
+              <img src="M.jpg" alt="YERAS TIBEB Fashion" loading="lazy" />
               <div class="slide-overlay">
                 <div>
                   <h2>Wear the <em>story</em></h2>
@@ -608,7 +1029,7 @@
               </div>
             </div>
             <div class="slide">
-              <img src="7.jpg" alt="Ethiopian Weaving" />
+              <img src="7.jpg" alt="Ethiopian Weaving" loading="lazy" />
               <div class="slide-overlay">
                 <div>
                   <h2>Preserving <em>heritage</em></h2>
@@ -617,7 +1038,7 @@
               </div>
             </div>
             <div class="slide">
-              <img src="U.jpg" alt="YERAS TIBEB Collection" />
+              <img src="U.jpg" alt="YERAS TIBEB Collection" loading="lazy" />
               <div class="slide-overlay">
                 <div>
                   <h2>Modern <em>Ethiopian</em></h2>
@@ -626,34 +1047,34 @@
               </div>
             </div>
           </div>
-          <button class="slideshow-btn prev" id="prevSlide"><i class="fas fa-chevron-left"></i></button>
-          <button class="slideshow-btn next" id="nextSlide"><i class="fas fa-chevron-right"></i></button>
+          <button class="slideshow-btn prev" id="prevSlide" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+          <button class="slideshow-btn next" id="nextSlide" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
           <div class="slideshow-dots" id="dots"></div>
         </div>
       </div>
     </section>
 
     <!-- FILTERS -->
-    <section style="background: white; padding: 1.5rem 0; border-bottom: 1px solid var(--line);">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="flex flex-wrap items-center gap-4 md:gap-8">
-          <span class="text-xs font-bold uppercase tracking-[0.12em] text-black/40">Filter:</span>
+    <section style="background: white; padding: 0.8rem 0; border-bottom: 1px solid var(--line); position: sticky; top: 72px; z-index: 20; box-shadow: 0 2px 20px rgba(0,0,0,0.02);">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
+        <div class="filter-wrapper">
+          <span class="text-[0.5rem] font-bold uppercase tracking-[0.14em] text-black/30">Filter:</span>
           <button class="filter-btn active" data-filter="all">All</button>
           <button class="filter-btn" data-filter="dresses">Dresses</button>
           <button class="filter-btn" data-filter="layers">Layers</button>
           <button class="filter-btn" data-filter="accessories">Accessories</button>
           <button class="filter-btn" data-filter="traditional">Traditional</button>
-          <span class="ml-auto text-xs text-black/30" id="productCount">48 products</span>
+          <span class="ml-auto text-[0.55rem] text-black/25 hidden sm:inline" id="productCount">48 products</span>
         </div>
       </div>
     </section>
 
     <!-- CATEGORY SHOWCASE -->
-    <section class="section" style="background: var(--sand); padding-bottom: 1rem;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="text-center mb-8 reveal">
+    <section class="section" style="background: var(--sand); padding-bottom: 1rem; padding-top: 2rem;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
+        <div class="text-center mb-6 reveal">
           <p class="eyebrow text-[var(--coral)]"><i class="fas fa-th-large mr-1"></i> Explore by Category</p>
-          <h2 class="font-display text-3xl md:text-4xl mt-2">Find your <em style="color:var(--coral);">style</em></h2>
+          <h2 class="font-display text-2xl md:text-4xl mt-1">Find your <em style="color:var(--coral);">style</em></h2>
         </div>
         <div class="category-showcase">
           <div class="category-card reveal">
@@ -697,8 +1118,8 @@
     </section>
 
     <!-- FULL WIDTH BANNER 1 -->
-    <section style="background: var(--sand); padding: 0 0 2rem 0;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+    <section style="background: var(--sand); padding: 0 0 1.5rem 0;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
         <div class="reveal">
           <img src="F.jpg" alt="YERAS TIBEB Collection" class="full-banner" loading="lazy" />
         </div>
@@ -706,21 +1127,21 @@
     </section>
 
     <!-- PRODUCT GRID -->
-    <section class="section" style="background: var(--sand); padding-top: 1rem;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="flex items-center justify-between mb-6 reveal">
-          <h2 class="font-display text-2xl md:text-3xl">All <em style="color:var(--coral);">Pieces</em></h2>
-          <span class="text-sm text-black/40">48 products</span>
+    <section class="section" style="background: var(--sand); padding-top: 0.5rem;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
+        <div class="flex items-center justify-between mb-4 reveal">
+          <h2 class="font-display text-xl md:text-3xl">All <em style="color:var(--coral);">Pieces</em></h2>
+          <span class="text-[0.6rem] text-black/30" id="productCountMobile">48 products</span>
         </div>
         <div class="product-grid" id="productGrid">
-          <!-- Products will be generated by JavaScript -->
+          <!-- Products generated by JavaScript -->
         </div>
       </div>
     </section>
 
     <!-- FULL WIDTH BANNER 2 -->
-    <section style="background: var(--sand); padding: 0 0 2rem 0;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+    <section style="background: var(--sand); padding: 0 0 1.5rem 0;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
         <div class="reveal">
           <img src="R.jpg" alt="YERAS TIBEB Craftsmanship" class="full-banner" loading="lazy" />
         </div>
@@ -728,27 +1149,27 @@
     </section>
 
     <!-- FEATURED PRODUCTS SECTION -->
-    <section class="section" style="background: white;">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
-        <div class="text-center mb-10 reveal">
+    <section class="section" style="background: white; padding: 2.5rem 0;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
+        <div class="text-center mb-6 reveal">
           <p class="eyebrow text-[var(--coral)]"><i class="fas fa-star mr-1"></i> Featured</p>
-          <h2 class="font-display text-3xl md:text-4xl mt-2">Bestselling <em style="color:var(--coral);">pieces</em></h2>
-          <p class="mt-2 text-black/60">Our most loved designs, chosen by our community</p>
+          <h2 class="font-display text-2xl md:text-4xl mt-1">Bestselling <em style="color:var(--coral);">pieces</em></h2>
+          <p class="mt-1 text-black/50 text-sm">Our most loved designs, chosen by our community</p>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="featuredGrid">
-          <!-- Featured products will be generated -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4" id="featuredGrid">
+          <!-- Featured products generated -->
         </div>
       </div>
     </section>
 
     <!-- CTA -->
-    <section class="section" style="background: var(--wine-deep);">
-      <div class="mx-auto max-w-[1400px] px-5 lg:px-10 text-center">
+    <section class="section" style="background: var(--wine-deep); padding: 3rem 0;">
+      <div class="mx-auto max-w-[1400px] px-4 lg:px-10 text-center">
         <div class="reveal">
           <p class="eyebrow text-[var(--gold)]"><i class="fas fa-gem mr-1"></i> Join the movement</p>
-          <h2 class="font-display text-4xl md:text-5xl text-white mt-2">Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em></h2>
-          <p class="text-white/70 max-w-lg mx-auto mt-3">Every purchase supports our weavers and helps preserve Ethiopian heritage.</p>
-          <a href="#" class="inline-flex items-center gap-2 mt-6 bg-[var(--gold)] text-[var(--ink)] font-bold uppercase tracking-[0.1em] text-sm px-8 py-3 rounded-lg hover:bg-white transition shadow-lg">
+          <h2 class="font-display text-3xl md:text-5xl text-white mt-2">Wear a piece<br class="sm:hidden"/> of <em style="color:var(--gold); font-weight:400;">Ethiopia.</em></h2>
+          <p class="text-white/60 max-w-lg mx-auto mt-2 text-sm md:text-base">Every purchase supports our weavers and helps preserve Ethiopian heritage.</p>
+          <a href="#" class="inline-flex items-center gap-2 mt-5 bg-[var(--gold)] text-[var(--ink)] font-bold uppercase tracking-[0.1em] text-xs md:text-sm px-6 md:px-8 py-2.5 md:py-3 rounded-lg hover:bg-white transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105 active:scale-95">
             <i class="fas fa-shopping-bag"></i> Explore the collection
           </a>
         </div>
@@ -756,19 +1177,19 @@
     </section>
   </main>
 
-  <footer class="footer section pb-6">
-    <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
+  <footer class="footer section pb-6" style="padding: 2.5rem 0 1.5rem;">
+    <div class="mx-auto max-w-[1400px] px-4 lg:px-10">
       <div class="footer-grid">
         <div class="footer-brand">
-          <img src="1.jpg" alt="YERAS TIBEB" class="footer-logo" onerror="this.style.display='none';" />
+          <img src="1.jpg" alt="YERAS TIBEB" class="footer-logo" loading="lazy" onerror="this.style.display='none';" />
           <p class="eyebrow text-[var(--gold)]">Yeras Tibeb</p>
           <h2>Wear the story.</h2>
           <p>Thoughtful clothing for people who know that the best things take time.</p>
-          <div class="flex gap-3 mt-4">
-            <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://t.me/+251910103956" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-telegram-plane"></i></a>
-            <a href="https://pin.it/4uNPbwy" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-pinterest-p"></i></a>
-            <a href="#" target="_blank" class="text-white/40 hover:text-white transition-all text-xl hover:translate-y-[-2px]"><i class="fab fa-instagram"></i></a>
+          <div class="footer-social">
+            <a href="https://www.facebook.com/profile.php?id=100088839946852" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://t.me/+251910103956" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://pin.it/4uNPbwy" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
           </div>
         </div>
         <div>
@@ -782,12 +1203,12 @@
         </div>
         <div>
           <p class="footer-heading">Stay close</p>
-          <p class="mt-3 max-w-[250px] text-[0.78rem] leading-relaxed text-white/55">New releases, studio notes and stories from the loom.</p>
-          <form class="newsletter-form flex border-b border-white/30 mt-3" id="newsletterForm">
-            <input class="flex-1 bg-transparent py-2 outline-none text-sm text-white placeholder:text-white/40" type="email" placeholder="Your email" required>
-            <button class="text-[var(--gold)] text-xs font-bold uppercase tracking-[0.1em] hover:text-white transition" type="submit">Join</button>
+          <p class="mt-2 max-w-[250px] text-[0.72rem] leading-relaxed text-white/45">New releases, studio notes and stories from the loom.</p>
+          <form class="newsletter-form flex border-b border-white/20 mt-2" id="newsletterForm">
+            <input class="flex-1 bg-transparent py-1.5 outline-none text-sm text-white placeholder:text-white/25" type="email" placeholder="Your email" required aria-label="Email for newsletter">
+            <button class="text-[var(--gold)] text-[0.6rem] font-bold uppercase tracking-[0.12em] hover:text-white transition-colors duration-300" type="submit">Join</button>
           </form>
-          <p class="newsletter-message text-[var(--gold)] text-xs mt-2" id="newsletterMessage"></p>
+          <p class="newsletter-message text-[var(--gold)] text-[0.6rem] mt-1.5" id="newsletterMessage"></p>
         </div>
       </div>
       <div class="footer-bottom">
@@ -801,13 +1222,13 @@
   <div class="drawer-backdrop" id="drawerBackdrop"></div>
   <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
     <div class="drawer-header">
-      <h2>Your bag <span class="font-mono text-[0.65rem] text-black/45" id="drawerCount">0 items</span></h2>
-      <button class="close-button" id="closeCart"><i class="fas fa-times"></i></button>
+      <h2>Your bag <span class="font-mono text-[0.55rem] text-black/35" id="drawerCount">0 items</span></h2>
+      <button class="close-button" id="closeCart" aria-label="Close cart"><i class="fas fa-times text-sm"></i></button>
     </div>
     <div class="cart-items" id="cartItems"></div>
     <div class="drawer-footer">
       <div class="subtotal"><span>Subtotal</span><strong id="cartSubtotal">$0</strong></div>
-      <button class="button-primary checkout-button" id="checkoutButton">Continue to checkout <span aria-hidden="true">&#8594;</span></button>
+      <button class="button-primary checkout-button" id="checkoutButton" style="width:100%;">Continue to checkout <span aria-hidden="true">&#8594;</span></button>
       <p class="drawer-note">Shipping and taxes calculated at checkout.</p>
     </div>
   </aside>
@@ -867,7 +1288,6 @@
       { id: 48, name: 'The Bahir Dar Dress', category: 'dresses', image: 'U.jpg' },
     ];
 
-    // Featured products (first 8)
     const featuredProducts = products.slice(0, 8);
 
     // CART STATE
@@ -876,7 +1296,6 @@
     let slideIndex = 0;
     let slideInterval;
 
-    // DOM Elements
     const grid = document.getElementById('productGrid');
     const featuredGrid = document.getElementById('featuredGrid');
     const cartDrawer = document.getElementById('cartDrawer');
@@ -884,6 +1303,7 @@
     const drawerBackdrop = document.getElementById('drawerBackdrop');
     const toast = document.getElementById('toast');
     const productCount = document.getElementById('productCount');
+    const productCountMobile = document.getElementById('productCountMobile');
     const slides = document.getElementById('slides');
     const dotsContainer = document.getElementById('dots');
     let toastTimer;
@@ -891,31 +1311,32 @@
     // SLIDESHOW
     function initSlideshow() {
       const totalSlides = document.querySelectorAll('.slide').length;
-      
       dotsContainer.innerHTML = '';
       for (let i = 0; i < totalSlides; i++) {
         const dot = document.createElement('div');
         dot.className = `dot ${i === 0 ? 'active' : ''}`;
         dot.dataset.index = i;
         dot.addEventListener('click', () => goToSlide(i));
+        dot.setAttribute('role', 'button');
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
         dotsContainer.appendChild(dot);
       }
 
-      document.getElementById('prevSlide').addEventListener('click', prevSlide);
-      document.getElementById('nextSlide').addEventListener('click', nextSlide);
-      
+      document.getElementById('prevSlide').addEventListener('click', (e) => { e.stopPropagation(); prevSlide(); });
+      document.getElementById('nextSlide').addEventListener('click', (e) => { e.stopPropagation(); nextSlide(); });
       startAutoSlide();
       
       const container = document.getElementById('slideshow');
       container.addEventListener('mouseenter', stopAutoSlide);
       container.addEventListener('mouseleave', startAutoSlide);
+      container.addEventListener('touchstart', stopAutoSlide, { passive: true });
+      container.addEventListener('touchend', () => { setTimeout(startAutoSlide, 3000); }, { passive: true });
     }
 
     function goToSlide(index) {
       const totalSlides = document.querySelectorAll('.slide').length;
       slideIndex = (index + totalSlides) % totalSlides;
       slides.style.transform = `translateX(-${slideIndex * 100}%)`;
-      
       document.querySelectorAll('.dot').forEach((dot, i) => {
         dot.classList.toggle('active', i === slideIndex);
       });
@@ -930,15 +1351,17 @@
     }
     function stopAutoSlide() { clearInterval(slideInterval); }
 
-    // RENDER PRODUCTS - PURE VISUAL GALLERY
+    // RENDER PRODUCTS
     function renderProducts(filter = 'all') {
       const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-      productCount.textContent = `${filtered.length} products`;
+      const count = filtered.length;
+      productCount.textContent = `${count} products`;
+      productCountMobile.textContent = `${count} products`;
       
       grid.innerHTML = filtered.map(product => `
         <div class="product-card reveal" data-category="${product.category}">
           <div class="image-wrap">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500/e8e0d2/6c2732?text=YERAS+TIBEB';">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22 viewBox=%220 0 400 500%22%3E%3Crect fill=%22%23e8e0d2%22 width=%22400%22 height=%22500%22/%3E%3Ctext x=%22200%22 y=%22250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%236c2732%22%3EYERAS TIBEB%3C/text%3E%3C/svg%3E';">
             <button class="wishlist-btn" data-id="${product.id}" aria-label="Save to wishlist">
               <i class="far fa-heart"></i>
             </button>
@@ -948,12 +1371,12 @@
           </div>
           <div class="quick-view">
             <button class="qv-btn view-btn" data-id="${product.id}">View</button>
-            <button class="qv-btn add-btn" data-id="${product.id}">Add to Bag</button>
+            <button class="qv-btn add-btn" data-id="${product.id}">Add</button>
           </div>
         </div>
       `).join('');
 
-      // Add to cart
+      // Event listeners
       document.querySelectorAll('.add-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -963,7 +1386,6 @@
         });
       });
 
-      // View button - show product name
       document.querySelectorAll('.view-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -973,7 +1395,6 @@
         });
       });
 
-      // Wishlist
       document.querySelectorAll('.wishlist-btn').forEach(btn => {
         btn.addEventListener('click', (e) => {
           e.stopPropagation();
@@ -981,16 +1402,17 @@
           const icon = btn.querySelector('i');
           icon.classList.toggle('far');
           icon.classList.toggle('fas');
-          showToast(btn.classList.contains('liked') ? 'Added to wishlist ❤️' : 'Removed from wishlist');
+          showToast(btn.classList.contains('liked') ? '❤️ Added to wishlist' : 'Removed from wishlist');
         });
       });
 
+      // Reveal animation
       setTimeout(() => {
         document.querySelectorAll('.product-card.reveal').forEach((el, i) => {
-          el.style.transitionDelay = `${Math.min(i * 40, 400)}ms`;
+          el.style.transitionDelay = `${Math.min(i * 30, 350)}ms`;
           el.classList.add('is-visible');
         });
-      }, 100);
+      }, 80);
     }
 
     // RENDER FEATURED
@@ -998,7 +1420,7 @@
       featuredGrid.innerHTML = featuredProducts.map(product => `
         <div class="product-card reveal">
           <div class="image-wrap">
-            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/400x500/e8e0d2/6c2732?text=YERAS+TIBEB';">
+            <img src="${product.image}" alt="${product.name}" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22 viewBox=%220 0 400 500%22%3E%3Crect fill=%22%23e8e0d2%22 width=%22400%22 height=%22500%22/%3E%3Ctext x=%22200%22 y=%22250%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2224%22 fill=%22%236c2732%22%3EYERAS TIBEB%3C/text%3E%3C/svg%3E';">
             <button class="wishlist-btn" data-id="${product.id}" aria-label="Save to wishlist">
               <i class="far fa-heart"></i>
             </button>
@@ -1038,12 +1460,19 @@
           const icon = btn.querySelector('i');
           icon.classList.toggle('far');
           icon.classList.toggle('fas');
-          showToast(btn.classList.contains('liked') ? 'Added to wishlist ❤️' : 'Removed from wishlist');
+          showToast(btn.classList.contains('liked') ? '❤️ Added to wishlist' : 'Removed from wishlist');
         });
       });
+
+      setTimeout(() => {
+        document.querySelectorAll('#featuredGrid .product-card.reveal').forEach((el, i) => {
+          el.style.transitionDelay = `${Math.min(i * 30, 300)}ms`;
+          el.classList.add('is-visible');
+        });
+      }, 100);
     }
 
-    // ADD TO CART
+    // CART FUNCTIONS
     function addToCart(product) {
       const existing = cart.find(item => item.id === product.id);
       if (existing) {
@@ -1055,7 +1484,6 @@
       showToast(`${product.name} added to your bag 🛍️`);
     }
 
-    // CART FUNCTIONS
     function saveCart() {
       localStorage.setItem('cart', JSON.stringify(cart));
       updateCartUI();
@@ -1071,9 +1499,9 @@
         cartItems.innerHTML = `
           <div class="empty-cart">
             <div>
-              <i class="fas fa-shopping-bag text-4xl text-black/10 mb-3"></i>
+              <i class="fas fa-shopping-bag text-3xl text-black/5 mb-2"></i>
               <strong>Your bag is quiet.</strong>
-              <p class="mt-2 text-[0.72rem]">Add a piece with a story to begin.</p>
+              <p class="mt-1 text-[0.65rem]">Add a piece with a story to begin.</p>
             </div>
           </div>
         `;
@@ -1082,14 +1510,14 @@
 
       cartItems.innerHTML = cart.map(item => `
         <div class="cart-item">
-          <img src="${item.image}" alt="${item.name}" onerror="this.src='https://via.placeholder.com/72x88/e8e0d2/6c2732?text=YT';">
+          <img src="${item.image}" alt="${item.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2272%22 height=%2288%22 viewBox=%220 0 72 88%22%3E%3Crect fill=%22%23e8e0d2%22 width=%2272%22 height=%2288%22/%3E%3Ctext x=%2236%22 y=%2244%22 text-anchor=%22middle%22 font-family=%22serif%22 font-size=%2212%22 fill=%22%236c2732%22%3EYT%3C/text%3E%3C/svg%3E';">
           <div>
             <h3>${item.name}</h3>
             <p>${item.category}</p>
             <div class="qty-control">
-              <button data-id="${item.id}" data-change="-1">-</button>
+              <button data-id="${item.id}" data-change="-1" aria-label="Decrease quantity">-</button>
               <span>${item.qty}</span>
-              <button data-id="${item.id}" data-change="1">+</button>
+              <button data-id="${item.id}" data-change="1" aria-label="Increase quantity">+</button>
             </div>
             <button class="remove-item" data-id="${item.id}">Remove</button>
           </div>
@@ -1126,6 +1554,12 @@
       else showToast('Checkout is ready for your order!');
     });
 
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCart();
+      if (e.key === 'ArrowLeft') prevSlide();
+      if (e.key === 'ArrowRight') nextSlide();
+    });
+
     cartItems.addEventListener('click', (e) => {
       const btn = e.target.closest('[data-id]');
       if (!btn) return;
@@ -1156,7 +1590,7 @@
       });
     });
 
-    // Category cards click
+    // Category cards
     document.querySelectorAll('.category-card').forEach((card, index) => {
       card.addEventListener('click', () => {
         const categories = ['dresses', 'layers', 'accessories', 'traditional'];
@@ -1166,21 +1600,39 @@
         });
         currentFilter = filter;
         renderProducts(filter);
-        document.querySelector('.filter-section').scrollIntoView({ behavior: 'smooth' });
+        const filterSection = document.querySelector('.filter-wrapper');
+        if (filterSection) {
+          filterSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
       });
     });
 
     // Mobile menu
-    document.getElementById('menuButton').addEventListener('click', () => {
+    document.getElementById('menuButton').addEventListener('click', (e) => {
+      e.stopPropagation();
       document.getElementById('mobileMenu').classList.toggle('is-open');
     });
     document.querySelectorAll('#mobileMenu a').forEach(a => a.addEventListener('click', () => {
       document.getElementById('mobileMenu').classList.remove('is-open');
     }));
+    document.addEventListener('click', (e) => {
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.getElementById('menuButton');
+      if (menu.classList.contains('is-open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.remove('is-open');
+      }
+    });
 
     // Header scroll
+    let ticking = false;
     window.addEventListener('scroll', () => {
-      document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
+      }
     });
 
     // Newsletter
@@ -1188,13 +1640,7 @@
       e.preventDefault();
       document.getElementById('newsletterMessage').textContent = '✓ You are on the list. Welcome in.';
       e.target.reset();
-    });
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeCart();
-      if (e.key === 'ArrowLeft') prevSlide();
-      if (e.key === 'ArrowRight') nextSlide();
+      setTimeout(() => { document.getElementById('newsletterMessage').textContent = ''; }, 4000);
     });
 
     // Reveal observer
@@ -1204,7 +1650,7 @@
           entry.target.classList.add('is-visible');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
 
     // Initial render
     renderProducts('all');
@@ -1213,7 +1659,7 @@
     initSlideshow();
 
     document.querySelectorAll('.reveal').forEach((el, i) => {
-      el.style.transitionDelay = `${Math.min(i * 40, 400)}ms`;
+      el.style.transitionDelay = `${Math.min(i * 35, 350)}ms`;
       revealObserver.observe(el);
     });
   </script>
