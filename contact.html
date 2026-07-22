@@ -75,19 +75,22 @@
       transition: right 220ms ease;
     }
     .nav-link:hover::after { right: 0; }
-    .logo-mark {
-      display: grid;
-      place-items: center;
-      width: 38px;
-      height: 38px;
-      border: 1px solid rgba(248, 245, 237, 0.7);
+    
+    /* Logo icon using 1.jpg */
+    .logo-icon {
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
-      font-family: 'Playfair Display', serif;
-      font-size: 0.82rem;
-      letter-spacing: -0.08em;
+      object-fit: cover;
+      border: 1.5px solid rgba(248, 245, 237, 0.7);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+      display: block;
+    }
+    .logo-icon:hover {
+      transform: scale(1.05);
+      border-color: rgba(248, 245, 237, 1);
     }
 
-    /* icon button + cart */
     .icon-button {
       position: relative;
       display: grid;
@@ -232,6 +235,7 @@
       .footer-bottom { display: grid; gap: 0.45rem; margin-top: 3.5rem; }
       .contact-card .icon { font-size: 1.2rem; width: 2rem; }
       .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+      .logo-icon { width: 34px; height: 34px; }
     }
 
     /* hero banner image (1.jpg) */
@@ -249,14 +253,15 @@
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <!-- empty announcement bar (no delivery/returns text) -->
+    <!-- empty announcement bar -->
     <div class="announcement flex items-center justify-center px-4 py-2 text-center">
       <!-- intentionally blank -->
     </div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
+        <!-- Logo as image icon 1.jpg -->
         <a class="flex items-center gap-3" href="index.html">
-          <span class="logo-mark">YT</span>
+          <img src="1.jpg" alt="YERAS TIBEB" class="logo-icon" />
           <span class="hidden text-[0.7rem] font-bold tracking-[0.16em] sm:block">YERAS TIBEB</span>
         </a>
         <nav class="desktop-nav flex items-center gap-8">
@@ -285,7 +290,7 @@
   </header>
 
   <main>
-    <!-- HERO BANNER: 1.jpg placed right below the header -->
+    <!-- HERO BANNER: 1.jpg -->
     <div class="hero-banner" style="margin-top: 0;"></div>
 
     <section class="section" style="padding-top: 3rem;" id="contact">
