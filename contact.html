@@ -194,7 +194,6 @@
     .toast { position: fixed; z-index: 70; left: 50%; bottom: 1.5rem; padding: 0.85rem 1.1rem; background: var(--wine); color: white; box-shadow: 0 12px 30px rgba(30,24,24,0.22); opacity: 0; pointer-events: none; transform: translate(-50%, 1rem); transition: opacity 220ms ease, transform 220ms ease; font-size: 0.7rem; letter-spacing: 0.04em; }
     .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
 
-    /* Telegram contact badge */
     .telegram-badge {
       display: inline-flex;
       align-items: center;
@@ -228,7 +227,10 @@
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <div class="announcement flex items-center justify-center px-4 py-2 text-center">Complimentary delivery on orders over $180 · Addis Ababa + worldwide</div>
+    <!-- Announcement bar: removed "Complimentary delivery ..." and "30-day returns" -->
+    <div class="announcement flex items-center justify-center px-4 py-2 text-center">
+      <!-- empty: delivery/returns text removed -->
+    </div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
         <a class="flex items-center gap-3" href="index.html">
