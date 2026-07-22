@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>YERAS TIBEB · Contact</title>
   <meta name="description" content="Get in touch with YERAS TIBEB." />
+  <!-- Tailwind via CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <!-- Google Fonts + Font Awesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet" />
@@ -29,6 +31,7 @@
     .font-display { font-family: 'Playfair Display', serif; }
     .eyebrow { letter-spacing: 0.16em; text-transform: uppercase; font-size: 0.67rem; font-weight: 700; }
 
+    /* ----- header (transparent) ----- */
     .site-header {
       position: fixed;
       z-index: 40;
@@ -41,6 +44,7 @@
       transition: background 0.2s;
     }
     .site-header.scrolled { background: rgba(20, 12, 14, 0.85); backdrop-filter: blur(8px); }
+
     .announcement {
       border-bottom: 1px solid rgba(248, 245, 237, 0.15);
       background: rgba(20, 12, 14, 0.3);
@@ -82,6 +86,8 @@
       font-size: 0.82rem;
       letter-spacing: -0.08em;
     }
+
+    /* icon button + cart */
     .icon-button {
       position: relative;
       display: grid;
@@ -106,6 +112,7 @@
       font-size: 0.58rem;
       font-weight: 800;
     }
+
     .button-primary {
       display: inline-flex;
       align-items: center;
@@ -123,10 +130,12 @@
       color: white;
     }
     .button-primary:hover { background: #e06654; transform: translateY(-2px); }
+
     .section { padding: clamp(5rem, 10vw, 9rem) 0; }
     .section-heading h2 { margin-top: 0.75rem; font-size: clamp(2.5rem, 5vw, 5.2rem); letter-spacing: -0.06em; line-height: 0.98; }
     .section-rule { border-top: 1px solid var(--line); }
 
+    /* contact cards */
     .contact-card {
       background: white;
       padding: 1.5rem;
@@ -212,6 +221,7 @@
       transform: scale(1.02);
     }
 
+    /* responsive */
     @media (max-width: 900px) {
       .desktop-nav { display: none; }
       .mobile-toggle { display: grid !important; }
@@ -223,13 +233,25 @@
       .contact-card .icon { font-size: 1.2rem; width: 2rem; }
       .social-icon { width: 44px; height: 44px; font-size: 1.2rem; }
     }
+
+    /* hero banner image (1.jpg) */
+    .hero-banner {
+      width: 100%;
+      height: 200px;
+      background: url('1.jpg') center center / cover no-repeat;
+      border-radius: 0 0 12px 12px;
+      margin-top: 0.25rem;
+    }
+    @media (min-width: 640px) {
+      .hero-banner { height: 280px; }
+    }
   </style>
 </head>
 <body>
   <header class="site-header" id="siteHeader">
-    <!-- Announcement bar: removed "Complimentary delivery ..." and "30-day returns" -->
+    <!-- empty announcement bar (no delivery/returns text) -->
     <div class="announcement flex items-center justify-center px-4 py-2 text-center">
-      <!-- empty: delivery/returns text removed -->
+      <!-- intentionally blank -->
     </div>
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-4 lg:px-10">
@@ -263,7 +285,10 @@
   </header>
 
   <main>
-    <section class="section" style="padding-top: 8rem;" id="contact">
+    <!-- HERO BANNER: 1.jpg placed right below the header -->
+    <div class="hero-banner" style="margin-top: 0;"></div>
+
+    <section class="section" style="padding-top: 3rem;" id="contact">
       <div class="mx-auto max-w-[1400px] px-5 lg:px-10">
         <div class="section-rule flex flex-col gap-6 pb-10 md:flex-row md:items-end md:justify-between">
           <div class="section-heading">
@@ -274,9 +299,8 @@
         </div>
 
         <div class="mt-8 grid gap-10 lg:grid-cols-2">
-          <!-- LEFT COLUMN: Contact Info + Maps -->
+          <!-- LEFT COLUMN -->
           <div class="space-y-6">
-            <!-- Contact Cards -->
             <div class="contact-card flex items-start gap-4">
               <span class="icon">📍</span>
               <div>
@@ -310,7 +334,6 @@
               </div>
             </div>
 
-            <!-- Telegram Direct Contact -->
             <div class="contact-card">
               <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
                 <i class="fab fa-telegram-plane text-[var(--coral)] mr-2"></i>Chat with us on Telegram
@@ -321,7 +344,6 @@
               <p class="text-xs text-black/40 mt-2">Click to start a conversation on Telegram</p>
             </div>
 
-            <!-- Social Media -->
             <div class="contact-card">
               <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-4">Follow us</p>
               <div class="flex flex-wrap gap-3">
@@ -340,7 +362,6 @@
               </div>
             </div>
 
-            <!-- Google Earth Embed -->
             <div class="contact-card">
               <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
                 <i class="fas fa-globe-africa text-[var(--coral)] mr-2"></i>Explore in Google Earth
@@ -356,9 +377,8 @@
             </div>
           </div>
 
-          <!-- RIGHT COLUMN: Google Map + Form -->
+          <!-- RIGHT COLUMN -->
           <div class="space-y-6">
-            <!-- Google Map -->
             <div class="contact-card">
               <p class="text-sm font-bold uppercase tracking-[0.1em] text-black/50 mb-3">
                 <i class="fas fa-map-marked-alt text-[var(--coral)] mr-2"></i>Find us on Google Maps
@@ -380,7 +400,6 @@
               </div>
             </div>
 
-            <!-- Contact Form -->
             <div class="contact-card">
               <h3 class="font-display text-2xl mb-4">Send a message</h3>
               <form id="contactForm" class="flex flex-col gap-4">
@@ -475,7 +494,6 @@
       e.target.reset();
     });
 
-    // Toast
     const toast = document.getElementById('toast');
     let toastTimer;
     function showToast(msg) {
