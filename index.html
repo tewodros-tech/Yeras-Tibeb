@@ -51,7 +51,33 @@
       padding: 10px 0;
       background: transparent;
     }
-    .brand-placeholder { width: 20px; height: 20px; }
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+    .brand-logo img {
+      height: 48px;
+      width: auto;
+      max-width: 180px;
+      object-fit: contain;
+      border-radius: 6px;
+      filter: brightness(1.05) drop-shadow(0 2px 8px rgba(0,0,0,0.2));
+      transition: transform 0.25s ease;
+    }
+    .brand-logo img:hover { transform: scale(1.02); }
+    .brand-logo .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.03em;
+      border-left: 1px solid rgba(255,255,255,0.15);
+      padding-left: 12px;
+      line-height: 1.2;
+    }
+    .brand-logo .logo-text span { color: var(--gold); }
     .nav-link {
       position: relative;
       opacity: 0.8;
@@ -60,6 +86,8 @@
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      color: white;
+      text-decoration: none;
     }
     .nav-link:hover { opacity: 1; }
     .nav-link::after {
@@ -113,6 +141,10 @@
       width: 60px;
       height: 60px;
       transition: color 180ms ease, transform 180ms ease;
+      background: transparent;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
     .icon-button svg {
       width: 38px;
@@ -152,6 +184,7 @@
       color: white;
       border-radius: 4px;
       cursor: pointer;
+      text-decoration: none;
     }
     .button-primary:hover { background: #e06654; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(211,83,67,0.35); }
     .button-secondary {
@@ -171,6 +204,7 @@
       border-radius: 4px;
       background: transparent;
       cursor: pointer;
+      text-decoration: none;
     }
     .button-secondary:hover { border-color: white; background: rgba(255,255,255,0.08); transform: translateY(-2px); }
     .section { padding: clamp(4rem, 10vw, 8rem) 0; }
@@ -204,7 +238,6 @@
       object-position: center center;
       transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
-    /* Expanded state - full image visible */
     .hero.bg-expanded .hero-bg-wrapper {
       background: #0a0507;
     }
@@ -311,7 +344,6 @@
     }
     .trust-badges span i { color: var(--gold); font-size: 0.7rem; }
 
-    /* Click hint */
     .click-hint {
       position: absolute;
       bottom: 30px;
@@ -567,9 +599,9 @@
       margin-bottom: 0.8rem;
     }
     .footer-brand .footer-logo img {
-      height: 70px;
+      height: 60px;
       width: auto;
-      max-width: 200px;
+      max-width: 180px;
       object-fit: contain;
       border-radius: 8px;
     }
@@ -619,7 +651,7 @@
 
     .mobile-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; padding: 1.5rem; background: rgba(35,18,22,0.98); border-bottom: 1px solid rgba(248,245,237,0.1); backdrop-filter: blur(8px); }
     .mobile-menu.is-open { display: grid; gap: 1rem; }
-    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; }
+    .mobile-menu a { color: rgba(248,245,237,0.82); font-family: 'Playfair Display', serif; font-size: 1.5rem; transition: color 0.3s; text-decoration: none; }
     .mobile-menu a:hover { color: var(--gold); }
     .mobile-social {
       display: flex;
@@ -639,6 +671,7 @@
       border-radius: 50%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.06);
+      text-decoration: none;
     }
     .mobile-social a:hover {
       color: var(--gold);
@@ -690,8 +723,7 @@
       .mobile-toggle { display: grid !important; }
       .header-social a { width: 40px; height: 40px; font-size: 1.2rem; }
       .instagram-grid { grid-template-columns: repeat(3, 1fr); }
-      .footer-brand .footer-logo img { height: 55px; max-width: 160px; }
-      .footer-brand .footer-logo .ft-text { font-size: 1.1rem; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
       .banner-image { height: 350px; }
       .collection-preview .preview-img { height: 280px; }
       .gallery-row-img { height: 200px; }
@@ -736,6 +768,8 @@
       .icon-button svg { width: 32px; height: 32px; }
       .footer-social a { width: 52px; height: 52px; font-size: 1.6rem; }
       .click-hint { font-size: 0.5rem; bottom: 20px; }
+      .brand-logo img { height: 38px; max-width: 120px; }
+      .brand-logo .logo-text { font-size: 0.9rem; padding-left: 6px; }
     }
   </style>
 </head>
@@ -743,7 +777,10 @@
   <header class="site-header" id="siteHeader">
     <div class="nav-shell">
       <div class="mx-auto flex max-w-[1400px] items-center justify-between px-5 py-2 lg:px-10">
-        <div class="brand-placeholder"></div>
+        <a href="index.html" class="brand-logo">
+          <img src="1.jpg" alt="YERAS TIBEB logo" onerror="this.style.display='none';" />
+          <span class="logo-text">YERAS <span>TIBEB</span></span>
+        </a>
         <nav class="desktop-nav flex items-center gap-8" aria-label="Main navigation">
           <a class="nav-link" href="index.html">Home</a>
           <a class="nav-link" href="shop.html">Shop</a>
